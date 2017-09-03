@@ -1,0 +1,33 @@
+How to change the font size on a matplotlib plot
+How does one change the font size for all elements ( ticks , labels , title ) on a matplotlib plot ?
+I know how to change the tick label sizes , this is done with :
+But how does one change the rest ?
+From the matplotlib documentation ,
+This sets the font of all items to the font specified by the kwargs object , ` font ` .
+Alternatively , you could also use the ` rcParams ` ` update ` method as suggested in this answer :
+You can find a full list of available properties on the Customizing matplotlib page .
+nice , except it override any fontsize property found on it's way _
+Where can I find more options for elements like `' family '` , `' weight '` , etc .?
+@USER I added a link to the customizing matplotlib page in the answer .
+@USER ; I visited that page before . I would like to know all the options for `' family '` Like `' normal '` , `' sans-serif '` , etc .
+Since many people start with ` import matplotlib.pyplot as plt ` , you might like to point out that ` pyplot ` has ` rc ` as well . You can do ` plt.rc ( ... ` without having to change your imports .
+If you want to change the fontsize for just a specific plot that has already been created , try this :
+My purpose was to have the font of x-y labels , ticks and the titles to be of different sizes . A modified version of this worked so well for me .
+Update : See the bottom of the answer for a slightly better way of doing it .
+Update #2 : I've figured out changing legend title fonts too .
+Update #3 : There is a bug in Matplotlib 2.0.0 that's causing tick labels for logarithmic axes to revert to the default font . Should be fixed in 2.0.1 but I've included the workaround in the 2nd part of the answer .
+This answer is for anyone trying to change all the fonts , including for the legend , and for anyone trying to use different fonts and sizes for each thing . It does not use rc ( which doesn't seem to work for me ) . It is rather cumbersome but I could not get to grips with any other method personally . It basically combines ryggyr's answer here with other answers on SO .
+The benefit of this method is that , by having several font dictionaries , you can choose different fonts / sizes / weights / colours for the various titles , choose the font for the tick labels , and choose the font for the legend , all independently .
+UPDATE :
+I have worked out a slightly different , less cluttered approach that does away with font dictionaries , and allows any font on your system , even .otf fonts . To have separate fonts for each thing , just write more ` font_path ` and ` font_prop ` like variables .
+Hopefully this is a comprehensive answer
+If you are a control freak like me , you may want to explicitly set all your font sizes :
+Note that you can also set the sizes calling the ` rc ` method on ` matplotlib ` :
+Here is a totally different approach that works surprisingly well to change the font sizes :
+Change the figure size !
+I usually use code like this :
+The smaller you make the figure size , the larger the font is relative to the plot . This also upscales the markers . Note I also set the ` dpi ` or dot per inch . I learned this from a posting the AMTA ( American Modeling Teacher of America ) forum .
+Example : Figure from above code
+Wow . That worked pretty well for me . Thanks for sharing this information .
+Based on the above stuff :
+I totally agree with Prof Huster that the simplest way to proceed is to change the size of the figure , which allows keeping the default fonts . I just had to complement this with a bbox_inches option when saving the figure as a pdf because the axis labels were cut .

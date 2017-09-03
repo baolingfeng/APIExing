@@ -1,0 +1,25 @@
+Fit a gaussian function
+I have a histogram ( see below ) and I am trying to find the mean and standard deviation along with code which fits a curve to my histogram . I think there is something in SciPy or matplotlib that can help , but every example I've tried doesn't work .
+What do you mean by doesn't work ? It doesn't run , or the output isn't correct ?
+I can't get the codes from the internet to run , to actually make a curve like they are supposed to
+which is most likely happening because I just started programming and I generally have no idea what i'm doing
+So are you getting an error message when you try to run it ? Or does the program complete without producing anything ?
+I just don't know how to properly make it work with my data
+Take a look at this answer for fitting arbitrary curves to data . Basically you can use ` scipy.optimize.curve_fit ` to fit any function you want to your data . The code below shows how you can fit a Gaussian to some random data ( credit to this SciPy-User mailing list post ) .
+thanks , this got the mean and sd well , but the curve fit doesn't actually produce a curve , it produces lines
+Do you mean my example just produces lines ? Or when you apply the above code to your data you get lines ? Also , what is the difference between a line and a curve ?
+as opposed to bell curve type shape , it just looks like a carrot ^
+Without more information I can't really help you . Do you mean it looks like a carrot with your data ? If so , then presumably it is because that is what your data looks like . When asking questions it is best to include a short , self contained example .
+I suspect @USER means that , in his case , there aren't that many bin_centres , so when you plot ( bin_centres , hist_fit ) , it comes out poorly sampled Gaussian ( " carrot ") . He should just subsample the bin_centers , using new_bin_centers = numpy.linspace ( bin_centres [ 0 ] , bin_centres [ -1 ] , 200 ) , new_hist_fit = gauss ( new_bin_centres , * coeff ) , and plot ( new_bin_centres , new_hist_fit )
+You can try sklearn gaussian mixture model estimation as below :
+Reference : http://scikit-learn.org/stable/modules/mixture.html#mixture
+Note that in this way , you don't need to estimate your sample distribution with an histogram .
+Kind of an old question , but for anybody looking just to plot a density fit for a series , you could try matplotlib's ` .plot ( kind= ' kde ')` . Docs here .
+Example with pandas :
+I am not sure what your input is , but possibly your y-axis scale is too large ( 20000 ) , try reducing this number . The following code works for me :
+Edit :
+If you want the actual count of values on y-axis , you can set ` normed=0 ` . And would just get rid of the ` plt.axis ([ -1 , 2 , 0 , 1 ])` .
+no im working with over half a million points so I want the scale to be that big because I don't want like 50,000 bins
+@USER believe the value on y-axis does not tell you the number of observations in each bin , it tells you percentage in each bin . Just comment out the whole ` plt.axis ([ -1 , 2 , 0 , 1 ])` line and run it , you should get a distribution plot .
+its definitely telling me the number in each bin because i can see the histogram itself with the y axis at 20,000
+Downvoter , can you please explain the reason for the downvote ?

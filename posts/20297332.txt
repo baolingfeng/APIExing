@@ -1,0 +1,16 @@
+Python pandas dataframe : retrieve number of columns
+How do you programmatically retrieve the number of columns in a pandas dataframe ? I was hoping for something like :
+doesn't work for me .
+Like so :
+plus ` df.shape ` gives a tuple with ( n_rows , n_columns )
+@USER if you post df.shape [ 1 ] as an answer , I'd +1 . This is the better way to work with numpy and deserves to be a separate answer .
+done . @USER perhaps you could explain why ` df.shape ` is better ? my guess is that it does not call a function but just reads the attribute from memory ?
+Alternative :
+( ` df.shape [ 0 ]` is the number of rows )
++1 because I like to encourage addressing of numpy and pandas objects with martix type syntax . ( df.shape vs len ( df.columns )) . Truth be told , if you look at the pandas descriptor for shape , it calls len ( df.columns ) but numpy arrays and matricies have them as an attribute . most efficient vectorized operations can be done with regular python syntas as opposed to vectorized operations and is almost always wrong ( numba / jit operations excepted from that criticizm )
+If the variable holding the dataframe is called df , then :
+gives the number of columns .
+And for those who want the number of rows :
+For a tuple containing the number of both rows and columns :
+Wouldn't ` len ( df )` give you the rows ?
+@USER pandas has so many shortcuts that are easy to forget so I prefer to ignore them and and use the main logic instead to solve things . You may sacrifice processing speed sometimes , but I value my coding time and code readability more than a few seconds of processing time . In this particular case : if you learn that the number of rows can be calculated with len ( df.index ) , next time you need the number of columns it comes natural to do len ( df.columns ) .

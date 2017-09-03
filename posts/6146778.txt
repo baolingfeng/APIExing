@@ -1,0 +1,20 @@
+matplotlib Legend Markers Only Once
+I often plot a point on a matplotlib plot with :
+However , this causes the legend to put a star in the legend twice , such that it looks like :
+when I really want it to look like :
+How do I do this ?
+I wish I could upvote this question multiple times . I HATE the default ` numpoints=2 ` convention and was relieved to see someone had already taken the time to ask about it and get an answer .
+Mind : the option for scatterplots is ` scatterpoints=1 `
+This should work :
+BTW , if you add the line
+to your matplotlibrc file , then this will be the new default .
+[ See also scatterpoints , depending on your plot . ]
+API : Link to API docs
+Thanks . I ran into this today also . Why is this not the default ?
+Is there any way to reduce the area the point take on the legend ?
+the option for scatterplots is ` scatterpoints=1 `
+@USER : I had not seen that . My mistake . You should also highlight it as code in order to make it more visible .
+At long last , there are plans for numpoints=1 to be default in matplotlib 2.0 ! Huzzah ! github.com/matplotlib/matplotlib/issues/4854
+I like to change my matplotlib rc parameters dynamically in every python script . To achieve this goal I simply use somthing like that at the beginning of my python files .
+This will apply to all plots generated from my python file .
+EDIT : For those who do not like to import pylab , the long answer is

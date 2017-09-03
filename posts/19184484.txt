@@ -1,0 +1,17 @@
+How to add group labels for bar charts in matplotlib ?
+I want to plot data of the following form using matplotlib's bar plot feature :
+The bar chart is supposed to look like this . The bar groups should be visible from the labels on the x axis . Is there any way to do this with matplotlib ?
+Can you show us what you have tried ?
+Since I could not find a built-in solution for this in matplotlib , I coded my own :
+The " mk_groups " function takes a dictionary ( or anything with an items() method , like collections.OrderedDict ) and converts it to a data format that is then used to create the chart . It is basically a list of the form :
+The " add_line " function creates a vertical line in the subplot at the specified positions ( in axes coordinates ) .
+The " label_group_bar " function takes a dictionary and creates the bar chart in the subplot with the labels beneath . The result from the example then looks like this .
+Easier or better solutions and suggestions are still very much appreciated .
+please accept your own answer . If you are feeling ambitious , this could be a good addition to mpl proper ( I suspect this could be generalized a bit and folded up with dendograms ) .
+thanks for reminding me .
+no problem . I am serious about getting this into mpl proper though ( I am a dev and would help sheppard this through ) .
+it tells me NameError : name ' xrange ' is not defined in for pos in xrange ( ly + 1 ):
+if you are using Python 3 , xrange was renamed to range . so use range instead of xrange .
+I was looking for this solution for a while Thanks .
+I modified it some to work with a pandas data table .
+Only fare to share .

@@ -1,0 +1,32 @@
+pandas : filter rows of DataFrame with operator chaining
+Most operations in ` pandas ` can be accomplished with operator chaining ( ` groupby ` , ` aggregate ` , ` apply ` , etc ) , but the only way I've found to filter rows is via normal bracket indexing
+This is unappealing as it requires I assign ` df ` to a variable before being able to filter on its values . Is there something more like the following ?
+I'm not entirely sure what you want , and your last line of code does not help either , but anyway :
+" Chained " filtering is done by " chaining " the criteria in the boolean index .
+If you want to chain methods , you can add your own mask method and use that one .
+Great answer ! So in ` ( df.A == 1 ) ( df.D == 6 )` , is the " " an overloaded operator in Pandas ?
+indeed , see also pandas.pydata.org/pandas-docs/stable
+That is a really nice solution - I wasn't even aware that you could jury-rig methods like that in python . A function like this would be really nice to have in Pandas itself .
+The answer from @USER is great . I would extend it by generalizing the mask function as :
+Then you can do stuff like :
+A useful generalization ! I wish it were integrated directly into ` DataFrame ` s already !
+see the feature request at github.com/pydata/pandas/issues/5900
+Filters can be chained using a Pandas query :
+Filters can also be combined in a single query :
+If you need to refer to python variables in your query , the documentation says , " You can refer to variables in the environment by prefixing them with an @ character like @USER + b " . Note that the following are valid : ` df.query ( ' a in list ([ 1 , 2 ])')` , ` s = set ([ 1 , 2 ]); df.query ( ' a in @USER ')` .
+On the other hand , it looks like the query evaluation will fail if your column name has certain special characters : e.g. " Place.Name " .
+I had the same question except that I wanted to combine the criteria into an OR condition . The format given by Wouter Overmeire combines the criteria into an AND condition such that both must be satisfied :
+But I found that , if you wrap each condition in ` ( ... == True )` and join the criteria with a pipe , the criteria are combined in an OR condition , satisfied whenever either of them is true :
+Wouldn't ` df [( df.A == 1 ) | ( df.D == 6 )]` be sufficient for what you're trying to accomplish ?
+My answer is similar to the others . If you do not want to create a new function you can use what pandas has defined for you already . Use the pipe method .
+THIS is what you want if you want to chain commands such as ` a.join ( b ) .pipe ( lambda df : df [ df.column_to_filter == ' VALUE '])`
+If you would like to apply all of the common boolean masks as well as a general purpose mask you can chuck the following in a file and then simply assign them all as follows :
+Usage :
+It's a little bit hacky but it can make things a little bit cleaner if you're continuously chopping and changing datasets according to filters .
+There's also a general purpose filter adapted from Daniel Velkov above in the gen_mask function which you can use with lambda functions or otherwise if desired .
+File to be saved ( I use masks.py ):
+` pandas.DataFrame.query `
+` query ` was made for exactly this purpose . Consider the dataframe ` df `
+Let's use ` query ` to filter all rows where ` D B `
+Which we chain
+If you set your columns to search as indexes , then you can use ` DataFrame.xs() ` to take a cross section . This is not as versatile as the ` query ` answers , but it might be useful in some situations .

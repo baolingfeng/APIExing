@@ -1,0 +1,32 @@
+In Matplotlib , what does the argument mean in fig.add_subplot ( 111 ) ?
+Sometimes I come across code such as this :
+Which produces :
+I've been reading the documentation like crazy but I can't find an explanation for the ` 111 ` . sometimes I see a ` 212 ` .
+What does the argument of ` fig.add_subplot() ` mean ?
+These are subplot grid parameters encoded as a single integer . For example , " 111 " means " 1x1 grid , first subplot " and " 234 " means " 2x3 grid , 4th subplot " .
+Alternative form for ` add_subplot ( 111 )` is ` add_subplot ( 1 , 1 , 1 )` .
+Is there any detailed documentation about this ? What is the difference between a 1x1 grid and a 2x3 grid in this context ?
+1x1 grid = 1 row , 1 column . 2x3 grid = 2 rows , 3 columns . The third number starts from 1 and increments row-first . See documentation of subplot() for more info .
+As others explained ( more than two years ago ) , this is a legacy from matlab . But for the sake of future readers , you should know that there exists a better alternative , in the form of the ` subplots() ` method .
+Documentation of legacy ` subplot() ` is here and ` subplots() ` is here .
+I think this would be best explained by the following picture :
+To initialize the above , one would type :
+EDIT : Some additional information
+The following combinations produce asymmetrical arrangements of subplots .
+You can also use the colon operator to specify multiple locations if they are in sequence .
+Reference here
+I think the version with commas is much more intuitive and readable than the version with 3-digit numbers
+This is great it shows how to " position subplots in a grid " be that a 2x2 grid like the above illustrated example or a grid of 4x4 graphs etc . But can someone please explain what determines the size of those graphs that are displayed . The defaults for ( 2 , 2 , 1 ) I find quite small I would like it maybe double that size or more .
+Please someone add this answer to the official documentation , gee ...
+This is quite helpful . This picture would be a little nicer if it wasn't square ( 2x2 ) but otherwise very helpful .
+@USER Wow , what a coincidence ! I was thinking the exact same thing about an hour before you wrote that ! I'll change it soon :)
+The answer from Constantin is spot on but for more background this behavior is inherited from Matlab .
+The Matlab behavior is explained in the Figure Setup - Displaying Multiple Plots per Figure section of the Matlab documentation .
+subplot ( m , n , i ) breaks the figure window into an m-by-n matrix of small
+subplots and selects the ithe subplot for the current plot . The plots
+are numbered along the top row of the figure window , then the second
+row , and so forth .
+This is matplotlib , not matlab .
+Much of matplotlibs behavior is inherited from Matlab . Since the Matlab documentation was better I thought it might help explain how this specific function call behaves . Yes , your are correct , this ( question ) is regarding matplotlib . The matplotlib subplot documentation is less clear in my opinion .
+Point taken :-)
+The MATLAB documentation has moved .

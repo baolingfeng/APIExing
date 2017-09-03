@@ -1,0 +1,27 @@
+How to generate audio from a numpy array ?
+I want to create " heart rate monitor " effect from a 2D array in numpy and want the tone to reflect the values in the array .
+You can use the ` write ` function from ` scipy.io.wavfile ` to create a wav file which you can then play however you wish . Note that the array must be integers , so if you have floats , you might want to scale them appropriately :
+If you want Python to actually play audio , then this page provides an overview of some of the packages / modules .
+Question - the data / np.max ( np.abs ( data )) - am I right that this is normalising to 1 / -1 before scaling , such that if the max is 0.8 , it would be scaled up ?
+Yes ( it isn't required though ) .
+Thanks . Shouldn't that be * 32768 ? It is a signed 16 bit .
+It should probably actually be 32767 . Fixed , thanks .
+For the people coming here in 2016 scikits.audiolab doesn't really seem to work anymore . I was able to get a solution using sounddevice .
+I actually tried and scikits.audiolab worked on my Ubuntu 16.04 + python 2.7 ( anaconda 4.1.1 ) . I just needed to ` sudo apt-get install libsndfile1-dev ` . And on the other hand , sounddevice doesn't work for me : nothing is played when I replace scikits.audiolab with sd .
+no luck with python3 , even with libsndfile1-dev installed , better luck with sounddevice
+Thanks , works perfectly ! ` sd.play ( data , fs , blocking=True )` to make the program wait until the sound is played .
+In addition , you could try scikits.audiolab . It features file IO and the ability to ' play ' arrays . Arrays don't have to be integers . To mimick dbaupp's example :
+scikits.audiolab is not available for python ( 32 ) +Windows ( 64 ) +Hardware ( 64 ) bit configuration and thus I guess not so useful to me
+It's not available in Python 3 , and it has been a long time since last update .
+I had some problems using ` scikit.audiolabs ` , so I looked for another options for this task . I came up with sounddevice , which seems a lot more up-to-date . I have not checked if it works with Python 3 .
+A simple way to perform what you want is this :
+It works fine with Python 3 . If you use the above code in a script , you should make sure to use ` blocking=True ` , otherwise the script will exit without finishing playback .
+I did that , in fact . Updated answer . Thanks !
+PyGame has the module ` pygame.sndarray ` which can play numpy data as audio . The other answers are probably better , as PyGame can be difficult to get up and running . Then again , scipy and numpy come with their own difficulties , so maybe it isn't a large step to add PyGame into the mix .
+http://www.pygame.org/docs/ref/sndarray.html
+If you are using Jupyter , the best option is :
+Not sure of the particulars of how you would produce the audio from the array , but I have found mpg321 to be a great command-line audio player , and could potentially work for you .
+I use it as my player of choice for Anki , which is written in python and has libraries that could be a great starting place for interfacing your code / arrays with audio .
+Check out :
+anki.sound.py
+customPlayer.py

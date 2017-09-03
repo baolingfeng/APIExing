@@ -1,0 +1,10 @@
+Imshow : extent and aspect
+I'm writing a software system that visualizes slices and projections through a 3D dataset . I'm using ` matplotlib ` and specifically ` imshow ` to visualize the image buffers I get back from my analysis code .
+Since I'd like to annotate the images with plot axes , I use the extent keyword that ` imshow ` supplies to map the image buffer pixel coordinates to a data space coordinate system .
+Unfortuantely , ` matplotlib ` doesn't know about units . Say ( taking an artificial example ) that I want to plot an image with dimensions of ` 1000 m X 1 km ` . In that case the extent would be something like ` [ 0 , 1000 , 0 , 1 ]` . Even though the image array is square , since the aspect ratio implied by the extent keyword is 1000 , the resulting plot axes also have an aspect ratio of 1000 .
+Is it possible to force the aspect ratio of the plot while still keeping the automatically generated major tick marks and labels I get by using the extent keyword ?
+You can do it by setting the aspect of the image manually ( or by letting it auto-scale to fill up the extent of the figure ) .
+By default , ` imshow ` sets the aspect of the plot to 1 , as this is often what people want for image data .
+In your case , you can do something like :
+Thank you so much - I didn't realize that I have to modify the aspect to recover a square window . My plots look perfect now !
+Great answer thanks !

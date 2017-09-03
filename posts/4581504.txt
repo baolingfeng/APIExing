@@ -1,0 +1,10 @@
+How to set opacity of background colour of graph wit Matplotlib
+I've been playing around with Matplotlib and I can't figure out how to change the background colour of the graph , or how to make the background completely transparent .
+facecolor / set_facecolor ?
+But how do I use set_facecolor ?
+If you just want the entire background for both the figure and the axes to be transparent , you can simply specify ` transparent=True ` when saving the figure with ` fig.savefig ` .
+e.g. :
+If you want more fine-grained control , you can simply set the facecolor and / or alpha values for the figure and axes background patch . ( To make a patch completely transparent , we can either set the alpha to 0 , or set the facecolor to `' none '` ( as a string , not the object ` None ` ! ))
+e.g. :
+Setting the ` facecolor ` to `' none '` did not work for me ; setting ` alpha ` to ` 0.0 ` did .
+Doesn't work for ` basemap `

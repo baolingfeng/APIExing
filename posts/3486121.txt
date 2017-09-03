@@ -1,0 +1,16 @@
+How to plot data against specific dates on the x-axis using matplotlib
+I have a dataset consisting of date-value pairs . I want to plot them in a bar graph with the specific dates in the x-axis .
+My problem is that ` matplotlib ` distributes the ` xticks ` over the entire date range ; and also plots the data using points .
+The dates are all ` datetime ` objects . Here's a sample of the dataset :
+Here is a runnable code sample using ` pyplot `
+QUESTION SUMMARY :
+My situation is more like I have an ` Axes ` instance ready ( referenced by ` graph ` in the code above ) and I want to do the following :
+Make the ` xticks ` correspond to the exact date values . I have heard of ` matplotlib.dates.DateLocator ` but I have no idea how create one and then associate it with a specific ` Axes ` object .
+Get tighter control over the type of graph being used ( bar , line , points , etc . )
+Just a tip : since your question really is purely about matplotlib and doesn't have anything specific to wxWidgets , it'd might make things easier if you alter your example to use the functions from ` matplotlib.pyplot ` and leave the wx stuff out of it .
+@USER : Fixed . Thanks , I realized there might be more people who can read ` matplotlib ` + ` pyplot ` better than ` matplotlib ` + ` wx `
+What you're doing is simple enough that it's easiest to just using plot , rather than plot_date . plot_date is great for more complex cases , but setting up what you need can be easily accomplished without it .
+e.g. , Based on your example above :
+If you'd prefer a bar plot , just use ` plt.bar() ` . To understand how to set the line and marker styles , see ` plt.plot() `
+Plot with date labels at marker locations http://www.geology.wisc.edu/~jkington/matplotlib_date_labels.png
++1 This is excellent . Thank you !

@@ -1,0 +1,85 @@
+Delete column from pandas DataFrame using python del
+When deleting a column in a DataFrame I use :
+and this works great . Why can't I use :
+As you can access the column / Series as ` df.column_name ` , I expect this to work .
+It's difficult to make ` del df.column_name ` work simply as the result of syntactic limitations in Python . ` del df [ name ]` gets translated to ` df.__delitem__ ( name )` under the covers by Python
+I realize this is a super old " answer " , but my curiosity is piqued - why is that a syntactic limitation of Python ? ` class A ( object ): def __init__ ( self ): self.var = 1 ` sets up a class , then ` a = A() ; del a.var ` works just fine ...
+@USER the difference is that when a column is to be removed , the DataFrame needs to have its own handling for " how to do it " . In the case of ` del df [ name ]` , it gets translated to ` df.__delitem__ ( name )` which is a method that DataFrame can implement and modify to its needs . In the case of ` del df.name ` , the member variable gets removed without a chance for any custom-code running . Consider your own example - can you get ` del a.var ` to result in a print of " deleting variable " ? If you can , please tell me how . I can't :)
+@USER You can use either docs.python.org/3/reference/datamodel.html#object.__delattr_ _ or descriptors for that : docs.python.org/3/howto/descriptor.html
+@USER good point . I was answering in python 2 , indeed python 3 gives more flexibility in such matters . Thanks for clarifying .
+@USER Eugene's comment applies to Python 2 also ; descriptors have been in Python 2 since 2.2 and it is trivial to satisfy your requirement ;)
+The best way to do this in pandas is to use drop :
+where ` 1 ` is the axis number ( ` 0 ` for rows and ` 1 ` for columns . )
+To delete the column without having to reassign ` df ` you can do :
+Finally , to drop by column number instead of by column label , try this to delete , e.g. the 1st , 2nd and 4th columns :
+Is this recommended over ` del ` for some reason ?
+Though this method of deletion has its merits , this answer does not really answer the question being asked .
+True @USER , but due to the title of the question , most people arriving here will do so via trying to work out how to delete a column .
+Yeah , that's a good point @USER . In fact , my search for how to delete a column led me here ;)
+@USER another advantage of ` drop ` over ` del ` is that ` drop ` allows you to drop multiple columns at once , perform the operation inplace or not , and also delete records along any axis ( especially useful for a 3-D matrix or ` Panel `)
+will delete one or more columns inplace .
+` inplace ` seems to have been added pandas 0.13.1 and won't work on older versions
+A note about this answer : if a ' list ' is used , the square brackets should be dropped : ` df.drop ( list , inplace=True , axis=1 )`
+this should really be the accepted answer , because it makes clear the superiority of this method over ` del ` -- can drop more than one column at once .
+Drop by index
+delete first , second and fourth columns :
+delete first column :
+There is an optional parameter ` inplace ` so that the original
+data can be modified without creating a copy .
+Popped
+Column selection , addition , deletion
+delete column ` column-name ` :
+Examples :
+` print df ` :
+` df.drop ( df.columns [[ 0 ]] , axis=1 , inplace=True )`
+` print df ` :
+` three = df.pop ( ' three ')`
+` print df ` :
+How can I pop a row in pandas ?
+@USER You can use a transposed dataframe for that . ex - ` df.T.pop ( ' A ')`
+@USER - Thank you .
+The actual question posed , missed by most answers here is :
+Why can't I use ` del df.column_name ` ?
+At first we need to understand the problem , which requires us to dive into python magic methods .
+As Wes points out in his answer ` del df [ ' column ']` maps to the python magic method ` df.__delitem__ ( ' column ')` which is implemented in pandas to drop the column
+However , as pointed out in the link above about python magic methods :
+In fact , del should almost never be used because of the precarious circumstances under which it is called ; use it with caution !
+You could argue that ` del df [ ' column_name ']` should not be used or encouraged , and thereby ` del df.column_name ` should not even be considered .
+However , in theory , ` del df.column_name ` could be implemeted to work in pandas using the magic method ` __delattr__ ` . This does however introduce certain problems , problems which the ` del df [ ' column_name ']` implementation already has , but in lesser degree .
+Example Problem
+What if I define a column in a dataframe called " dtypes " or " columns " .
+Then assume I want to delete these columns .
+` del df.dtypes ` would make the ` __delattr__ ` method confused as if it should delete the " dtypes " attribute or the " dtypes " column .
+Architectural questions behind this problem
+Is a dataframe a
+collection of columns ?
+Is a dataframe a collection of rows ?
+Is a column an attribute of a dataframe ?
+Pandas answers :
+Yes , in all ways
+No , but if you want it to be , you can use the ` .ix ` , ` .loc ` or ` .iloc ` methods .
+Maybe , do you want to read data ? Then yes , unless the name of the attribute is already taken by another attribute belonging to the dataframe . Do you want to modify data ? Then no .
+TLDR ;
+You cannot do ` del df.column_name ` because pandas has a quite wildly grown architecture that needs to be reconsidered in order for this kind of cognitive dissonance not to occur to its users .
+Protip :
+Don't use df.column_name , It may be pretty , but it causes cognitive dissonance
+Zen of Python quotes that fits in here :
+There are multiple ways of deleting a column .
+There should be one -- and preferably only one -- obvious way to do it .
+Columns are sometimes attributes but sometimes not .
+Special cases aren't special enough to break the rules .
+Does ` del df.dtypes ` delete the dtypes attribute or the dtypes column ?
+In the face of ambiguity , refuse the temptation to guess .
+best explanation with examples
+from version 0.16.1 you can do
+And this also supports dropping multiple columns , some of which need not exist ( i.e. without raising error ` errors= ' ignore '`) ` df.drop ([ ' column_1 ' , ' column_2 '] , axis=1 , inplace=True , errors= ' ignore ')` , if such an application desired !
+A nice addition is the ability to drop columns only if they exist , this way you can cover more use cases , and it will only drop the existing columns from the labels passed to it :
+simply add errors= ' ignore ' , e.g :
+this is new from pandas 0.16.1 , docs are here
+It's good practice to always use the ` [ ]` notation , one reason is that attribute notation ( ` df.column_name `) does not work for numbered indices :
+In pandas 0.16.1 + you can drop columns only if they exist per the solution posted by @USER . Prior to that version , you can achieve the same result via a conditional list comprehension :
+You should use drop() . Suppose your dataframe name is df .
+the dot syntax works in JS but not in python .
+Python : del df [ ' column_name ']
+JS : del df [ ' column_name '] OR del df.column_name
+This is relevant to the OP .

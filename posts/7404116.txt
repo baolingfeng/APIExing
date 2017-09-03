@@ -1,0 +1,35 @@
+Defining the midpoint of a colormap in matplotlib
+I want to set the middle point of a colormap , ie my data goes from -5 to 10 , i want zero to be the middle . I think the way to do it is subclassing normalize and using the norm , but i didn't find any example and it is not clear to me , what exactly i have to implement .
+this is called a " diverging " or " bipolar " colormap , where the center point of the map is important and the data goes above and below this point . sandia.gov/~kmorel/documents/ColorMaps
+I know this is late to the game , but I just went through this process and came up with a solution that perhaps less robust than subclassing normalize , but much simpler . I thought it'd be good to share it here for posterity .
+The function
+An example
+Results of the example :
+This should be add to matplotlib !
+This is better than my own solution , thanks !
+Many thanks for your awesome contribution ! However , the code was not capable of both cropping and shifting the same color map , and your instructions were a bit imprecise and misleading . I have now fixed that and took the liberty to edit your post . Also , I have included it in one of my personal libraries , and added you as an author . I hope you do not mind .
+@USER the colormap in the lower right corner has been both cropped and recentered . Feel free to use this as you see fit .
+Yes , it has , sadly it only looks approximately right as a coincidence . If ` start ` and ` stop ` are not 0 and 1 respectively , after you do ` reg_index = np.linspace ( start , stop , 257 )` , you can no longer assume that value 129 is the midpoint of the original cmap , therefore the entire rescaling makes no sense whenever you crop . Also , ` start ` should be from 0 to 0.5 and ` stop ` from 0.5 to 1 , not both from 0 to 1 as you instruct .
+Here is a solution subclassing Normalize . To use it
+Here is the Class :
+Is it possible to use this class in addition to log or sym-log scaling without having to create more sub-classes ? My current use case already uses " norm=SymLogNorm ( linthresh=1 )"
+It's easiest to just use the ` vmin ` and ` vmax ` arguments to ` imshow ` ( assuming you're working with image data ) rather than subclassing ` matplotlib.colors.Normalize ` .
+E.g .
+Is it possible to have the example updated to a gaussian curve so we can better see the gradation of the color ?
+I don't like this solution , because it doesn't use the full dynamic range of available colors . Also i would like to a example of normalize to build a symlog-kind of normalization .
+@USER - I'm confused , then ... You can't use the full dynamic range of the colorbar if you want 0 in the middle , right ? You're wanting a non-linear scale then ? One scale for values above 0 , one for values below ? In that case , yeah , you'll need to subclass ` Normalize ` . I'll add an example in just a bit ( assuming someone else doesn't beat me to it ... ) .
+@USER : You are right , it is not linear ( more exactly , two linear parts ) . Using vmin / vmax , the colorange for the values smaller than -5 is not used ( which makes sense in some applications , but not mine . ) .
+for generic data in Z : ` vmax=abs ( Z ) .max() , vmin=-abs ( Z ) .max() `
+Not sure if you are still looking for an answer . For me , trying to subclass ` Normalize ` was unsuccessful . So I focused on manually creating a new data set , ticks and tick-labels to get the effect I think you are aiming for .
+I found the ` scale ` module in matplotlib that has a class used to transform line plots by the ' syslog ' rules , so I use that to transform the data . Then I scale the data so that it goes from 0 to 1 ( what ` Normalize ` usually does ) , but I scale the positive numbers differently from the negative numbers . This is because your vmax and vmin might not be the same , so .5 - 1 might cover a larger positive range than .5 - 0 , the negative range does . It was easier for me to create a routine to calculate the tick and label values .
+Below is the code and an example figure .
+Feel free to adjust the " constants " ( eg ` VMAX `) at the top of the script to confirm that it behaves well .
+Thanks for you suggestion , as seen below , i had success in subclassing . But your code is still very useful for making the ticklabels right .
+If you don't mind working out the ratio between vmin , vmax , and zero , this is a pretty basic linear map from blue to white to red , that sets white according to the ratio ` z ` :
+The cdict format is fairly simple : the rows are points in the gradient that gets created : the first entry is the x-value ( the ratio along the gradient from 0 to 1 ) , the second is the end value for the previous segment , and the third is the start value for the next segment - if you want smooth gradients , the latter two are always the same . See the docs for more detail .
+There is also the option to specify within the ` LinearSegmentedColormap.from_list() ` tuples ` ( val , color )` and pass them as list to the ` color ` argument of this method where ` val0=0 val1 ... valN == 1 ` .
+I had a similar problem , but I wanted the highest value to be full red and cut off low values of blue , making it look essentially like the bottom of the colorbar was chopped off . This worked for me ( includes optional transparency ):
+I was using the excellent answer from Paul H , but ran into an issue because some of my data ranged from negative to positive , while other sets ranged from 0 to positive or from negative to 0 ; in either case I wanted 0 to be coloured as white ( the midpoint of the colormap I'm using ) . With the existing implementation , if your ` midpoint ` value is equal to 1 or 0 , the original mappings were not being overwritten . You can see that in the following picture :
+The 3rd column looks correct , but the dark blue area in the 2nd column and the dark red area in the remaining columns are all supposed to be white ( their data values are in fact 0 ) . Using my fix gives me :
+My function is essentially the same as that from Paul H , with my edits at the start of the ` for ` loop :
+EDIT : I ran into a similar issue yet again when some of my data ranged from a small positive value to a larger positive value , where the very low values were being coloured red instead of white . I fixed it by adding line ` Edit #2 ` in the code above .

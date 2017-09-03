@@ -1,0 +1,42 @@
+Moving matplotlib legend outside of the axis makes it cutoff by the figure box
+I'm familiar with the following questions :
+Matplotlib savefig with a legend outside the plot
+How to put the legend out of the plot
+It seems that the answers in these questions have the luxury of being able to fiddle with the exact shrinking of the axis so that the legend fits .
+Shrinking the axes , however , is not an ideal solution because it makes the data smaller making it actually more difficult to interpret ; particularly when its complex and there are lots of things going on ... hence needing a large legend
+The example of a complex legend in the documentation demonstrates the need for this because the legend in their plot actually completely obscures multiple data points .
+http://matplotlib.sourceforge.net/users/legend_guide.html#legend-of-complex-plots
+What I would like to be able to do is dynamically expand the size of the figure box to accommodate the expanding figure legend .
+Notice how the final label ' Inverse tan ' is actually outside the figure box ( and looks badly cutoff - not publication quality ! )
+Finally , I've been told that this is normal behaviour in R and LaTeX , so I'm a little confused why this is so difficult in python ... Is there a historical reason ? Is Matlab equally poor on this matter ?
+I have the ( only slightly ) longer version of this code on pastebin http://pastebin.com/grVjc007
+As far as the why's it's because matplotlib is geared towards interactive plots , while R , etc , aren't . ( And yes , Matlab is " equally poor " in this particular case . ) To do it properly , you need to worry about resizing the axes every time the figure is resized , zoomed , or the legend's position is updated . ( Effectively , this means checking every time the plot is drawn , which leads to slowdowns . ) Ggplot , etc , are static , so that's why they tend to do this by default , whereas matplotlib and matlab don't . That having been said , ` tight_layout() ` should be changed to take legends into account .
+I'm also discussing this question on the matplotlib users mailing list . So I have the suggestions of adjusting the savefig line to : fig.savefig ( ' samplefigure ' , bbox_extra_artists =( lgd , ) , bbox= ' tight ')
+I know matplotlib likes to tout that everything is under the control of the user , but this entire thing with the legends is too much of a good thing . If I put the legend outside , I obviously want it to still be visible . The window should just scale itself to fit instead of creating this huge rescaling hassle . At the very least there should be a default True option to control this autoscaling behavior . Forcing users to go through a ridiculous number of re-renders to try and get the scale numbers right in the name of control accomplishes the opposite .
+Sorry EMS , but I actually just got another response from the matplotlib mailling list ( Thanks goes out to Benjamin Root ) .
+The code I am looking for is adjusting the savefig call to :
+This is apparently similar to calling tight_layout , but instead you allow savefig to consider extra artists in the calculation . This did in fact resize the figure box as desired .
+This produces :
+/ ! \ Seems to work only since matplotlib = 1.0 ( Debian squeeze have 0.99 and this does not work )
+Can't get this to work :( I pass in lgd to savefig but it still doesn't resize . The problem may be I'm not using a subplot .
+Ah ! I just needed to use bbox_inches = " tight " as you did . Thanks !
+This is nice , but I still get my figure cut when I try to ` plt.show() ` it . Any fix for that ?
+I know this is old , but is there any way to make this work for version 0.99 ?
+Added : I found something that should do the trick right away , but the rest of the code below also offers an alternative .
+Use the ` subplots_adjust() ` function to move the bottom of the subplot up :
+Then play with the offset in the legend ` bbox_to_anchor ` part of the legend command , to get the legend box where you want it . Some combination of setting the ` figsize ` and using the ` subplots_adjust ( bottom= ... )` should produce a quality plot for you .
+Alternative :
+I simply changed the line :
+to :
+and changed
+to
+and it shows up fine on my screen ( a 24-inch CRT monitor ) .
+Here ` figsize =( M , N )` sets the figure window to be M inches by N inches . Just play with this until it looks right for you . Convert it to a more scalable image format and use GIMP to edit if necessary , or just crop with the LaTeX ` viewport ` option when including graphics .
+It would seem that this is the best solution at the current time , even though it still requires ' playing until it looks good ' which is not a good solution for a autoreport generator . I actually already use this solution , the real problem is that matplotlib doesn't dynamically compensate for the legend being outside the bbox of the axis . As @USER said , tight_layout should take into account more features than just axis , titles and lables . I might add this as a feature request on the matplotlib .
+also works for me to get a big enough picture to fit the xlabels previously being cut off
+here is the documentation with example code from matplotlib.org
+Here is another , very manual solution . You can define the size of the axis and paddings are considered accordingly ( including legend and tickmarks ) . Hope it is of use to somebody .
+Example ( axes size are the same ! ):
+Code :
+This didn't work for me until I changed the first ` plt.draw() ` to ` ax.figure.canvas.draw() ` . I'm not sure why , but before this change the legend size was not getting updated .
+If you are trying to use this on a GUI window , you need to change ` fig.set_size_inches ( widthTot , heightTot )` to ` fig.set_size_inches ( widthTot , heightTot , forward=True )` .

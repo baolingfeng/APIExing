@@ -1,0 +1,41 @@
+why is plotting with Matplotlib so slow ?
+I'm currently evaluating different python plotting libraries . Right now I'm trying matplotlib and I'm quite disappointed with the performance . The following example is modified from SciPy examples and gives me only ~ 8 frames per second !
+Any ways of speeding this up or should I pick a different plotting library ?
+The following might be relevant : stackoverflow.com/questions/5003094
+@USER - Glumpy only helped in that example because he was dealing with rapidly displaying image data . It won't help in this case .
+Try changing the backend . See my answer : stackoverflow.com/a/30655528/2066079 . or the this FAQ about backends : matplotlib.org/faq/usage_faq.html#what-is-a-backend
+First off , ( though this won't change the performance at all ) consider cleaning up your code , similar to this :
+With the above example , I get around 10fps .
+Just a quick note , depending on your exact use case , matplotlib may not be a great choice . It's oriented towards publication-quality figures , not real-time display .
+However , there are a lot of things you can do to speed this example up .
+There are two main reasons why this is as slow as it is .
+1 ) Calling ` fig.canvas.draw() ` redraws everything . It's your bottleneck . In your case , you don't need to re-draw things like the axes boundaries , tick labels , etc .
+2 ) In your case , there are a lot of subplots with a lot of tick labels . These take a long time to draw .
+Both these can be fixed by using blitting .
+To do blitting efficiently , you'll have to use backend-specific code . In practice , if you're really worried about smooth animations , you're usually embedding matplotlib plots in some sort of gui toolkit , anyway , so this isn't much of an issue .
+However , without knowing a bit more about what you're doing , I can't help you there .
+Nonetheless , there is a gui-neutral way of doing it that is still reasonably fast .
+This gives me ~200fps .
+To make this a bit more convenient , there's an ` animations ` module in recent versions of matplotlib .
+As an example :
+your code is very fast indeed , however I end up with 2000 lines per axis ! somehow " line.set_ydata " creates a new line instead of updating it - or is the background just not being cleared ? Plus , why is your version so much faster ? just because you dropped " draw() " and replaced it with " ax.draw_artist " ?
+In which example ? ( I tested them , but it's possible copy-pasted the wrong version into the answer . ) Also , which version of matplotlib are you using ?
+here's a link to the resulting image i.imgur.com/aBRFz.png might this be an artifact caused by my graphics card ?
+I was seeing the same thing that memyself was seeing in i.imgur.com/aBRFz.png until I moved the background capture below the fig.show() .
+Nice , but ` animation ` seems to update the plot by ` interval ` period of time , what if I just want to update it when new data is ready ?
+Matplotlib makes great publication-quality graphics , but is not very well optimized for speed .
+There are a variety of python plotting packages that are designed with speed in mind :
+http://pyqwt.sourceforge.net
+[ edit : pyqwt is no longer maintained ; the previous maintainer is recommending pyqtgraph ]
+http://code.google.com/p/guiqwt
+http://code.enthought.com/projects/chaco
+http://www.pyqtgraph.org
+To start , Joe Kington's answer provides very good advice using a gui-neutral approach , and you should definitely take his advice ( especially about Blitting ) and put it into practice . More info on this approach , read the Matplotlib Cookbook
+However , the non-GUI-neutral ( GUI-biased ? ) approach is key to speeding up the plotting . In other words , the backend is extremely important to plot speed .
+Put these two lines before you import anything else from matplotlib :
+Of course , there are various options to use instead of ` GTKAgg ` , but according to the cookbook mentioned before , this was the fastest . See the link about backends for more options .
+This only works on windows though , do you know of a way to make it work on Mac . The reason it is windows specific is that pygtk is windows specific
+For the first solution proposed by Joe Kington ( .copy_from_bbox .draw_artist canvas.blit ) , I had to capture the backgrounds after the fig.canvas.draw() line , otherwise the background had no effect and I got the same result as you mentioned . If you put it after the fig.show() it still does not work as proposed by Michael Browne .
+So just put the background line after the canvas.draw() :
+you should just edit his answer instead of posting as a separate one
+This may not apply to many of you , but I'm usually operating my computers under Linux , so by default I save my matplotlib plots as PNG and SVG . This works fine under Linux but is unbearably slow on my Windows 7 installations [ MiKTeX under Python ( x , y ) or Anaconda ] , so I've taken to adding this code , and things work fine over there again :

@@ -1,0 +1,110 @@
+Static class variables in Python
+Is it possible to have static class variables or methods in python ? What syntax is required to do this ?
+Variables declared inside the class definition , but not inside a method are class or static variables :
+As @ millerdev points out , this creates a class-level ` i ` variable , but this is distinct from any instance-level ` i ` variable , so you could have
+This is different from C++ and Java , but not so different from C# , where a static member can't be accessed using a reference to an instance .
+See what the Python tutorial has to say on the subject of classes and class objects .
+@USER Johnson has already answered regarding static methods , also documented under " Built-in Functions " in the Python Library Reference .
+@USER recommends classmethod s over staticmethod , as the method then receives the class type as the first argument , but I'm still a little fuzzy on the advantages of this approach over staticmethod . If you are too , then it probably doesn't matter .
+Anyone reading this should also read Daniel's answer way below ; it's not strictly true that ` this is distinct from any instance-level " i " variable ` . This tripped me up until I read his clarifications below .
+I'm just learning Python , but the advantages of ` @USER ` over ` @USER ` AFAIK is that you always get the name of the class the method was invoked on , even if it's a subclass . A static method lacks this information , so it cannot call an overridden method , for example .
+@USER Is this something I want to do . As an example , if you wanted to be able to access ` PI = 3.14 ` lots of times in a class ( ignoring math libraries for argument sake ) , would your really do ` MyClass.PI ` in all those places ? What is the Pythonic approach ? Doesn't this look kind of cluttered and ugly ? Or am I wrong ?
+@USER the pythonic way for constants is to not grow a class for constants . Just have some ` const.py ` with ` PI = 3.14 ` and you can import it everywhere . ` from const import PI `
+This answer is likely to confuse the static variable issue . To begin with , ` i = 3 ` is not a static variable , it is a class attribute , and since it is distinct from an instance-level attribute ` i ` it does not behave like a static variable in other languages . See millerdev's answer , Yann's answer , and my answer below .
+@USER Conrad said static variables declared inside the class definition , but not inside a method are class or " static " variables :
+There are a few gotcha's here . Carrying on from the example above :
+Notice how the instance variable ` t.i ` got out of sync with the " static " class variable when the attribute ` i ` was set directly on ` t ` . This is because ` i ` was re-bound within the ` t ` namespace , which is distinct from the ` Test ` namespace . If you want to change the value of a " static " variable , you must change it within the scope ( or object ) where it was originally defined . I put " static " in quotes because Python does not really have static variables in the sense that C++ and Java do .
+Although it doesn't say anything specific about static variables or methods , the Python tutorial has some relevant information on classes and class objects .
+@USER Johnson also answered regarding static methods , also documented under " Built-in Functions " in the Python Library Reference .
+@USER also mentioned classmethod , which is similar to staticmethod . A classmethod's first argument is the class object . Example :
+I suggest you extend the example just a little : if , after setting Test.i =6 , you then instantiate a new object ( e.g. , u= Test() ) , the new object will " inherit " the new class value ( e.g. , u.i == 6 )
+A way to keep the static variables in sync is to make them properties : ` class Test ( object ): ` , ` _i = 3 ` , ` @USER ` , ` def i ( self )` , ` return type ( self ) ._i ` , ` @USER .setter ` , ` def i ( self , val ): ` , ` type ( self ) ._i = val ` . Now you can do ` x = Test() ` , ` x.i = 12 ` , ` assert x.i == Test.i ` .
+So I could say all variables are static initially and then accessing instances makes instance variables at runtime ?
+Static and Class Methods
+As the other answers have noted , static and class methods are easily accomplished using the built-in decorators :
+As usual , the first argument to ` MyMethod() ` is bound to the class instance object . In contrast , the first argument to ` MyClassMethod() ` is bound to the class object itself ( e.g. , in this case , ` Test `) . For ` MyStaticMethod() ` , none of the arguments are bound , and having arguments at all is optional .
+" Static Variables "
+However , implementing " static variables " ( well , mutable static variables , anyway , if that's not a contradiction in terms ... ) is not as straight forward . As millerdev pointed out in his answer , the problem is that Python's class attributes are not truly " static variables " . Consider :
+This is because the line ` x.i = 12 ` has added a new instance attribute ` i ` to ` x ` instead of changing the value of the ` Test ` class ` i ` attribute .
+Partial expected static variable behavior , i.e. , syncing of the attribute between multiple instances ( but not with the class itself ; see " gotcha " below ) , can be achieved by turning the class attribute into a property :
+Now you can do :
+The static variable will now remain in sync between all class instances .
+( NOTE : That is , unless a class instance decides to define its own version of ` _i ` ! But if someone decides to do THAT , they deserve what they get , don't they ??? )
+Note that technically speaking , ` i ` is still not a ' static variable ' at all ; it is a ` property ` , which is a special type of descriptor . However , the ` property ` behavior is now equivalent to a ( mutable ) static variable synced across all class instances .
+Immutable " Static Variables "
+For immutable static variable behavior , simply omit the ` property ` setter :
+Now attempting to set the instance ` i ` attribute will return an ` AttributeError ` :
+One Gotcha to be Aware of
+Note that the above methods only work with instances of your class - they will not work when using the class itself . So for example :
+The line ` assert Test.i == x.i ` produces an error , because the ` i ` attribute of ` Test ` and ` x ` are two different objects .
+Many people will find this surprising . However , it should not be . If we go back and inspect our ` Test ` class definition ( the second version ) , we take note of this line :
+Clearly , the member ` i ` of ` Test ` must be a ` property ` object , which is the type of object returned from the ` property ` function .
+If you find the above confusing , you are most likely still thinking about it from the perspective of other languages ( e.g. Java or c++ ) . You should go study the ` property ` object , about the order in which Python attributes are returned , the descriptor protocol , and the method resolution order ( MRO ) .
+I present a solution to the above ' gotcha ' below ; however I would suggest - strenuously - that you do not try to do something like the following until - at minimum - you thoroughly understand why ` assert Test.i = x.i ` causes an error .
+REAL , ACTUAL Static Variables - ` Test.i == x.i `
+I present the ( Python 3 ) solution below for informational purposes only . I am not endorsing it as a " good solution " . I have my doubts as to whether emulating the static variable behavior of other languages in Python is ever actually necessary . However , regardless as to whether it is actually useful , the below should help further understanding of how Python works .
+UPDATE : this attempt is really pretty awful ; if you insist on doing something like this ( hint : please don't ; Python is a very elegant language and shoe-horning it into behaving like another language is just not necessary ) , use the code in Ethan Furman's answer instead .
+Emulating static variable behavior of other languages using a metaclass
+A metaclass is the class of a class . The default metaclass for all classes in Python ( i.e. , the " new style " classes post Python 2.3 I believe ) is ` type ` . For example :
+However , you can define your own metaclass like this :
+And apply it to your own class like this ( Python 3 only ):
+Below is a metaclass I have created which attempts to emulate " static variable " behavior of other languages . It basically works by replacing the default getter , setter , and deleter with versions which check to see if the attribute being requested is a " static variable " .
+A catalog of the " static variables " is stored in the ` StaticVarMeta.statics ` attribute . All attribute requests are initially attempted to be resolved using a substitute resolution order . I have dubbed this the " static resolution order " , or " SRO " . This is done by looking for the requested attribute in the set of " static variables " for a given class ( or its parent classes ) . If the attribute does not appear in the " SRO " , the class will fall back on the default attribute get / set / delete behavior ( i.e. , " MRO ") .
+I tried to use your way but I faced a problem , kindly have a look at my question here stackoverflow.com/questions/29329850/get-static-variable-val ue
+@USER : I guess you should generally view anything you do on the class Instance ` Test ` ( before using it for instantiating instances ) as being in the domain of meta-programming ? For instance , you alter the class-behavior by doing ` Test.i = 0 ` ( here you simply destroy the property object entirely ) . I guess the " property-mechanism " kicks in only on property-access on instances of a class ( unless you change underlying behavior using a meta-class as an intermediate , perhaps ) . Btw , please finish this answer :-)
+@USER Um , I wouldn't quite put it that way . It would be more correct to call it " class object programming " and " instance object programming " - because classes ARE objects . The meta programming is only necessary ( in this particular case ) if you wish to erase the line between instance and class , which is where a " static variable " lives . The ` property ` behavior works because instance objects delegate attribute access to their class in certain cases ( eg when the attribute doesn't exist ) . Also : I promise I will get around to finishing up what I had in mind for this answer . Just been busy .
+@USER Thanks :-) Your metaclass in the end is interesting but is actually a bit too complex for my liking . It might be useful in a large framework / application where this mechanism is absolutely required . Anyway , this exemplifies that if new ( complex ) non-default meta-behavior is really needed , Python makes it possible :)
+@USER : Check my answer for a simpler metaclass that does the job .
+You can also add class variables to classes on the fly
+And class instances can change class variables
+Will the new class variables stick even if the class is imported into another module ?
+Personally I would use a classmethod whenever I needed a static method . Mainly because I get the class as an argument .
+or use a decorator
+For static properties .. Its time you look up some python definition .. variable can always change . There are two types of them mutable and immutable .. Also , there are class attributes and instance attributes .. Nothing really like static attributes in the sense of java c++
+Why use static method in pythonic sense , if it has no relation whatever to the class ! If I were you , I'd either use classmethod or define the method independent from the class .
+Static methods in python are called classmethod s . Take a look at the following code
+Notice that when we call the method myInstanceMethod , we get an error . This is because it requires that method be called on an instance of this class . The method myStaticMethod is set as a classmethod using the decorator @USER .
+Just for kicks and giggles , we could call myInstanceMethod on the class by passing in an instance of the class , like so :
+One special thing to note about static properties instance properties , shown in the example below :
+This means before assigning the value to instance property , if we try to access the property thru ' instance , the static value is used . Each property declared in python class always has a static slot in memory .
+You could also enforce a class to be static using metaclass .
+Then whenever by accident you try to initialize MyClass you'll get an StaticClassError .
+Why is it even a class if you aren't going to instantiate it ? This feels like twisting Python to turn it into Java ....
+The Borg idiom is a better way to handle this .
+When define some member variable outside any member method , the variable can be either static or non-static depending on how the variable is expressed .
+CLASSNAME.var is static variable
+INSTANCENAME.var is not static variable .
+self.var inside class is not static variable .
+var inside the class member function is not defined .
+For example :
+The results are
+It is possible to have ` static ` class variables , but probably not worth the effort .
+Here's a proof-of-concept written in Python 3 -- if any of the exact details are wrong the code can be tweaked to match just about whatever you mean by a ` static variable ` :
+and in use :
+and some tests :
+This is much simpler than my attempt above . Bravo !
+To avoid any potential confusion , I would like to contrast static variables and immutable objects .
+Some primitive object types like integers , floats , strings , and touples are immutable in Python . This means that the object that is referred to by a given name cannot change if it is of one of the aforementioned object types . The name can be reassigned to a different object , but the object itself may not be changed .
+Making a variable static takes this a step further by disallowing the variable name to point to any object but that to which it currently points . ( Note : this is a general software concept and not specific to Python ; please see others ' posts for information about implementing statics in Python ) .
+Absolutely Yes ,
+Python by itself don't have any static data member explicitly , but We can have by doing so
+output
+explanation
+In regards to this answer , for a constant static variable , you can use a descriptor . Here's an example :
+resulting in ...
+You can always raise an exception if quietly ignoring setting value ( ` pass ` above ) is not your thing . If you're looking for a C++ , Java style static class variable :
+Have a look at this answer and the official docs HOWTO for more information about descriptors .
+You could also just use ` @USER ` , which is the same as using a descriptor , but it's a lot less code .
+The best way I found is to use another class . You can create an object and then use it on other objects .
+With the example above , I made a class named ` staticFlag ` .
+This class should present the static var ` __success ` ( Private Static Var ) .
+` tryIt ` class represented the regular class we need to use .
+Now I made an object for one flag ( ` staticFlag `) . This flag will be sent as reference to all the regular objects .
+All these objects are being added to the list ` tryArr ` .
+This Script Results :
+Static Variables in Class factory python3.6
+For anyone using a class factory with python3.6 and up use the ` nonlocal ` keyword to add it to the scope / context of the class being created like so :
+yes , but in this case ` hasattr ( SomeClass , ' x ')` is ` False ` . i doubt this is what anyone means by a static variable at all .
+@USER lol , saw your static variable code , stackoverflow.com/a/27568860/2026508 +1 internet sir , and i thought hasattr didn't work like that ? so is ` some_var ` immutable , and statically defined , or is it not ? What does outside getter access have to do with a variable being static or not ? i have so many questions now . would love to hear some answers when you get the time .
+Yeah that metaclass is pretty ridiculous . I'm not certain I understand the questions but to my mind , ` some_var ` above isn't a class member at all . In Python all class members can be accessed from outside the class .
+The ` nonlocal ` keywoard " bumps " the scope of the variable . The scope of a class body definition is independent of the scope it finds itself in- when you say ` nonlocal some_var ` , that is just creating a non-local ( read : NOT in the class definition scope ) name reference to another named object . Therefore it doesn't get attached to the class definition because it is not in the class body scope .

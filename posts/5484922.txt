@@ -1,0 +1,38 @@
+Secondary axis with twinx() : how to add to legend ?
+I have a plot with two y-axes , using ` twinx() ` . I also give labels to the lines , and want to show them with ` legend() ` , but I only succeed to get the labels of one axis in the legend :
+So I only get the labels of the first axis in the legend , and not the label ' temp ' of the second axis . How could I add this third label to the legend ?
+You can easily add a second legend by adding the line :
+You'll get this :
+But if you want all labels on one legend then you should do something like this :
+Which will give you this :
+Thank you ! This certainly will do it . I only find it's a bit unfortunate that matplotlib has no more automatic solution ..
+This fails with ` errorbar ` plots . For a solution that correctly handles them , see below : stackoverflow.com/a/10129461/1319447
+To prevent two overlapping legends as in my case where I specifed two .legend ( loc=0 ) , you should specify two different values for the legend location value ( both other than 0 ) . See : matplotlib.org/api/legend_api.html
+I had some trouble adding a single line to some subplot with multiple lines ` ax1 ` . In this case use ` lns1= ax1.lines ` and then append ` lns2 ` to this list .
+The different values used by ` loc ` are explained here
+I'm not sure if this functionality is new , but you can also use the get_legend_handles_labels() method rather than keeping track of lines and labels yourself :
+that worked splendidly for me , thank you !
+This is the only solution that can handle axes where the plots overlap with the legends ( the last axes is the one that should plot the legends )
+This solution also works with ` errorbar ` plots , while the accepted one fails ( showing a line and its errorbars separately , and none of them with the right label ) . Plus , it's simpler .
+slight catch : it doesn't work if you want to overwrite the label for ` ax2 ` and it doesn't have one set from the start
+Thank you , this works for scatter plots aswell .
+You can easily get what you want by adding the line in ax :
+or
+This would plot nothing but add a label to legend of ax .
+I think this is a much easier way .
+It's not necessary to track lines automatically when you have only a few lines in the second axes , as fixing by hand like above would be quite easy . Anyway , it depends on what you need .
+The whole code is as below :
+The plot is as below :
+Update : add a better version :
+This will do nothing while ` plot ( 0 , 0 )` may change the axis range .
+I like this . Its kind of ugly in the way it " tricks " the system , but so simple to implement .
+I love this method .
+very good trick , indeed !
+This is the best in this post !
+I found an following official matplotlib example that uses host_subplot to display multiple y-axes and all the different labels in one legend . No workaround necessary . Best solution I found so far .
+http://matplotlib.org/examples/axes_grid/demo_parasite_axes2.html
+Welcome to Stack Overflow ! Please quote the most relevant part of the link , in case the target site is unreachable or goes permanently offline . See How do I write a good answer . Focus on more current questions in the future , this one is nearly 4 years old .
+Very interesting answer to this ( still relevant ) question , thanks .
+A quick hack that may suit your needs ..
+Take off the frame of the box and manually position the two legends next to each other . Something like this ..
+Where the loc tuple is left-to-right and bottom-to-top percentages that represent the location in the chart .

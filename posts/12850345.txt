@@ -1,0 +1,14 @@
+how to combine two data frames in python pandas
+I'm using python pandas data frame , I have a initial data frame say D . I extract two data frames from it like this :
+` A = D [ D.label == k ]`
+` B = D [ D.label ! = k ]`
+then I change the label in A and B :
+` B.label = -1 `
+I want to combine A and B so I can have them as one data frame something like union . The order of the data not important , however when we sample A and B from D they retain their indexes from D .
+its easier to get high quality answers if you accept correct ones ...
+I believe you can use the ` append ` method
+to keep their indexes just dont use the ` ignore_index ` keyword ...
+This works . It creates a new DataFrame though . Is there a way to do it inline ? That would be nice for when I'm loading huge amounts of data from a database in batches so I could iteratively update the DataFrame without creating a copy each time .
+You can also use ` pd.concat ` , which is particularly helpful when you are joining more than two dataframes :
+Thought to add this here incase someone finds it useful . @USER already mentioned how you can merge the data frames across rows which is
+To merge across columns , you can use the following syntax :

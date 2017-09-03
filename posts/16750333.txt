@@ -1,0 +1,19 @@
+How do I include a matplotlib Figure object as subplot ? [ duplicate ]
+This question already has an answer here :
+Embed matplotlib figure in larger figure
+
+1 answer
+How can I use a matplotlib Figure object as a subplot ? Specifically , I have a function that creates a matplotlib Figure object , and I would like to include this as a subplot in another Figure .
+In short , here's stripped-down pseudocode for what I've tried :
+Sadly , however , this fails . I know for a fact the individual plots returned from the function invocations are viable -- I did a figa.show() ,..., figd.show() to confirm that they are OK . What I get for the final line in the above code block -- fig1.show() -- is
+a collection of four empty plots that have frames and x- and y- tickmarks / labels .
+I've done quite a bit of googling around , and experimented extensively , but it's clear that I've missed something that is either really subtle , or embarrassingly obvious ( I'll be happy for it to be the latter as long as I can get un-stuck ) .
+Thanks for any advice you can offer !
+You can't put a ` figure ` in a ` figure ` .
+You should modify your plotting functions to take ` axes ` objects as an argument .
+I am also unclear why the kwarg ` figure ` is there , I think it is an artifact of the way that inheritance works , the way that the documentation is auto-generated , and the way some of the getter / setter work is automated . If you note , it says ` figure ` is undocumented in the ` Figure ` documentation , so it might not do what you want ;) . If you dig down a bit , what that kwarg really controls is the figure that the created axes is attached too , which is not what you want .
+In general , moving existing axes / artists between figures is not easy , there are too many bits of internal plumbing that need to be re-connected . I think it can be done , but will involving touching the internals and there is no guarantee that it will work with future versions or that you will get warning if the internals change in a way that will break it .
+You need to your plotting functions to take an ` Axes ` object as argument . You can use a pattern like :
+so if you pass in an ` Axes ` object it gets drawn to ( the new functionality you need ) , but if you don't all of your old code will work as expected .
+Thanks @USER . Sadly , I remain a bit confused . Why does the matplotlib API for subplot seem to offer a matplotlib Figure instance as an argument ? Rather than having my function return a matplotlib Figure instance , I can get back a matplotlib.axes.AxesSubplot object . Is that something I can use to proceed , and if so , how would I modify my example code block to use it ? Thanks again ...
+Thanks for the further advice @USER . I've started up the path this way , but am putting it aside for the moment . You're right that this is a surprisingly messy process . For now , I may have to resign myself to generating the individual plots ( which works just fine ) , saving them to individual files , and stitching them together in a single plot with some other tool ( probably just use LaTeX's figure / subfigure environment ) .

@@ -1,0 +1,27 @@
+Matplotlib discrete colorbar
+I am trying to make a discrete colorbar for a scatterplot in matplotlib
+I have my x , y data and for each point an integer tag value which I want to be represented with a unique colour , e.g .
+typically tag will be an integer ranging from 0-20 , but the exact range may change
+so far I have just used the default settings , e.g .
+which gives a continuous range of colours . Ideally i would like a set of n discrete colours ( n=20 in this example ) . Even better would be to get a tag value of 0 to produce a gray colour and 1-20 be colourful .
+I have found some ' cookbook ' scripts but they are very complicated and I cannot think they are the right way to solve a seemingly simple problem
+does this or this help ?
+thanks for links but the 2nd example is what I mean about hugely overcomplicated means to perform a ( seemingly ) trivial task - 1st link is useful
+You can create a custom discrete colorbar quite easily by using a BoundaryNorm as normalizer for your scatter . The quirky bit ( in my method ) is making 0 showup as grey .
+For images i often use the cmap.set_bad() and convert my data to a numpy masked array . That would be much easier to make 0 grey , but i couldnt get this to work with the scatter or the custom cmap .
+As an alternative you can make your own cmap from scratch , or read-out an existing one and override just some specific entries .
+I personally think that with 20 different colors its a bit hard to read the specific value , but thats up to you of course .
+great answer - i think that would have taken me a very long time to figure out from the online docs , many thanks
+I'm not sure if this is allowed , but could you look at my question here ?
+You could follow this example :
+which produces the following image :
+cmap = cm.get_cmap ( ' jet ' , 20 ) then scatter ( x , y , c=tags , cmap=cmap ) gets me part way there - its very difficult to find useful documentation for matplotlib
+To set a values above or below the range of the colormap , you'll want to use the ` set_over ` and ` set_under ` methods of the colormap . If you want to flag a particular value , mask it ( i.e. create a masked array ) , and use the ` set_bad ` method . ( Have a look at the documentation for the base colormap class : http://matplotlib.org/api/colors_api.html#matplotlib.colors.Colormap )
+It sounds like you want something like this :
+thats really good - i tried using set_under but hadn't included vmin so i don't think it was doing anything
+The above answers are good , except they don't have proper tick placement on the colorbar . I like having the ticks in the middle of the color so that the number - color mapping is more clear . You can solve this problem by changing the limits of the matshow call :
+I agree that placing the tick in the middle of the corresponding color is very helpful when looking at discrete data . Your second method is correct . However , your first method is , in general , wrong : you are labeling the ticks with values that are inconsistent with their placement on the colorbar . ` set_ticklabels ( ... )` should only be used to control the label formatting ( e.g. decimal number , etc . ) . If the data is truly discrete , you may not notice any problems . If there is noise in the system ( e.g. 2 - 1.9 ) , this inconsistent labeling will result in a misleading and incorrect colorbar .
+E ., I think you are right that changing the limits is the superior solution so I removed the other one -- though neither would handle " noise " well . Some adjustments would be needed for handling continuous data .
+I think you'd want to look at colors.ListedColormap to generate your colormap , or if you just need a static colormap I've been working on an app that might help .
+that looks cool , possibly overkill for my needs - could you suggest a way of tagging a gray value onto an existing colormap ? so that 0 values come out gray and the others come out as colours ?
+@USER what about generating an RGB array color_list based on your y values and passing that to ListedColormap ? You can tag a value with color_list [ y == value_to_tag ] = gray_color .

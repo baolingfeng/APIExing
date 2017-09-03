@@ -1,0 +1,33 @@
+Remove rows with duplicate indices ( Pandas DataFrame and TimeSeries )
+I'm reading some automated weather data from the web . The observations occur every 5 minutes and are compiled into monthly files for each weather station . Once I'm done parsing a file , the DataFrame looks something like this :
+The problem I'm having is that sometimes a scientist goes back and corrects observations -- not by editing the erroneous rows , but by appending a duplicate row to the end of a file . Simple example of such a case is illustrated below :
+And so I need ` df3 ` to evenutally become :
+I thought that adding a column of row numbers ( ` df3 [ ' rownum '] = range ( df3.shape [ 0 ])`) would help me select out the bottom-most row for any value of the ` DatetimeIndex ` , but I am stuck on figuring out the ` group_by ` or ` pivot ` ( or ??? ) statements to make that work .
+Another way of getting duplicates is hourly data in the night when clocks are set back for daylight saving time : 1 AM , 2 , 3 , 2 , 3 again , 4 ...
+A simple solution is to use ` drop_duplicates `
+For me , this operated quickly on large data sets .
+This requires that ' rownum ' be the column with duplicates . In the modified example , ' rownum ' has no duplicates , therefore nothing gets eliminated . What we really want is to have the ' cols ' be set to the index . I've not found a way to tell drop_duplicates to only consider the index .
+Here is a solution that adds the index as a dataframe column , drops duplicates on that , then removes the new column :
+And if you want things back in the proper order , just call ` sort ` on the dataframe .
+Edit : Better answer below
+Take a look at n8yoder's answer using ' duplicated ' . I don't believe this existed in older versions of Pandas , where this answer might still apply .
+Another variation on this is : ` df.reset_index() .drop_duplicates ( cols= ' index ' , take_last=True ) .set_index ( ' index ')`
+While this method does work it also creates two temporary copies of the DataFrame and is significantly less performant than using either the duplicated index or groupby methods suggested as alternative answers .
+If your index is a MultiIndex , ` reset_index() ` adds columns level_0 , level_1 , etc . And if your index has a name that name will be used in place of the " index " label . That makes this a bit more than a one-liner to do it right for any DataFrame . ` index_label = getattr ( df.index , ' names ' , getattr ( df.index , ' name ' , ' index '))` then ` cols=index_label ` then ` set_index ( index_labels )` and even this isn't foolproof ( won't work for unnamed multiindexes ) .
+Moving the index to a column , clearing duplicates , and resetting the index was awesome , that was exactly what I needed !
+I would suggest using the duplicated method on the Pandas Index itself :
+While all the other methods work , the currently accepted answer is by far the least performant for the provided example . Furthermore , while the groupby method is only slightly less performant , I find the duplicated method to be more readable .
+Using the sample data provided :
+Note that you can keep the last element by changing the keep argument .
+It should also be noted that this method works with ` MultiIndex ` as well ( using df1 as specified in Paul's example ):
+Thanks for merging the comment into your answer . I didn't even know there was a ~ notation for " not " .
+Excellent speed and language elegance .
+This should be the accepted answer .
+Looks like this is a new Pandas function since my answer . I'd nominate this as a better answer given the latest Pandas . What's the best Stack Overflow practice ? Is there a way to reference this answer from my original answer above ?
+Oh my . This is actually so simple !
+Follow up edit 2013-10-29
+In the case where I have a fairly complex ` MultiIndex ` , I think I prefer the ` groupby ` approach . Here's simple example for posterity :
+and here's the important part
+if they have names , otherwise ( if one name is None ) lets say ` level =[ 0 , 1 ]` will work if there are 2 levels ` df1.groupby ( level =[ 0 , 1 ]) .last() ` . This should be part of Pandas as a complimentary to ` drop_duplicates `
+@USER yeah . Using ` df.index.names ` is just an easy way to group by all levels of the index .
+Unfortunately , I don't think Pandas allows one to drop dups off the indices . I would suggest the following :

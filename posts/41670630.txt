@@ -1,0 +1,11 @@
+How to use Pandas extractall() ?
+I have a few million event logs stored in Panda dataframe . One column , called ` data ` , stores the event log details . Here's one example :
+I have millions of rows that have different ` key=value ` pairs depending on the event that was captured .
+What I'm after is extracting all the keys and counting how many times each key was seen across the entire dataset . For example :
+My code looks like this :
+I'm getting the following error : ` AssertionError : 1 columns passed , passed data had 25 columns ` .
+What's the proper way of using extractall() or another method in this case ?
+Thank you in advance for your assistance !
+Alexander .
+I think you can use ` split ` with ` stack ` by ` , ` and ` to_frame ` for one column ` df ` and then split by ` = ` . Last ` value_counts ` :
+Another faster solution if no ` NaN ` values in ` data ` column with ` DataFrame ` constructor and ` list comprehension ` :

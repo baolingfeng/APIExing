@@ -1,0 +1,19 @@
+Merging dataframes , dropping column and set index
+I have two dataframes like this :
+I want to merge these two dataframes , doing an inner merge , drop ` ID2 ` and then also use ` id1 ` as a new index . My desired output looks like this :
+I currently do this as follows :
+which gives me the desired output .
+My question is whether there is already an option that allows me
+a ) to drop a key column when an inner merge is performed as there will then be two identical columns
+and / or
+b ) to directly set the index to one of the key columns used for the merging process .
+Is the way I do it now the way to go or is there anything smarter / a built-in for this already ?
+You can use ` merge ` with parameters ` left_index ` and ` right_index ` , ( ` how= ' inner '` is omited because default value ) but first ` set_index ` in both ` df ` :
+Solution with ` concat ` , is necessary add parameter ` join ` for ` inner ` join :
+Looks good ( upvoted ) .
+One option is to set the key columns as index before joining , this will keep only one key column as index in the result :
+Works fine , too ( upvoted ) .
+out of the three solutions provided the ' merge ' solution works fastest :
+That is the accepted answer , or am I missing something ?! Would you mind adding the speed comparisons ?
+yes you are right , all three answers work fine but i am telling that the solution provided using ' merge ' is fastest ... please see the image i have attached in answer ... please forgive if i havent been articulate enough
+please see the speed comparison ... the first answer i.e. the one using merge is fastest

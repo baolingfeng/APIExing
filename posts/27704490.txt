@@ -1,0 +1,28 @@
+Interactive pixel information of an image in Python ?
+Short version : is there a Python method for displaying an image which shows , in real time , the pixel indices and intensities ? So that as I move the cursor over the image , I have a continually updated display such as ` pixel [ 103,214 ] = 198 ` ( for grayscale ) or ` pixel [ 103,214 ] = ( 138,24,211 )` for rgb ?
+Long version :
+Suppose I open a grayscale image saved as an ndarray ` im ` and display it with ` imshow ` from matplotlib :
+What I get is the image , and in the bottom right of the window frame , an interactive display of the pixel indices . Except that they're not quite , as the values are not integers : ` x= 134.64 y= 129.169 ` for example .
+If I set the display with correct resolution :
+the x and y values are still not integers .
+The ` imshow ` method from the ` spectral ` package does a better job :
+Then in the bottom right I now have ` pixel =[ 103,152 ]` for example .
+However , none of these methods also shows the pixel values . So I have two questions :
+Can the ` imshow ` from ` matplotlib ` ( and the ` imshow ` from ` scikit-image `) be coerced into showing the correct ( integer ) pixel indices ?
+Can any of these methods be extended to show the pixel values as well ?
+There a couple of different ways to go about this .
+You can monkey-patch ` ax.format_coord ` , similar to this official example . I'm going to use a slightly more " pythonic " approach here that doesn't rely on global variables . ( Note that I'm assuming no ` extent ` kwarg was specified , similar to the matplotlib example . To be fully general , you need to do a touch more work . )
+Alternatively , just to plug one of my own projects , you can use ` mpldatacursor ` for this . If you specify ` hover=True ` , the box will pop up whenever you hover over an enabled artist . ( By default it only pops up when clicked . ) Note that ` mpldatacursor ` does handle the ` extent ` and ` origin ` kwargs to ` imshow ` correctly .
+Also , I forgot to mention how to show the pixel indices . In the first example , it's just assuming that ` i , j = int ( y ) , int ( x )` . You can add those in place of ` x ` and ` y ` , if you'd prefer .
+With ` mpldatacursor ` , you can specify them with a custom formatter . The ` i ` and ` j ` arguments are the correct pixel indices , regardless of the ` extent ` and ` origin ` of the image plotted .
+For example ( note the ` extent ` of the image vs . the ` i , j ` coordinates displayed ):
+Duplicate of stackoverflow.com/questions/27704490 and links there in . I think this is a better answer than any of the other ones . Can you mark all of them as duplicates of this one ( I have already voted on most of them before I had 1-vote duplicate close ) ?
+And can you put in a PR to change the official example to use the ` Formatter ` class ?
+@USER - Done on the close votes . ( And thanks ! ) If any of those seem significantly different from this question , feel free to re-open them . I'll put in a PR for the example later tonight .
+@USER - Yes , it should work . However , I think your problem might be related to a bug I just fixed a couple of days ago : github.com/joferkington/mpldatacursor/commit If you have a chance , you might try reinstalling from the current github master . Sorry about that !
+Note that the first example is incorrect by half a pixel . It should rather be ` z = self.im.get_array() [ int ( y+ 0.5 ) , int ( x+ 0.5 )]` .
+with Jupyter you can do so either with ` datacursor ( myax )` or by ` ax.format_coord ` .
+Sample code :
+the ` datacursor ( myax )` can also be replaced with ` ax.format_coord = lambda x , y : " x=%g y=%g " % ( x , y )`
+All of the examples that I have seen only work if your x and y extents start from 0 . Here is code that uses your image extents to find the z value .
+If you are using PySide / PyQT here is an example to have a mouse hover tooltip for the data

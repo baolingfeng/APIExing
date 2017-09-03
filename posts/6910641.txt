@@ -1,0 +1,50 @@
+How to get indices of N maximum values in a numpy array ?
+Numpy proposes a way to get the index of the maximum value of an array via ` np.argmax ` .
+I would like a similar thing , but returning the indexes of the N maximum values .
+For instance , if I have an array ` [ 1 , 3 , 2 , 4 , 5 ]` , it ` function ( array , n=3 )` would return ` [ 4 , 3 , 1 ]` .
+Thanks :)
+possible duplicate of python+numpy : efficient way to take the min / max n values and indices from a matrix
+Your question is not really well defined . For example , what would the indices ( you expect ) to be for ` array ([ 5 , 1 , 5 , 5 , 2 , 3 , 2 , 4 , 1 , 5 ])` , whit ` n= 3 ` ? Which one of all the alternatives , like ` [ 0 , 2 , 3 ]` , ` [ 0 , 2 , 9 ]` , ` ... ` would be the correct one ? Please elaborate more on your specific requirements . Thanks
+@USER , I don't really care about which one is supposed to be returned in this specific case . Even if it seem logical to return the first one encountered , that's not a requirement for me .
+` argsort ` might be a viable alternative if you do not care about the order of the returned indeces . See my answer below .
+The simplest I've been able to come up with is :
+This involves a complete sort of the array . I wonder if ` numpy ` provides a built-in way to do a partial sort ; so far I haven't been able to find one .
+If this solution turns out to be too slow ( especially for small ` n `) , it may be worth looking at coding something up in Cython .
+Could line 3 be written equivalently as ` arr.argsort() [ -1 : -4 : -1 ]` ? I've tried it in interpreter and it comes up with the same result , but I'm wondering if it's not broken by some example .
+@USER Yes that should be equivalent for any list or array . Alternatively , this could be done without the reversal by using ` np.argsort ( -arr ) [: 3 ]` , which I find more readable and to the point .
+what does [: : -1 ] mean ? @USER
+@USER it means reverse an array ( literally , takes a copy of an array from unconstrained min to unconstrained max in a reversed order )
+@USER so the two ` : ` does not related to dimensions right ? the whole expression is used for create a reversed array ? Am I understanding correctly ?
+Newer NumPy versions ( 1.8 and up ) have a function called ` argpartition ` for this . To get the indices of the four largest elements , do
+Unlike ` argsort ` , this function runs in linear time in the worst case , but the returned indices are not sorted , as can be seen from the result of evaluating ` a [ ind ]` . If you need that too , sort them afterwards :
+To get the top- k elements in sorted order in this way takes O ( n + k log k ) time .
+Actually it has to be O ( n lg k ) time . Cannot imagine how O ( n + k lg k ) can be
+@USER ` argpartition ` runs in linear time , O ( n ) , using the introselect algorithm . The subsequent sort only handles k elements , so that runs in O ( k log k ) .
+If anybody is wondering how exactly ` np.argpartition ` and its sister algorithm ` np.partition ` work there is a more detailed explanation in the linked question : stackoverflow.com/questions/10337533
+@USER : why did you use -4 ? did you do that to start backward ? ( since k being positive or negative works the same for me ! it only prints the smallest numbers first !
+@USER use ` a= np.array ([ 9 , 4 , 4 , 3 , 3 , 9 , 0 , 4 , 6 , 0 ])` because normal python lists do not support indexing by lists , unlike ` np.array `
+EDIT : Modified to include Ashwini Chaudhary's improvement .
+For regular Python lists :
+If you use Python 2 , use ` xrange ` instead of ` range ` .
+Source : http://docs.python.org/3/library/heapq.html
+There's no need of a loop at all here : ` heapq.nlargest ( 3 , xrange ( len ( a )) , a.take )` . For Python lists we can use ` .__getitem__ ` instead of ` .take ` .
+Simpler yet :
+where n is the number of maximum values .
+Can this be done for a 2d array ? If not , do you perhaps know how ?
+If you don't care about the order of the K-th largest elements you can you use ` argpartition ` , which should perform better than a full sort through ` argsort ` .
+Credits to this question .
+I ran a few tests and it looks loke ` argpartition ` outperforms ` argsort ` as the size of the array and the value of K increase .
+If you happen to be working with a multidimensional array then you'll need to flatten and unravel the indices :
+For example :
+This will be faster than a full sort depending on the size of your original array and the size of your selection :
+It , of course , involves tampering with your original array . Which you could fix ( if needed ) by making a copy or replacing back the original values . ... whichever is cheaper for your use case .
+FWIW , your solution won't provide unambiguous solution in all situations . OP should describe how to handle these unambiguous cases . Thanks
+@USER The OP's question is a little ambiguous . An implementation , however , is not really open to interpretation . :) The OP should simply refer to the definition of np.argmax docs.scipy.org/doc/numpy/reference/generated/numpy.argmax.ht ml to be sure this specific solution meets the requirements . It's possible that any solution meeting the OP's stated reqirement is acceptable ..
+Well , one might consider the implementation of ` argmax ( . )` to be unambiguous as well . ( IMHO it tries to follow some kind of short circuiting logic , but unfortunately fails to provide universally acceptable behavior ) . Thanks
+` bottleneck ` has a partial sort function , if the expense of sorting the entire array just to get the N largest values is too great .
+I know nothing about this module ; I just googled ` numpy partial sort ` .
+For multidimensional arrays you can use ` axis ` keyword in order to apply the partitioning along the expected axis .
+And for grabbing the items :
+But note that this won't return a sorted result . In that case you can use ` np.argsort() ` along the intended axis :
+Here is an example :
+Now the result list would contain N tuples ( index , value ) where value is maximized

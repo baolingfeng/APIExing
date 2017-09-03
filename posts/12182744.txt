@@ -1,0 +1,27 @@
+python pandas : apply a function with arguments to a series
+I want to apply a function with arguments to a series in python pandas :
+The documentation describes support for an apply method , but it doesn't accept any arguments . Is there a different method that accepts arguments ? Alternatively , am I missing a simple workaround ?
+Why not just use ` functools.partial ` , or ` starmap ` ?
+The documentation explains this clearly . The apply method accepts a python function which should have a single parameter . If you want to pass more parameters you should use ` functools.partial ` as suggested by Joel Cornett in his comment .
+An example :
+You can also pass keyword arguments using ` partial ` .
+Another way would be to create a lambda :
+But I think using ` partial ` is better .
+Note that newer versions of pandas do allow you to pass extra arguments ( see the new documentation ) . So now you can do :
+The positional arguments are added after the element of the series .
+For a DataFrame apply method accepts ` args ` argument , which is a tuple holding additional positional arguments or ** kwds for named ones . I created an issue to have this also for Series.apply() github.com/pydata/pandas/issues/1829
+Feature has been implemented , will be in upcoming pandas release
+do we have a pointer now to the aforementioned feature ?
+Thanks ! Can you explain why args = ( arg1 , ) needs a comma after the first argument ?
+@USER , you need the comma in order for Python to understand the parentheses ' contents to be a tuple of length 1 .
+@USER Ah , hanks !
+What about putting in args for the ` func ` . So if I wish to apply ` pd.Series.mean ( axis=1 )` how do I put in the ` axis=1 ` ?
+As a side note , you can also add a keyword argument without using the args parameter ( e.g. : x = my_series.apply ( my_function , keyword_arg=arg1 ) , where keyword_arg is among the input parameters of my_function )
+Steps :
+Create a dataframe
+Create a function
+Use the named arguments of the function in the apply statement .
+Example
+The outcome of this example is that each number in the dataframe will be added to the number 9 .
+Explanation :
+The " add " function has two parameters : i1 , i2 . The first parameter is going to be the value in data frame and the second is whatever we pass to the " apply " function . In this case , we are passing " 9 " to the apply function using the keyword argument " i2 " .

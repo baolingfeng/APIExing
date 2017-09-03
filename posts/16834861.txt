@@ -1,0 +1,28 @@
+Create own colormap using matplotlib and plot color scale
+I have the following problem , I want to create my own colormap ( red-mix-violet-mix-blue ) that maps to values between -2 and +2 and want to use it to color points in my plot .
+The plot should then have the colorscale to the right .
+That is how I create the map so far . But I am not really sure if it mixes the colors .
+That way I map the colors to the values .
+Then I plot it :
+My problems are :
+1 . I can't plot the color scale .
+2 . I am not completely sure if my scale is creating a continues ( smooth ) colorscale .
+Could you clarify your question a bit ? For example , ` c= ` specifies the line color , while you are talking about points . You can only specify one ` markerfacecolor ` , scatter might be a better option if you really want points . And indeed ` ListedColormap ` is listed , not continuous , see ` LinearSegmentedColormap ` .
+That is strange , it is supposed to be points and it looks like points .
+You can off course , but thats what you should clarify . We cant see what plot style you are using . If you use ` plt.plot ( values , ' o ')` , you will plot only markers and no line , but the markers will have one fixed color which doesnt ( and cant ) vary by the value .
+There is an illustrative example of how to create custom colormaps here .
+The docstring is essential for understanding the meaning of
+` cdict ` . Once you get that under your belt , you might use a ` cdict ` like this :
+Although the ` cdict ` format gives you a lot of flexibility , I find for simple
+gradients its format is rather unintuitive . Here is a utility function to help
+generate simple LinearSegmentedColormaps :
+By the way , the ` for-loop `
+plots one point for every call to ` plt.plot ` . This will work for a small number of points , but will become extremely slow for many points . ` plt.plot ` can only draw in one color , but ` plt.scatter ` can assign a different color to each dot . Thus , ` plt.scatter ` is the way to go .
+Now I got a problem . I also would like to get a different marker symbol according to the color ( I have 13 different colors ) . But the scatter plot allows only one marker per plot , or do I miss something ?
+In that case you will need to call ` plt.scatter ` ( or ` plt.plot `) once for each color / marker combination .
+Why can't I use a color map created with this awesome function in plt.set_cmap() ? The error is very long , the last line is ValueError : Colormap CustomMap is not recognized .
+@USER : First register the colormap : ` plt.register_cmap ( name= rvb.name , cmap=rvb )` and then call ` plt.set_cmap ( rvb )` .
+@USER : ` rvb ` above is a full-fledge Colormap , just like ` plt.cm.cool ` . So they are fungible : ` color = rvb ( x / y )` .
+If you want to automate the creating of a custom divergent colormap commonly used for surface plots , this module combined with @USER method worked well for me .
+The high and low values can be either string color names or rgb tuples . This is the result using the surface plot demo :
+Very neat function !

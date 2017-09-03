@@ -1,0 +1,8 @@
+Matplotlib plot pulse propagation in 3d
+I'd like to plot pulse propagation in such a way at each step , it plots the pulse shape . In other words , I want a serie of x-z plots , for each values of y . Something like this ( without color ):
+How can I do this using matplotlib ( or Mayavi ) ? Here is what I did so far :
+Here's an example from the docs : matplotlib.org/examples/mplot3d/bars3d_demo.html
+Change to :
+and call :
+will create the following graph :
+If you need the curve been filled with white color :

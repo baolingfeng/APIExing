@@ -1,0 +1,17 @@
+Python : 2d contour plot from 3 lists : x , y and rho ?
+I have a simple problem in python and matplotlib .
+I have 3 lists : x , y and rho with rho [ i ] a density at the point x [ i ] , y [ i ] .
+All values of x and y are between -1 . and 1 . but they are not in a specific order .
+How to make a contour plot ( like with imshow ) of the density rho ( interpolated at the points x , y ) .
+Thank you very much .
+EDIT : I work with large arrays : x , y and rho have between 10,000 and 1,000,000 elements
+did the code you accepted worked for you ? ' m having same-sort of list scenario but not being able to solve it .
+You need to interpolate your ` rho ` values . There's no one way to do this , and the " best " method depends entirely on the a-priori information you should be incorporating into the interpolation .
+Before I go into a rant on " black-box " interpolation methods , though , a radial basis function ( e.g. a " thin-plate-spline " is a particular type of radial basis function ) is often a good choice . If you have millions of points , this implementation will be inefficient , but as a starting point :
+Very interesting method but it doesn't work with large arrays : x , y and rho have around 10000 elements ...
+You can still use an Rbf for large arrays , you just need to only include nearby points . I'll add an example in just a bit . Alternately , if you don't want to actually sample everything on a regular grid , you can use delaunay triangulation to draw the contours ( which is just a very simple and not particularly smooth form of interpolation ) . With that many points , however , it's more practical to just use a local interpolation method .
+@USER Hi , I'm having a problem with this above code , My data-set consists of lists x , y and z . x and y vary independently , z varies depending on ( x , y ) . ` x = ( 1.2 to 2.5 )` , ` y =( 90 to 180 )` and ` z =( 5 to -5 )` . If I try the above code with my dataset i'm getting a collapsed-plot ( nothing along x-axis ) . Please help .
+@USER - I'm guessing , but it may be the way you're plotting the output . By default , ` imshow ` will force the aspect ratio of the plot to be 1 . In other words , one centimenter in the x-direction is the same number of units as one centimenter in the y-direction . This will force the axes to be very long and narrow with your data ranges . You're probably getting reasonable output , but plotting it so that it's difficult to see . Try passing ` aspect= " auto "` to ` imshow ` .
+@USER - Also be aware that you may want to rescale your data ranges before interpolating . E.g. see the second and third figures in stackoverflow.com/a/3867302/325565 Because the x and y ranges of your data only vary by a factor of 10 , though , you won't have particularly severe anisotropy problems . You can probably ignore this , but it's good to be aware of .
+You can use scipy's ` griddata ` ( requires Scipy = 0.10 ) , it's a triangulation-based method .
+There's also inverse distance weighed interpolation -- similar to RBF , but should work better for large # of points : Inverse Distance Weighted ( IDW ) Interpolation with Python

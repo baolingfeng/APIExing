@@ -1,0 +1,31 @@
+find length of sequences of identical values in a numpy array
+In a pylab program ( which could probably be a matlab program as well ) I have a numpy array of numbers representing distances : ` d [ t ]` is the distance at time ` t ` ( and the timespan of my data is ` len ( d )` time units ) .
+The events I'm interested in are when the distance is below a certain threshold , and I want to compute the duration of these events . It's easy to get an array of booleans with ` b = d threshold ` , and the problem comes down to computing the sequence of the lengths of the True-only words in ` b ` . But I do not know how to do that efficiently ( i.e. using numpy primitives ) , and I resorted to walk the array and to do manual change detection ( i.e. initialize counter when value goes from False to True , increase counter as long as value is True , and output the counter to the sequence when value goes back to False ) . But this is tremendously slow .
+How to efficienly detect that sort of sequences in numpy arrays ?
+Below is some python code that illustrates my problem : the fourth dot takes a very long time to appear ( if not , increase the size of the array )
+While not ` numpy ` primitives , ` itertools ` functions are often very fast , so do give this one a try ( and measure times for various solutions including this one , of course ):
+If you do need the values in a list , just can use list ( runs_of_ones ( bits )) , of course ; but maybe a list comprehension might be marginally faster still :
+Moving to " numpy-native " possibilities , what about :
+Again : be sure to benchmark solutions against each others in realistic-for-you examples !
+Hmmmmm ... that last one looks familiar . ;)
+Thanks a lot ! The diff / where solution is exactly what I had in mind ( not to mention it is about 10 times faster than the other solutions ) . Call that " not too clever " if you like , but I wish I was clever enough to come up with it :-)
+@USER , I don't do matlab ( funny enough my daughter , now a PhD candidate in advanced radio engineering , does ;-) , but now looking at your answer I do see the analogies -- get the end-of-runs minus the start-of-runs , get those by locating 0 and 0 spot in the differences , and pad the bits with zeros to make sure all runs-of-ones do end . Guess there aren't that many ways to skin this " run lengths " problem ! - )
+@USER , you're welcome -- as @USER hints , the matlab solution is also similar , or so I guess it would be if one knew matlab -- so it must be that neither is very clever ;-) ... it's more a question of having had to do run-length coding stuff before ( most of the time in my edit was about translating from Numeric , which is what I still tend instinctively to turn to , to much-better numpy -- but where I actually first learned such things was with APL , 30 years ago , when I was still a hardware designer ...! - ) .
+Fully numpy vectorized and generic RLE for any array ( works with strings , booleans etc too ) .
+Outputs tuple of run lengths , start positions , and values .
+Pretty fast ( i7 ):
+Multiple data types :
+Same results as Alex Martelli above :
+Slightly slower than Alex ( but still very fast ) , and much more flexible .
+This one's a beaut , thankyou for sharing .
+Just in case anyone is curious ( and since you mentioned MATLAB in passing ) , here's one way to solve it in MATLAB :
+I'm not too familiar with Python , but maybe this could help give you some ideas . =)
+thanks for this answer as well , this is exactly the kind of stuff I was looking for
+diff() exists in numpy too , so this is more or less what you want though replace find ( foo ) with where ( foo ) [ 0 ] .
+Here is a solution using only arrays : it takes an array containing a sequence of bools and counts the length of the transitions .
+` sw ` contains a true where there is a switch , ` isw ` converts them in indexes . The items of isw are then subtracted pairwise in ` lens ` .
+Notice that if the sequence started with an 1 it would count the length of the 0s sequences : this can be fixed in the indexing to compute lens . Also , I have not tested corner cases such sequences of length 1 .
+Full function that returns start positions and lengths of all ` True ` -subarrays .
+Tested for different bool 1D-arrays ( empty array ; single / multiple elements ; even / odd lengths ; started with ` True ` / ` False ` ; with only ` True ` / ` False ` elements ) .
+sure , this is more consise , but just as inefficient ; what I want to do is move the loop down to the C layer , by means of using some clever combination of numpy calls ...
+check my edited answer , I now offer one such " clever combinations " ( always trying hard not to be TOO clever though ;-) -- but , do measure the speed of that one AND the itertools.groupby-based solution , and let us know which one is faster ( and by how much ) in examples realistic-for-you !

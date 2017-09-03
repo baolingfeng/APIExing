@@ -1,0 +1,17 @@
+Set Colorbar Range in matplotlib
+I have the following code :
+So this produces a graph of the values ' v ' on the axes X vs Y , using the specified colormap . The X and Y axes are perfect , but the colormap spreads between the min and max of v . I would like to force the colormap to range between 0 and 1 .
+I thought of using :
+To set the ranges of the axes , but this only takes arguments for the min and max of X and Y , not the colormap .
+Edit :
+For clarity , let's say I have one graph whose values range ( 0 ... 0.3 ) , and another graph whose values ( 0.2 ... 0.8 ) .
+In both graphs , I will want the range of the colorbar to be ( 0 ... 1 ) . In both graphs , I want this range of colour to be identical using the full range of cdict above ( so 0.25 in both graphs will be the same colour ) . In the first graph , all colours between 0.3 and 1.0 won't feature in the graph , but will in the colourbar key at the side . In the other , all colours between 0 and 0.2 , and between 0.8 and 1 will not feature in the graph , but will in the colourbar at the side .
+Using ` vmin ` and ` vmax ` forces the range for the colors . Here's an example :
+Use the CLIM function ( equivalent to CAXIS function in MATLAB ):
+I believe clim() scales the colour axes , but the colours themselves change values . The point at a certain fraction along the scale will be the same colour whatever the scale , but the value it represents will change .
+Not sure if this is the most elegant solution ( this is what I used ) , but you could scale your data to the range between 0 to 1 and then modify the colorbar :
+With the two different limits you can control the range and legend of the colorbar . In this example only the range between - 0.5 to 1.5 is show in the bar , while the colormap covers -2 to 2 ( so this could be your data range , which you record before the scaling ) .
+So instead of scaling the colormap you scale your data and fit the colorbar to that .
+I think that's doing something subtly different sorry I was probably not precise enough in my question . Your solution will scale the colours so that what used to represent the value 1.0 will now represent the max value in my data . The colorbar will show 0 .. 1 as I need it ( with vmin=0 , vmax=1 ) , but everything above this max value will be the same colour ...
+... I've updated my question to show what I'm after more clearly . Sorry if I was too vague .
+Your answer helped me solve my problem , however !

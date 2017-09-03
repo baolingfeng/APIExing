@@ -1,0 +1,16 @@
+Python , Matplotlib , subplot : How to set the axis range ?
+How can I set the y axis range of the second subplot to e.g. [ 0,100 0 ] ?
+The FFT plot of my data ( a column in a text file ) results in a ( inf .? ) spike so that the actual data is not visible .
+has no effect , unfortunately . This is the whole script :
+Other improvements are also appreciated !
+Also see stackoverflow.com/questions/15858192
+As found in http://www.mofeel.net/582-comp-soft-sys-matlab/54166.aspx
+Note : The command has to be executed after the plot !
+Whenever I do this , it flips the images upside down .
+if i use this with hexbin , uses ylim after plot() exposes white background on both plots
+WHat if you are not using plot , but savefig ??
+Call ` plot() ` , then ` ylim() ` and then ` savefig() ` .
+Using axes objects is a great approach for this . It helps if you want to interact with multiple figures and sub-plots . To add and manipulate the axes objects directly :
+As Rob suggests , the OO interface in matplotlib is preferred over the state-based pylab interface . " Although many examples use pylab , it is no longer recommended . For non-interactive plotting it is suggested to use pyplot to create the figures and then the OO interface for plotting . " matplotlib.org/faq
+Sometimes you really want to set the axes limits before you plot the data . In that case , you can set the " autoscaling " feature of the ` Axes ` or ` AxesSubplot ` object . The functions of interest are ` set_autoscale_on ` , ` set_autoscalex_on ` , and ` set_autoscaley_on ` .
+In your case , you want to freeze the y axis ' limits , but allow the x axis to expand to accommodate your data . Therefore , you want to change the ` autoscaley_on ` property to ` False ` . Here is a modified version of the FFT subplot snippet from your code :

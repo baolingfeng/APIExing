@@ -1,0 +1,18 @@
+Installation Issue with matplotlib Python [ duplicate ]
+This question already has an answer here :
+python matplotlib framework under macosx ?
+
+5 answers
+I have issue after installing the matplotlib package unable to import matplotlib.pyplot as plt . Any suggestion will be greatly appreciate .
+This link reports to the same issue you are presenting here .
+Problem
+The problem is the different image rendering back ends of matplotlib . There is Qt4Agg ( KDE ) and GTKAgg ( Gnome ) which are set as the default . However , for MacOS you probably want TKAgg which is different from windows or linux .
+Solution
+I assume you have installed the pip matplotlib , there is a directory in you root called ` ~ / .matplotlib ` .
+Create a file ` ~ / .matplotlib / matplotlibrc ` there and add the following code : ` backend : TkAgg `
+From this link you can try different diagram .
+Yep , this works ! If anyone wants to understand what happened , see matplotlib.org/faq/usage_faq.html#what-is-a-backend
+Some users may not want to change the backend for all of their scripts . This page -- matplotlib.org/faq/usage_faq.html#what-is-a-backend -- tells another way : include the statement ` import matplotlib as mpl ` then ` mpl.use ( ' TkAgg ')` right after that , then do the import for pyplot .
+As a follow up question , why is there a folder .matplotlib in my root folder instead of in the virtual environment where I installed it ?
+I am using python 3.4 and got the error in this question . I then got ` Class TKApplication is implemented in both / Users / dhruv / anaconda / lib / libtk8.5.dylib and / System / Library / Frameworks / Tk.framework / Versions / 8.5 / Tk . One of the two will be used . Which one is undefined . ` and errors like this . How can I adjust the answer to solve this ?
+Python 3.3.6 , I get this : ` File " / opt / local / Library / Frameworks / Python.framework / Versions / 3.3 / lib / python3.3 / tkint er / __init__.py " , line 40 , in module import _tkinter # If this fails your Python may not be configured for Tk ImportError : No module named ' _tkinter '`

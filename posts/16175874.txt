@@ -1,0 +1,23 @@
+python pandas dataframe slicing by date conditions
+I am able to read and slice pandas dataframe using python datetime objects , however I am forced to use only existing dates in index . For example , this works :
+However if I use a start or end date that is not present in the DF , I get python KeyError .
+My Question : How do I query the dataframe object for a date range ; even when the start and end dates are not present in the DataFrame . Does pandas allow for range based slicing ?
+I am using pandas version 0.10.1
+Use ` searchsorted ` to find the nearest times first , and then use it to slice .
+If I copy paste your example , it works fine . But the start and end variables in my program , always default to the length of the dataframe ! what am I doing wrong ? - pastebin.com/raw.php?i=hfpHqF7s
+Seems you should sort your ` DataFrame ` in ascending order .
+Thanks , it worked when the data was in sorted in ascending order .
+Note that ` searchsorted ` is no longer defined on DataFrame or Series , see this question .
+Short answer : Sort your data ( ` data.sort() `) and then I think everything will work the way you are expecting .
+Yes , you can slice using datetimes not present in the DataFrame . For example :
+As you can see , you don't even have to build datetime objects ; strings work .
+Because the datetimes in your index are not sequential , the behavior is weird . If we shuffle the index of my example here ...
+... and take the same slice , we get a different result . It returns the first element inside the range and stops at the first element outside the range .
+This is probably not useful behavior . If you want to select ranges of dates , would it make sense to sort it by date first ?
+When I try to do this , I get an python exception : TimeSeriesError : Partial indexing only valid for ordered time series .
+The exception was self explanatory - I had missed sorting the data , :( - Thanks , text based slicing as you've shown above works as expected . But I used the searchsorted function since the dates in program were already datetime objects .
+df [ ' 20130419 ' : ' 20130422 '] is exceptional ! Even works with sparse data ( e.g. specifying a date that doesn't exist in the index ) . Thank you !
+Please note that data.sort() is now deprecated . The replacement for this application would be data.sort_index() - http://pandas.pydata.org/pandas-docs/stable/generated/pandas .DataFrame .sort_inde x.html
+Thanks , Kapocsi . Updated .
+You can use a simple mask to accomplish this :
+By the way , this works for hierarchical indexing as well . In that case ` data.index ` would be replaced with ` data.index.levels [ 0 ]` or similar .

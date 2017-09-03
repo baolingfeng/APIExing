@@ -1,0 +1,42 @@
+Save plot to image file instead of displaying it using Matplotlib
+I am writing a quick-and-dirty script to generate plots on the fly . I am using the code below ( from Matplotlib documentation ) as a starting point :
+I don't want to display the plot on a GUI , instead , I want to save the plot to a file ( say foo.png ) , so that , for example , it can be used in batch scripts . How do I do that ?
+Looks like I found the answer : its pylab.savefig ( ' foo.png ')
+Link should maybe link to somewhere in matplotlib.org ?
+Also if not using pylab , the figure object has a ` savefig ` method too . So you can call ` fig = plt.figure() ` then ` fig.savefig ( ... )` .
+Many of the answers lower down the page mention ` plt.close ( fig )` which is especially important in big loops . Otherwise the figures remain open and waiting in memory and all open figures will be shown upon executing ` plt.show() `
+While the question has been answered , I'd like to add some useful tips when using savefig . The file format can be specified by the extension :
+Will give a rasterized or vectorized output respectively , both which could be useful . In addition , you'll find that ` pylab ` leaves a generous , often undesirable , whitespace around the image . Remove it with :
+Is it possible to change the dimensions of the resulting image ?
+@USER In ` plt.savefig ` you can change the dpi , see the link in the answer . The dimensions can be controlled when creating the figure , see ` figsize ` in matplotlib.org/api/figure_api.html#matplotlib.figure.Figure
+@USER plt.savefig saves the figure but is does not prevent displaying it . Even when I leave out plt.show() the figure is displayed . How can I prevent that ?
+@USER you can call ` plt.ioff() ` which should disable interactiveness in ` matplotlib.pyplot ` commands .
+The solution is :
+As others have said , ` plt.savefig() ` or ` fig1.savefig() ` is indeed the way to save an image .
+However I've found that in certain cases ( eg . with Spyder having ` plt.ion() ` : interactive mode = On ) the figure is always shown . I work around this by forcing the closing of the figure window in my giant loop , so I don't have a million open figures during the loop :
+You could also set ` plt.ioff() # turn of interactive plotting mode ` , but that might disable behaviour you would want to use should your code exit with an error .
+Just found this link on the MatPlotLib documentation addressing exactly this issue :
+http://matplotlib.org/faq/howto_faq.html#generate-images-without-having-a-window-appear
+They say that the easiest way to prevent the figure from popping up is to use a non-interactive backend ( eg . Agg ) , via ` matplotib.use ( backend )` , eg :
+I still personally prefer using ` plt.close ( fig )` , since then you have the option to hide certain figures ( during a loop ) , but still display figures for post-loop data processing . It is probably slower than choosing a non-interactive backend though - would be interesting if someone tested that .
+If you don't like the concept of the " current " figure , do :
+Doesn't this just copy ` src.png ` to ` out.png ` ?
+That's just an example , that shows if you have an image object ( ` img `) , then you can save it into file with ` .imsave() ` method .
+@USER .mice would help to show how to create an image without using the current figure .
+@USER .mice Thanks for this example , it's the first one that showed me how to save an image object to .png .
+The other answers are correct . However , I sometimes find that I want to open the figure object later . For example , I might want to change the label sizes , add a grid , or do other processing . In a perfect world , I would simply rerun the code generating the plot , and adapt the settings . Alas , the world is not perfect . Therefore , in addition to saving to PDF or PNG , I add :
+Like this , I can later load the figure object and manipulate the settings as I please .
+I also write out the stack with the source-code and ` locals() ` dictionary for each function / method in the stack , so that I can later tell exactly what generated the figure .
+NB : Be careful , as sometimes this method generates huge files .
+I used the following :
+I found very important to use plt.show after saving the figure , otherwise it won't work . figure exported in png
+After using the plot() and other functions to create the content you want , you could use a clause like this to select between plotting to the screen or to file :
+If , like me , you use Spyder IDE , you have to disable the interactive mode with :
+` plt.ioff() `
+( this command is automatically launched with the scientific startup )
+If you want to enable it again , use :
+` plt.ion() `
+The Solution :
+If you do want to display the image as well as saving the image use :
+after
+` import matplotlib `

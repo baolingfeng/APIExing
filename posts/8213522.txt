@@ -1,0 +1,32 @@
+When to use cla() , clf() or close() for clearing a plot in matplotlib ?
+Matplotlib offers there functions :
+The documentation doesn't offer a lot of insight into what the difference between these functions is . When should I use each function and what exactly does it do ?
+They all do different things , since matplotlib uses a hierarchical order in which a figure window contains a figure which may consist of many axes . Additionally , there are functions from the pyplot interface and there are methods on the ` Figure ` class . I will discuss both cases below .
+pyplot interface
+` pyplot ` is a module that collects a couple of functions that allow matplotlib to be used in a functional manner . I here assume that ` pyplot ` has been imported as ` import matplotlib.pyplot as plt ` .
+In this case , there are three different commands that remove stuff :
+` plt.cla() ` clears an axis , i.e. the currently active axis in the current figure . It leaves the other axes untouched .
+` plt.clf() ` clears the entire current figure with all its axes , but leaves the window opened , such that it may be reused for other plots .
+` plt.close() ` closes a window , which will be the current window , if not specified otherwise .
+Which functions suits you best depends thus on your use-case .
+The ` close() ` function furthermore allows one to specify which window should be closed . The argument can either be a number or name given to a window when it was created using ` figure ( number_or_name )` or it can be a figure instance ` fig ` obtained , i.e. , using ` fig = figure() ` . If no argument is given to ` close() ` , the currently active window will be closed . Furthermore , there is the syntax ` close ( ' all ')` , which closes all figures .
+methods of the Figure class
+Additionally , the ` Figure ` class provides methods for clearing figures .
+I'll assume in the following that ` fig ` is an instance of a ` Figure ` :
+` fig.clf() ` clears the entire figure . This call is equivalent to ` plt.clf() ` only if ` fig ` is the current figure .
+` fig.clear() ` is a synonym for ` fig.clf() `
+Note that even ` del fig ` will not close the associated figure window . As far as I know the only way to close a figure window is using ` plt.close ( fig )` as described above .
+Thanks David for the clear explanation . A couple of extra sentences in the matplotlib documentation would go a long way !
+Because ` close() ` is a non-specific command , I went looking for a way to specify figure closure ( ` fig.close() ` is not a function ) . The correct syntax is : ` plt.close ( fig )` .
+Good point . I added more details to the answer .
+what about ` clear() ` , I have not seen much difference with ` cla() ` only that in parasite axes only ` cla() ` is treated specially .
+There is no ` clear() ` function in my ` matplotlib.pyplot ` ( Version 1.4.2 on MacOS ) . Could you direct me to the associated documentation ?
+There is just a caveat that I discovered today .
+If you have a function that is calling a plot a lot of times you better use ` plt.close ( fig )` instead of ` fig.clf() ` somehow the first does not accumulate in memory . In short if memory is a concern use plt.close ( fig ) ( Although it seems that there are better ways , go to the end of this comment for relevant links ) .
+So the the following script will produce an empty list :
+Whereas this one will produce a list with five figures on it .
+From the documentation above is not clear to me what is the difference between closing a figure and closing a window . Maybe that will clarify .
+If you want to try a complete script there you have :
+If memory is a concern somebody already posted a work-around in SO see :
+Create a figure that is reference counted
+Thanks for the helpful cross-reference to the reference counting question . That's exactly how Matplotlib should already work . It's equally terrifying and appalling that figures are never garbage collected under the standard ` pyplot ` API .

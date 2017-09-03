@@ -1,0 +1,18 @@
+Pandas : How to use apply function to multiple columns
+I have some problems with the Pandas apply function , when using multiple columns with the following dataframe
+and the following function
+When I try to apply this function with :
+I get the error message :
+I do not understand this message , I defined the name properly .
+I would highly appreciate any help on this issue
+Update
+Thanks for your help . I made indeed some syntax mistakes with the code , the index should be put '' . However I have still the same issue using a more complex function such as :
+Thank you
+Seems you forgot the `''` of your string .
+BTW , in my opinion , following way is more elegant :
+Thanks , You are right I forgot the '' . However I have still the same issue with a more complex function . I would highly appreciate your help with that . Thanks
+@USER following [ 53-54 ] allow you to apply more complex functions .
+@USER you can define your complex function like the In [ 53 ] way .
+do all apply strategies perform the same ? I'm new to pandas and have always found apply slightly enigmatic but your strategy in [ 53-54 ] is easy for me to understand ( and hopefully remember ) ... on a large table is it as quick as the other form of apply presented ?
+If you just want to compute ( column a ) % ( column b ) , you don't need ` apply ` , just do it directly :
+I know , it is just an example to show my problem in applying a function to multiple columns

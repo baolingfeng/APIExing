@@ -1,0 +1,12 @@
+Python & Pandas : How to return a copy of a dataframe ?
+Here is the problem . I use a function to return a randomized data ,
+However , the ` df ` ( source data ) and the ` temp_df ` ( randomized_data ) is the same . Here is the result :
+How can I make the ` temp_df ` and ` df ` different from each other ?
+I find I can get rid of the problem by adding ` df.copy() ` at the beginning of the function
+But I'm not sure if this is the right way to deal with it ?
+Yes . It is . So ... probably should just delete this question because ` df.copy() ` is the answer , which you're already doing :P
+@USER is it possible to make ` .copy() ` a default option in custom functions ? I feel its very redundent when you want to return the ` df ` . And this need you to add ` df =d f.copy() ` a lot of times in the function .
+@USER Or , am I using it wrong ? Is there better way to return a df in a custom function ?
+You should either a ) call your function like ` do_something ( df.copy() )` or b ) call ` df = df.copy() ` at the beginning of your function .
+Use ` DataFrame.assign() ` :
+I think you are right , and DataFrame.copy() have an optional argument ' deep ' . You can find details in http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.copy.html

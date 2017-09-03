@@ -1,0 +1,22 @@
+Pandas GroupBy memory deallocation
+Problem
+I noticed that memory allocated while iterating through a Pandas GroupBy object is not deallocated after iteration . I use ` resource.getrusage ( resource.RUSAGE_SELF ) .ru_maxrss ` ( second answer in this post for details ) to measure the total amount of active memory used by the Python process .
+prints the following total active memory ( in gb )
+Solutions
+Uncommenting ` del idx , x ` and ` gc.collect() ` fixes the problem . I do however have to ` del ` all variables that reference the DataFrames returned by iterating over the groupby ( which can be a pain depending on the code in the inner for loop ) . The new printed memory usages become :
+Alternatively I can uncomment ` gb = list ( gb )` . The resulting memory usages are roughly the same as those from the previous solution :
+Questions
+Why is memory for DataFrames resulting from iteration through the groupby not deallocated after iteration is completed ?
+Is there a better solution than the two above ? If not , which of these two solutions is " better " ?
+Are you using python2 or 3 ?
+Using Python3.4
+It is strange , there are new objects created on each iteration and somehow there is a reference being kept so just calling gc.collect is not enough . Using the list approach the same objects are reused so you see no increase in memeory .
+Memory Weirdness
+This is very interesting ! You do not need ` del idx , x ` . Only using ` gc.collect() ` worked to keep memory constant for me . This is much cleaner that having the ` del ` statements inside the loop .
+I do not get the same results . If I don't ` del ` the reference ` x ` then memory increases twice ( ~ 0.67gb - ~ 1.3gb - 2gb ) .
+Hmm ... I ran this in iPython and ` del ` was not needed ... what are you running this in ?
+You mean what version of Pandas ? 0.18.0
+What environment ? Inside iPython ? Command line ? Part of another full application ?
+Why is memory for DataFrames resulting from iteration through the groupby not deallocated after iteration is completed ?
+Nowhere in your code you ` del ` object ` gb ` , which means at the end it's still there . One thing is to have an iterator reach the end of its cycle , then I would expect it to die automagically , but the object that gave rise to the iterator persists , in case you need to do something else ( iterate again , aggregate , etc ) .
+o.o wutizusaying

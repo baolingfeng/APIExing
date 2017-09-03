@@ -1,0 +1,22 @@
+is it possible to do fuzzy match merge with python pandas ?
+I have two DataFrames which I want to merge based on a column . However , due to alternate spellings , different number of spaces , absence / presence of diacritical marks , I would like to be able to merge as long as they are similar to one another .
+Any similarity algorithm will do ( soundex , Levenshtein , difflib's ) .
+Say one DataFrame has the following data :
+Then I want to get the resulting DataFrame
+I just merged a few hundred DataFrames yesterday using ` .rename ` , usually this is quite a quick solution ( although I guess it depends how many misspelling there are ... ) - and I like to control what column names are truly similar .
+Perhaps I should have been clearer ( will edit question now ) . I want to merge on similar values between two DataFrames
+Similar to @USER suggestion , you can apply ` difflib ` ' s ` get_closest_matches ` to ` df2 `' s index and then apply a ` join ` :
+.
+If these were columns , in the same vein you could apply to the column then ` merge ` :
+That's great . While locojay provided the basic idea ( and faster ) your example implementation gets the answer accepted . Makes it all the easier to test . Upvote for providing both index and column based answers !
+Does anyone know if there is a way to do this between rows of one column ? I'm trying to find duplicates that might have typos
+you can use n=1 to limit the results to 1 . docs.python.org/3/library
+Doesn't work if there are several matches .
+http://pandas.pydata.org/pandas-docs/dev/merging.html does not have a hook function to do this on the fly . Would be nice though ...
+I would just do a separate step and use difflib getclosest_matches to create a new column in one of the 2 dataframes and the merge / join on the fuzzy matched column
+Could you explain how to use ` difflib.get_closest_matches ` to create such a column and then merge on that ?
+I would use Jaro-Winkler , because it is one of the most performant and accurate approximate string matching algorithms currently available [ Cohen , et al . ] , [ Winkler ] .
+This is how I would do it with Jaro-Winkler from the jellyfish package :
+Output :
+how about def get_closest_match ( x , list_strings ): return sorted ( list_strings , key=lambda y : jellyfish.jaro_winkler ( x , y ) , reverse=True ) [ 0 ]
+As a heads up , this basically works , except if no match is found , or if you have NaNs in either column . Instead of directly applying ` get_close_matches ` , I found it easier to apply the following function . The choice of NaN replacements will depend a lot on your dataset .

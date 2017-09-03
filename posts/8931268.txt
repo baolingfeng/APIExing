@@ -1,0 +1,18 @@
+Using Colormaps to set color of line in matplotlib
+How does one set the color of a line in matplotlib with scalar values provided at run time using a colormap ( say ` jet `) ? I tried a couple of different approaches here and I think I'm stumped . ` values [ ]` is a storted array of scalars . curves are a set of 1-d arrays , and labels are an array of text strings . Each of the arrays have the same length .
+The error you are receiving is due to how you define ` jet ` . You are creating the base class ` Colormap ` with the name ' jet ' , but this is very different from getting the default definition of the ' jet ' colormap . This base class should never be created directly , and only the subclasses should be instantiated .
+What you've found with your example is a buggy behavior in Matplotlib . There should be a clearer error message generated when this code is run .
+This is an updated version of your example :
+Resulting in :
+Using a ` ScalarMappable ` is an improvement over the approach presented in my related answer :
+creating over 20 unique legend colors using matplotlib
+I thought it would be beneficial to include what I consider to be a more simple method using numpy's linspace coupled with matplotlib's cm-type object . It's possible that the above solution is for an older version . I am using the python 3.4.3 , matplotlib 1.4.3 , and numpy 1.9.3 ., and my solution is as follows .
+This results in 1000 uniquely-colored lines that span the entire cm.jet colormap as pictured below . If you run this script you'll find that you can zoom in on the individual lines .
+cm.jet between 0.0 and 1.0 with 1000 graduations
+Now say I want my 1000 line colors to just span the greenish portion between lines 400 to 600 . I simply change my start and stop values to 0.4 and 0.6 and this results in using only 20% of the cm.jet color map between 0.4 and 0.6 .
+cm.jet between 0.4 and 0.6 with 1000 graduations
+So in a one line summary you can create a list of rgba colors from a matplotlib.cm colormap accordingly :
+In this case I use the commonly invoked map named jet but you can find the complete list of colormaps available in your matplotlib version by invoking :
+This only works because your ` stop ` is 1
+Of course 1 is the best value . If you want a larger range of colors all you need do is increase ` number_of_lines ` . And in the event that you want only a portion of the colors in the band you reduce ` stop ` and increase ` start ` as needed .
+A combination of line styles , markers , and qualitative colors from ` matplotlib ` :

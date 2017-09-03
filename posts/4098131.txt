@@ -1,0 +1,34 @@
+How to update a plot in matplotlib ?
+I'm having issues with redrawing the figure here . I allow the user to specify the units in the time scale ( x-axis ) and then I recalculate and call this function ` plots() ` . I want the plot to simply update , not append another plot to the figure .
+Possible duplicate of real-time plotting in while loop with matplotlib
+You essentially have two options :
+Do exactly what you're currently doing , but call ` graph1.clear() ` and ` graph2.clear() ` before replotting the data . This is the slowest , but most simplest and most robust option .
+Instead of replotting , you can just update the data of the plot objects . You'll need to make some changes in your code , but this should be much , much faster than replotting things every time . However , the shape of the data that you're plotting can't change , and if the range of your data is changing , you'll need to manually reset the x and y axis limits .
+To give an example of the second option :
+I tried testing " 1 . " and the result was , after I replotted the data another set of plots were drawn in my GUI , so now I had 4 plots after recalculation , just like before .
+@USER - Where exactly in your code are you calling ` clear ` ? You should be calling ` graph1.clear() ; graph2.clear() ` inside your ` for ` loop , just before you call ` graph1.plot ( ... )` , ` graph2.plot ( ... )` etc ...
+That for loop creates calles graphx.plot ( ... ) N times and putting the clear statements in there only plots the last one . I've actually pulled out the canvas code and put it into the main program loop along with the figure code and I now have my function being called by a button . For some reason if I just call the function the plots get updated , but if I press the button the plots do not . It's pretty interesting behavior . I think that must be a bug in Tkinter .
+It's 2k14 and I stumbled to achieve something like this ... it works as expected but the plotting window is turning " not responding " .. any suggestions ??
+you need to add : fig.canvas.flush_events() after your draw method
+This worked for me . Repeatedly calls a function updating the graph every time .
+" fun " is a function that returns an integer .
+FuncAnimation will repeatedly call " update " , it will do that " xmax " times .
+Could you give an example on how you call this function ( especially how you pass a function in a function call ) as well as how the fun() function looks like ?
+Sure . " fun() " is any function that returns an integer . You can pass the function as an argument to another like this : " plot_cont ( my_function , 123 )" . There you have me calling plot_cont at line 86 : github.com/vitobasso/audio-ml/blob
+In case anyone comes across this article looking for what I was looking for , I found examples at
+How to visualize scalar 2D data with Matplotlib ?
+and
+http://mri.brechmos.org/2009/07/automatically-update-a-figure-in-a-loop
+( on web.archive.org )
+then modified them to use imshow with an input stack of frames , instead of generating and using contours on the fly .
+Starting with a 3D array of images of shape ( nBins , nBins , nBins ) , called ` frames ` .
+I also found a much simpler way to go about this whole process , albeit less robust :
+Note that both of these only seem to work with ` ipython -- pylab=tk ` , a.k.a . ` backend = TkAgg `
+Thank you for the help with everything .
+I have released a package called python-drawnow that provides functionality to let a figure update , typically called within a for loop , similar to Matlab's ` drawnow ` .
+An example usage :
+This package works with any matplotlib figure and provides options to wait after each figure update or drop into the debugger .
+How is it robust and unstable at the same time ?
+I meant robust as in " works with any matplotlib figure " and unstable as in " weekend project " . I've updated my answer
+All of the above might be true , however for me " online-updating " of figures only works with some backends , specifically ` wx ` . You just might try to change to this , e.g. by starting ipython / pylab by ` ipython -- pylab=wx ` ! Good luck !
+Thank you for your message , I never used the interactive mode because it never worked with the default backend I used . It's much nicer to use the interactive mode than stopping the execution each time you want to see a graph !

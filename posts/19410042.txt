@@ -1,0 +1,62 @@
+How to make IPython notebook matplotlib plot inline
+I am trying to use IPython notebook on MacOS X with Python 2.7.2 and IPython 1.1.0 .
+I cannot get matplotlib graphics to show up inline .
+I have also tried ` %pylab inline ` and the ipython command line arguments ` -- pylab=inline ` but this makes no difference .
+Instead of inline graphics , I get this :
+And ` matplotlib.get_backend() ` shows that I have the `' module :/ / IPython.kernel.zmq.pylab.backend_inline '` backend .
+your code snippet should not produce ` matplotlib.figure.Figure at 0x110b9c450 ` but ` matplotlib.text.Text at 0x94f9320 ` ( because your last line is printing a title ) . Anyway , your code ( with %matplotlib inline and plt.show() ) works as expected on windows
+Thanks for those suggestions , but they don't work for me . I still get the above output with no inline graphics . Do you have any troubleshooting advice ?
+no clue . Same python , same ipython ( and same backend ) but on windows , and it works .... I suppose plot is working for you when not inline , right ?
+without the ` %matplotlib inline ` , the kernel stays busy permanently and I get no output . It has to be killed . This is trying to use the ` MacOSX ` backend but I guess it cannot be opened for some reason . When not using ipython notebook , the MacOSX backend for matplotlib works just fine .
+I had an identical symptom but it turned out I had installed a 32 bit version of Canopy on OSX 10.8 . Reinstalling with the 64 bit version fixed it .
+I used ` %matplotlib inline ` in the first cell of the notebook and it works . I think you should try :
+You can also always start all your IPython kernels in inline mode by default by setting the following config options in your config files :
+I would mark this as the right answer . The alternative ` -- pylab inline ` works , but greets you with the following warning : Starting all kernels in pylab mode is not recommended , and will be disabled in a future release . Please use the %matplotlib magic to enable matplotlib instead . pylab implies many imports , which can have confusing side effects and harm the reproducibility of your notebooks .
+@USER @USER : I'm learning to using iPython ( and Python programming instead of Matlab ); what does ` import matplotlib ' do versus ` import matplotlib as [ name ]' ? Forgive for simplistic comment
+@USER @USER : and also how does this compare to ` from matplotlib import mpl ' .
+@USER The best explanation I've seen for your question is : effbot.org/zone/import-confusion.htm
+Thanks @USER . I just tested your commands since it's been a while with updates and all . Now everything works fine on Python 2.7.9 and IPython 3.1.0 .
+If your matplotlib version is above 1.4 , it is also possible to use
+IPython 3.x and above
+older versions
+Both will activate the nbagg backend , which enables interactivity .
+This doesn't seem to work with ` %config InlineBackend.figure_format = ' retina '` . Any idea how to get interactive Retina figures ?
+Hmm ... I don't really have too much expertise with retina figures . The only thing I stumbled upon was this link , but it may be deprecated . If more people are wondering about the same , I link your SO question here , and wish you good luck with the answers there . Best
+This answer is underrated . ` %matplotlib notebook ` provides the better visualization than ` %matplotlib inline ` .
+using ` %matplotlib notebook ` does not work ( kind of shows something , then blank ) on jupyter notebook 4.1.1 / ubuntu 16.04 / chrome , ` %matplotlib inline ` does show images , but they come after the markdown text , not literally " inline " .
+Strange , did you experience the same in jupyter notebook 4.3.0 ? I just checked , and it works good with notebook 4.3.0 mint 1 8/ chrome ( Python 3.5.2 , IPython 5.1.0 ) .
+Ctrl + Enter
+%matplotlib inline
+Magic Line :D
+Reference example
+This link is dead now .
+@USER Not dead yet . Alternatively , you can visit ipython repo on github , go into ' example ' folder , find ' Plotting with Matplotlib ' notebook .
+Very odd . It was dead for me the other day .
+I'm not sure why joaquin posted his answer as a comment , but it is the correct answer :
+start ipython with ` ipython notebook -- pylab inline `
+Edit : Ok , this is now deprecated as per comment below . Use the %pylab magic .
+No longer : " ipython notebook -- pylab inline [ E 15:01 : 18.182 NotebookApp ] Support for specifying -- pylab on the command line has been removed . [ E 15:01 : 18.182 NotebookApp ] Please use ` %pylab inline ` or ` %matplotlib inline ` in the notebook itself . "
+I have to agree with foobarbecue ( I don't have enough recs to be able to simply insert a comment under his post ):
+It's now recommended that python notebook isn't started wit the argument ` -- pylab ` , and according to Fernando Perez ( creator of ipythonnb ) ` %matplotlib inline ` should be the initial notebook command .
+See here : http://nbviewer.ipython.org/github/ipython/ipython/blob/1.x/examples/notebooks/Part%203%20-%20Plotting%20with%20Matplotlib.ipynb
+To make matplotlib inline by default in Jupyter ( IPython 3 ):
+Edit file ` ~ / .ipython / profile_default / ipython_config.py `
+Add line ` c.InteractiveShellApp.matplotlib = ' inline '`
+Please note that adding this line to ` ipython_notebook_config.py ` would not work .
+Otherwise it works well with Jupyter and IPython 3.1.0
+I found a workaround that is quite satisfactory . I installed Anaconda Python and this now works out of the box for me .
+I would appreciate if you could have a look at this ` matplotlib ` related question . stackoverflow.com/questions/45398699
+I did the anaconda install but matplotlib is not plotting
+It starts plotting when i did this
+On ubuntu 17.04
+remove %matplotlib inline
+as long as you have plt.show() after creation of graph
+works for me
+You can simulate this problem with a syntax mistake , however , ` %matplotlib inline ` won't resolve the issue .
+First an example of the right way to create a plot . Everything works as expected with the imports and magic that eNord9 supplied .
+However , by leaving the ` ( )` off the end of the plot type you receive a somewhat ambiguous non-error .
+Erronious code :
+Example error :
+Other than this one line message , there is no stack trace or other obvious reason to think you made a syntax error . The plot doesn't print .
+This isn't a syntax error -- without the ` ( )` to invoke ` kde ` , iPython is telling you what ` kde ` is , namely , a bound method . So in fact from iPython's perspective , this is not an " error " at all , hence why there is no stack trace .
+@USER Thanks . After re-reading my post what I should have said is : " I thought I had the problem of not getting my plots to show inline using the ` %matplotlib inline ` command . Really I just forgot to put ( ) on the end of the plot type . So if everything else fails , look at your parentheses for a mistake . "

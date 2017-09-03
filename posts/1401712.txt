@@ -1,0 +1,39 @@
+How can the euclidean distance be calculated with numpy ?
+I have two points in 3 D:
+And I want to calculate the distance :
+What's the best way to do this with Numpy , or with Python in general ? I have :
+Use ` numpy.linalg.norm ` :
+I knew there was a reason for me not to accept my own answer :-) . Just for the record , I managed to see Mark Lavin's answer before he deleted it . I liked it better for the link to Python's docs and the explanation . Can you add some details ?
+The linalg.norm docs can be found here : docs.scipy.org/doc/numpy/reference/generated My only real comment was sort of pointing out the connection between a norm ( in this case the Frobenius norm / 2-norm which is the default for norm function ) and a metric ( in this case Euclidean distance ) .
+If OP wanted to calculate the distance between an array of coordinates it is also possible to use scipy.spatial.distance.cdist .
+There's a function for that in SciPy , it's called Euclidean
+example :
+If you look for efficiency it is better to use the numpy function . The scipy distance is twice as slow as numpy.linalg.norm ( a-b ) ( and numpy.sqrt ( numpy.sum (( a-b ) **2 ))) . On my machine I get 19.7 s with scipy ( v0.15.1 ) and 8.9 s with numpy ( v1.9.2 ) . Not a relevant difference in many cases but if in loop may become more significant . From a quick look at the scipy code it seems to be slower because it validates the array before computing the distance .
+Another instance of this problem solving method . As soon as I submitted the question I got it :
+can you use numpy's sqrt and / or sum implementations ? That should make it faster ( ? ) .
+I found this on the other side of the interwebs ` norm = lambda x : N.sqrt ( N.square ( x ) .sum() )` ; ` norm ( x-y )`
+scratch that . it had to be somewhere . here it is : ` numpy.linalg.norm ( x-y )`
+I find a ' dist ' function in matplotlib.mlab , but i don't think it's handy enough . I'm posting it here just for reference .
+Can be done like this , don't know how fast it is but its no numpy .
+Is a nice one line answer . However , if speed is a concern I would recommend experimenting on your machine . I found that using the ` math ` library's ` sqrt ` with the ` ** ` operator for the square is much faster on my machine than the one line , numpy solution .
+I ran my tests using this simple program :
+On my machine , ` math_calc_dist ` runs much faster than ` numpy_calc_dist ` : 1.5 seconds versus 23.5 seconds .
+To get a measurable difference between ` fastest_calc_dist ` and ` math_calc_dist ` I had to up ` TOTAL_LOCATIONS ` to 6000 . Then ` fastest_calc_dist ` takes ~50 seconds while ` math_calc_dist ` takes ~60 seconds .
+You can also experiment with ` numpy.sqrt ` and ` numpy.square ` though both were slower than the ` math ` alternatives on my machine .
+My tests were run with Python 2.6.6 .
+You're badly misunderstanding how to use numpy ... Don't use loops or list comprehensions . If you're iterating through , and applying the function to each item , then , yeah , the numpy functions will be slower . The whole point is to vectorize things .
+If I move the numpy.array call into the loop where I am creating the points I do get better results with numpy_calc_dist , but it is still 10x slower than fastest_calc_dist . If I have that many points and I need to find the distance between each pair I'm not sure what else I can do to advantage numpy .
+I realize this thread is old , but I just want to reinforce what Joe said . You are not using numpy correctly . What you are calculating is the sum of the distance from every point in p1 to every point in p2 . The solution with numpy / scipy is over 70 times quicker on my machine . Make p1 and p2 into an array ( even using a loop if you have them defined as dicts ) . Then you can get the total sum in one step , ` scipy.spatial.distance.cdist ( p1 , p2 ) .sum() ` . That is it .
+Or use ` numpy.linalg.norm ( p1-p2 ) .sum() ` to get the sum between each point in p1 and the corresponding point in p2 ( i.e. not every point in p1 to every point in p2 ) . And if you do want every point in p1 to every point in p2 and don't want to use scipy as in my previous comment , then you can use np.apply_along_axis along with numpy.linalg.norm to still do it much , much quicker then your " fastest " solution .
+Previous versions of NumPy had very slow norm implementations . In current versions , there's no need for all this .
+You can just substract the vectors and then innerproduct .
+Following your example
+Simple Code an easy to understand .
+this will give me the square of the distance . you're missing a sqrt here .
+I like np.dot ( dot product ):
+Having ` a ` and ` b ` as you defined them , you can use also :
+Here's some concise code for Euclidean distance in Python given two points represented as lists in Python .
+Numpy also accepts lists as inputs ( no need to explicitly pass a numpy array )
+if you want to find the distance of a specific point from the First of the contractions you can use , plus you can do it with as many as dimensions as you want .
+your proposal is limited to two dimensional arrays . The whole point is to have generic code that will work on any dimension .
+Calculate euclidean distance for multidimensional space

@@ -1,0 +1,21 @@
+pylab.ion() in python 2 , matplotlib 1.1.1 and updating of the plot while the program runs
+what I am trying to do is having a script compute something , prepare a plot and show the already obtained results as a pylab.figure - in python 2 ( specifically python 2.7 ) with a stable matplotlib ( which is 1.1.1 ) .
+In python 3 ( python 3.2.3 with a matplotlib git build ... version 1.2.x ) , this works fine . As a simple example ( simulating a lengthy computation by time.sleep() ) consider
+In python 2 ( version 2.7.3 vith matplotlib 1.1.1 ) , the code runs cleanly without errors but does not show the figure . A little trial and error with the python2 interpreter seemed to suggest to replace pylab.draw() with pylab.show() ; doing this once is apparently sufficient ( not , as with draw calling it after every change / addition to the plot ) . Hence :
+However , this doesn't work either . Again , it runs cleanly but does not show the figure . It seems to do so only when waiting for user input . It is not clear to me why this is , but the plot is finally shown when a raw_input() is added to the loop
+With this , the script will of course wait for user input while showing the plot and will not continue computing the data before the user hits enter . This was , of course , not the intention .
+This may be caused by different versions of matplotlib ( 1.1.1 and 1.2.x ) or by different python versions ( 2.7.3 and 3.2.3 ) .
+Is there any way to accomplish with python 2 with a stable ( 1.1.1 ) matplotlib what the above script ( the first one ) does in python 3 , matplotlib 1.2.x :
+- computing data ( which takes a while , in the above example simulated by time.sleep() ) in a loop or iterated function and
+- ( while still computing ) showing what has already been computed in previous iterations
+- and not bothering the user to continually hit enter for the computation to continue
+Thanks ; I'd appreciate any help ...
+You want the ` pause ` function to give the gui framework a chance to re-draw the screen :
+You don't need to create a new ` Line2D ` object every pass through , you can just update the data in the existing one .
+Documentation :
+A really over-kill method to is to use the ` matplotlib.animate ` module . On the flip side , it gives you a nice way to save the data if you want ( ripped from my answer to Python- 1 second plots continous presentation ) .
+example , api , tutorial
+Thanks , tcaswell ; the pause function solved my problem .
+Some backends ( in my experience " Qt4Agg ") require the ` pause ` function , as @USER suggested .
+Other backends ( in my experience " TkAgg ") seem to just update on ` draw() ` without requiring a ` pause ` . So another solution is to switch your backend , for example with ` matplotlib.use ( ' TkAgg ')` .
+TkAgg requires a pause as well . ( On the Mac , current version as of writing )

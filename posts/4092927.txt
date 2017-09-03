@@ -1,0 +1,30 @@
+Generating movie from python without saving individual frames to files
+I would like to create an h264 or divx movie from frames that I generate in a python script in matplotlib . There are about 100k frames in this movie .
+In examples on the web [ eg . 1 ] , I have only seen the method of saving each frame as a png and then running mencoder or ffmpeg on these files . In my case , saving each frame is impractical . Is there a way to take a plot generated from matplotlib and pipe it directly to ffmpeg , generating no intermediate files ?
+Programming with ffmpeg's C-api is too difficult for me [ eg . 2 ] . Also , I need an encoding that has good compression such as x264 as the movie file will otherwise be too large for a subsequent step . So it would be great to stick with mencoder / ffmpeg / x264 .
+Is there something that can be done with pipes [ 3 ] ?
+[ 1 ] http://matplotlib.sourceforge.net/examples/animation/movie_demo.html
+[ 2 ] How does one encode a series of images into H264 using the x264 C API ?
+[ 3 ] http://www.ffmpeg.org/ffmpeg-doc.html#SEC41
+I have yet to figure out a way to do this with currently maintained libraries ... ( I used pymedia in the past , but it's no longer maintained , and won't build on any system I use ... ) If it helps , you can get an RGB buffer of a matplotlib figure by using ` buffer = fig.canvas.tostring_rgb() ` , and the width and height of the figure in pixels with ` fig.canvas.get_width_height() ` ( or ` fig.bbox.width ` , etc )
+OK , thanks . That's useful . I wonder if some transformation of buffer can be piped to ffmpeg . pyffmpeg has a sophisticated Cython wrapper , recently updated , for reading an avi frame by frame . But not writing . That sounds like a possible place to start for someone familiar with the ffmpeg library . Even something like matlab's im2frame would be great .
+I'm playing around with having ffmpeg read either from an input pipe ( with the ` -f image2pipe ` option so that it expects a series of images ) , or from a local socket ( eg ` udp :/ / localhost : some_port `) and writing to the socket in python ... So far , only partial success ... I feel like I'm almost there , though ... I'm just not familiar enough with ffmpeg ...
+For what it's worth , my problem was due to an issue with ffmpeg accepting a stream of .png ' s or raw RGB buffers , ( there's a bug already filed : roundup.ffmpeg.org/issue1854 ) It works if you use jpegs . ( Use ` ffmpeg -f image2pipe -vcodec mjpeg -i - ouput.whatever ` . You can open a ` subprocess.Popen ( cmdstring.split() , stdin= subprocess.PIPE )` and write each frame to its ` stdin `) I'll post a more detailed example if I get a chance ...
+That's great ! I will try this tomorrow .
+This functionality is now ( at least as of 1.2.0 , maybe 1.1 ) baked into matplotlib via the ` MovieWriter ` class and it's sub-classes in the ` animation ` module .
+Documentation for ` animation `
+After patching ffmpeg ( see Joe Kington comments to my question ) , I was able to get piping png's to ffmpeg as follows :
+It would not work without the patch , which trivially modifies two files and adds ` libavcodec / png_parser.c ` . I had to manually apply the patch to ` libavcodec / Makefile ` . Lastly , I removed ' -number ' from ` Makefile ` to get the man pages to build . With compile options ,
+Nicely done ! +1 ( I was never able to get ffmpeg to accept a stream of .png ' s , I think I need to update my version of ffmpeg ... ) And , just in case you were wondering , it is perfectly acceptable to mark your answer as the answer to your question . See discussion here : meta.stackexchange.com/questions/17845
+Ok , I will mark it as answered . Thanks for the tips again .
+Wow , cool . I've been trying to do the same thing .
+Hi @USER , the patch link is dead . Do you know if it has been absorbed into the main branch ? If not is there some way to get that patch ?
+@USER , I am guessing the patch has been absorbed from the following post : superuser.com/questions/426193
+Converting to image formats is quite slow and adds dependencies . After looking at these page and other I got it working using raw uncoded buffers using mencoder ( ffmpeg solution still wanted ) .
+Details at : http://vokicodder.blogspot.com/2011/02/numpy-arrays-to-video.html
+I got some nice speedups .
+I modified this for ffmpeg , see my answer below if you still want it
+This is great ! I wanted to do the same . But , I could never compile the patched ffmpeg source ( 0.6.1 ) in Vista with MingW32+MSYS+pr enviroment ... png_parser.c produced Error1 during compilation .
+So , I came up with a jpeg solution to this using PIL . Just put your ffmpeg.exe in the same folder as this script . This should work with ffmpeg without the patch under Windows . I had to use stdin.write method rather than the communicate method which is recommended in the official documentation about subprocess . Note that the 2nd -vcodec option specifies the encoding codec . The pipe is closed by p.stdin.close() .
+These are all really great answers . Here's another suggestion . @USER is correct that the bottleneck is typically the writing of the image , so if you are writing png files to your video compressor , it will be pretty slow ( even if you are sending them through a pipe instead of writing to disk ) . I found a solution using pure ffmpeg , which I personally find easier to use than matplotlib.animation or mencoder .
+Also , in my case , I wanted to just save the image in an axis , instead of saving all of the tick labels , figure title , figure background , etc . Basically I wanted to make a movie / animation using matplotlib code , but not have it " look like a graph " . I've included that code here , but you can make standard graphs and pipe them to ffmpeg instead if you want .
