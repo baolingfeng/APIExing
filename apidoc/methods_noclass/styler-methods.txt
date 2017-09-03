@@ -1,0 +1,17 @@
+apply
+applymap
+background_gradient
+bar
+clear
+export
+highlight_max
+highlight_min
+highlight_null
+render
+set_caption
+set_precision
+set_properties
+set_table_attributes
+set_table_styles
+set_uuid
+use
