@@ -1,0 +1,113 @@
+Matplotlib	O
+plot	O
+pulse	O
+propagation	O
+in	O
+3d	O
+
+I'd	O
+like	O
+to	O
+plot	O
+pulse	O
+propagation	O
+in	O
+such	O
+a	O
+way	O
+at	O
+each	O
+step	O
+,	O
+it	O
+plots	O
+the	O
+pulse	O
+shape	O
+.	O
+
+In	O
+other	O
+words	O
+,	O
+I	O
+want	O
+a	O
+serie	O
+of	O
+x-z	O
+plots	O
+,	O
+for	O
+each	O
+values	O
+of	O
+y	O
+.	O
+
+Something	O
+like	O
+this	O
+(	O
+without	O
+color	O
+):	O
+
+How	O
+can	O
+I	O
+do	O
+this	O
+using	O
+matplotlib	O
+(	O
+or	O
+Mayavi	O
+)	O
+?	O
+
+Here	O
+is	O
+what	O
+I	O
+did	O
+so	O
+far	O
+:	O
+
+Here's	O
+an	O
+example	O
+from	O
+the	O
+docs	O
+:	O
+matplotlib.org/examples/mplot3d/bars3d_demo.html	O
+
+Change	O
+to	O
+:	O
+
+and	O
+call	O
+:	O
+
+will	O
+create	O
+the	O
+following	O
+graph	O
+:	O
+
+If	O
+you	O
+need	O
+the	O
+curve	O
+been	O
+filled	O
+with	O
+white	O
+color	O
+:	O
+

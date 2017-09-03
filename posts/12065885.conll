@@ -1,0 +1,76 @@
+Filter	O
+dataframe	B-API
+rows	O
+if	O
+value	O
+in	O
+column	O
+is	O
+in	O
+a	O
+set	O
+list	O
+of	O
+values	O
+
+I	O
+have	O
+a	O
+Python	O
+pandas	O
+DataFrame	B-API
+`rpt`:	O
+
+I	O
+can	O
+filter	O
+the	O
+rows	O
+whose	O
+stock	O
+id	O
+is	O
+`'600809'`	O
+like	O
+this:	O
+`rpt[rpt['STK_ID']	O
+==	O
+'600809']`	O
+
+and	O
+I	O
+want	O
+to	O
+get	O
+all	O
+the	O
+rows	O
+of	O
+some	O
+stocks	O
+together,	O
+such	O
+as	O
+`['600809','600141','600329']`.	O
+
+That	O
+means	O
+I	O
+want	O
+a	O
+syntax	O
+like	O
+this:	O
+
+Since	O
+pandas	O
+not	O
+accept	O
+above	O
+command,	O
+how	O
+to	O
+achieve	O
+the	O
+target?	O
+
