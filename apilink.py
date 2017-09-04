@@ -619,7 +619,6 @@ def linking(post_id, output):
                 
             elif len(linked_apis) == 1:
                 matched_api = str(linked_apis[0]['name']).strip()
-                print entity, matched_api, (entity, matched_api) in unique_result
                 out.append(entity)
                 out.append(linked_apis[0]['name'])
                 out.append(linked_apis[0]['url'])
@@ -628,8 +627,6 @@ def linking(post_id, output):
                 out.append(str(1))
 
                 outfile.write(','.join(out) + '\n')
-
-                unique_result.append((str(entity.strip()), matched_api))
             else:
                 out.append(entity)
                 out.append('not matched')
