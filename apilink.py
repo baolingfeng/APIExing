@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import sys
 import os
 import subprocess
 import re
@@ -96,7 +97,7 @@ def crawl(links, token_list):
 
 class APIDBImpl:
     def __init__(self):
-        self.dbimpl = DBImpl({"type": "mysql", "url": "127.0.0.1", "username": "root",
+        self.dbimpl = DBImpl({"type": "mysql", "url": "127.0.0.1", "username": "blf",
                               "password": "123456", "database": "link_api"})
 
     def query_records(self, entity):
@@ -594,6 +595,59 @@ def main():
 
                 # print unique_result
 
+def linking(post_id, output):
+    linker = APILinker(post_id)
+    linker.crawler_post()
+    linker.api_recog()
+    linker.link()
+
+    with open(output, 'w') as outfile:
+        for idx, linked_apis in enumerate(linker.result_list):
+            out = [post_id]
+            entity = linker.data['entityList'][idx]
+            
+            if len(linked_apis) > 1:
+                sorted_apis = sorted(linked_apis, key=lambda k: k['score'], reverse=True)
+                print sorted_apis[0]['api_class'], sorted_apis[0]['name'], sorted_apis[0]['score']
+
+                if sorted_apis[0]['api_class'] is not None:
+                    matched_api = sorted_apis[0]['api_class'] + '.' + sorted_apis[0]['name']
+                else:
+                    matched_api = sorted_apis[0]['name']
+                
+                matched_api = str(matched_api).strip()
+                
+                out.append(entity)
+                out.append(matched_api)
+                out.append(sorted_apis[0]['url'])
+                out.append(sorted_apis[0]['type'])
+                out.append(sorted_apis[0]['lib'])
+                out.append(str(len(sorted_apis)))
+
+                outfile.write(','.join(out) + '\n')
+                
+            elif len(linked_apis) == 1:
+                matched_api = str(linked_apis[0]['name']).strip()
+                print entity, matched_api, (entity, matched_api) in unique_result
+                out.append(entity)
+                out.append(linked_apis[0]['name'])
+                out.append(linked_apis[0]['url'])
+                out.append(linked_apis[0]['type'])
+                out.append(linked_apis[0]['lib'])
+                out.append(str(1))
+
+                outfile.write(','.join(out) + '\n')
+
+                unique_result.append((str(entity.strip()), matched_api))
+            else:
+                print 'no records found in api doc database'
+
+
 
 if __name__ == '__main__':
-    main()
+    # main()
+    if len(sys.argv) < 3:
+        print 'usage: python apilink.py post_id output_file'
+        sys.exit(0)
+
+    linking(sys.argv[1], sys.argv[2])
