@@ -101,5 +101,4 @@ ENV/
 .mypy_cache/
 
 *.data
-posts/*
 .DS_store

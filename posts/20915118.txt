@@ -1,7 +1,0 @@
-how to do right join where key is null in python pandas
-Is it possible to do a right join where key is null in python pandas .
-That is , can I join DateFrames to produce only values from the right that do not match the left ?
-that capability doesn't seem to exist in the docs : pandas.pydata.org/pandas-docs/dev
-I think this is best expressed as an index selection operation . To find all indices in one frame and not in another , try using the ` - ` operator on the two Dataframe ` index ` objects , as if the index objects were built-in python set objects . for example :
-Nice smooth alternative . thank you .
-You could make a dummy column of ones in each dataframe , use pd.merge() to right join the dataframes , and then use a mask to filter out the nulls .
