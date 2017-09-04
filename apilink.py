@@ -639,14 +639,19 @@ def linking(post_id, output):
 
 
 if __name__ == '__main__':
-    # main()
-    if len(sys.argv) < 4:
-        print 'usage: python apilink.py post_id output_file'
-        print 'single post: python apilink.py -s post_id output_file'
-        print 'multiple posts in a file: python -b apilink.py posts.txt output_file'
-        sys.exit(0)
+    # if len(sys.argv) < 4:
+    #     print 'usage: python apilink.py post_id output_file'
+    #     print 'single post: python apilink.py -s post_id output_file'
+    #     print 'multiple posts in a file: python -b apilink.py posts.txt output_file'
+    #     sys.exit(0)
 
-    if sys.argv[1] == '-s':
-        linking(sys.argv[2], sys.argv[3])
-    elif sys.argv[1] == '-b':
-        batch(sys.argv[2], sys.argv[3])
+    # if sys.argv[1] == '-s':
+    #     linking(sys.argv[2], sys.argv[3])
+    # elif sys.argv[1] == '-b':
+    #     batch(sys.argv[2], sys.argv[3])
+
+    if len(sys.argv) < 3:
+        print 'usage: python apilink.py post_id outpit_file'
+        sys.exit(0)
+    
+    linking(sys.argv[1], sys.argv[2])

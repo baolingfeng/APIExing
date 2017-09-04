@@ -1,6 +1,3 @@
-# APIExing
-A tool for API Recognition and linking
-
 # Pre-requisites
 
 1. Python 2.7 with following packages: nltk, numpy, scikit-learn, gensim, html2text, beautifulsoup, Levenshtein, mysql.
@@ -9,7 +6,9 @@ A tool for API Recognition and linking
 
 # API Recognition
 ## Preliminaries
-First, we need convert a text file into a <a href="http://www.signll.org/conll/">CoNLL</a> file, which is widely used in Natural Language Processing (NLP). You can use python file **texttoconll.py** to convert text file into CoNLL file with the following command:
+A text file need to be converted into a <a href="http://www.signll.org/conll/">CoNLL</a> file, which is widely used in Natural Language Processing (NLP). 
+
+We provide a tool written by python (**texttoconll.py**) to convert text file into CoNLL file:
  > python texttoconll.py input.txt output.conll
  
 ## Data
@@ -21,7 +20,10 @@ First, we need convert a text file into a <a href="http://www.signll.org/conll/"
 
 *TODO*
 
-3. the folder **api_recog**: our experimental data for EMSE paper
+3. Experimental data for EMSE paper
+  
+  the folder **api_recog** contains the following files:
+
   * **train_all.conll**: training data with manual label
   * **test_\*.all**: testing data
 
@@ -40,7 +42,7 @@ First, we need convert a text file into a <a href="http://www.signll.org/conll/"
 
 # API Linking
 
-## Overview
+## Usage
 Given a post from Stack Overflow, we first crawle the content of the whole post web page including question, answers, comments, tags; then we use our API recogntion tool to identify API entities from the crawled text (exclude code fragment);
 Finally, we link the idetified APIs to API documentations. 
 
@@ -54,8 +56,10 @@ See the corresponding python file **apilink.py**, you can run this file using fo
 * import the two sql files into the database
 * change your database username and password in python file **apilink.py**
 
-4. experimental data 
-*TODO*
+2. experimental data: 
+
+* **experiment.xlxs** in the folder **api_link** (60, 30, 30 records for Pandas, Numpy, and Matplotlib, respectively)
+
 
 
 
