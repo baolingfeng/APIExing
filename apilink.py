@@ -25,7 +25,8 @@ import json
 
 STATIC_ROOT = './'
 POST_DIR = './posts/'
-
+if not os.path.exists(POST_DIR):
+    os.mkdir(POST_DIR)
 
 def stem_tokens(tokens, stemmer):
     stemmed = []
