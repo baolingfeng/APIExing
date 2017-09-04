@@ -25,7 +25,7 @@ First, we need convert a text file into a <a href="http://www.signll.org/conll/"
   * **train_all.conll**: training data with manual label
   * **test_\*.all**: testing data
 
-## Commands
+## Usage
 1. convert a *CoNLL* file into an input file for *crfsuite*
 
 > python enner.py bc-ce < api_recog/train_all.conll > api_recog/train_all.data
