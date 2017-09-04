@@ -1,7 +1,0 @@
-Add margin when plots run against the edge of the graph
-Often when I plot in matplotlib , I get graphs like this :
-You can't see the function because it runs against the edge of the plot .
-Is there any way to automatically add some margin in these cases , so that they look like this :
-Ooh , you could add small amounts of noise to ensure that it's always slightly above 0 ? Something like ` h += randn ( len ( h )) * spacing ( abs ( h )) * 100000 ` ?
-You can use ` ax.margins() ` to set the margins . Example :
-You can also set only the x- or the y-margin . However it doesn't seem to be a ` matplotlibrc ` option so that you can simply make this the default behaviour ( so it isn't fully automatically ) . I opened a github issue to request this .

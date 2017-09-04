@@ -135,7 +135,7 @@ class APILinker:
         self.data = {}
 
     def crawler_post(self):
-        '''an stackover flow post crawler'''
+        print 'start to crawle post', self.post_id
         self.data['hrefs'] = []
 
         url = 'http://stackoverflow.com/questions/%s' % self.post_id
@@ -227,13 +227,10 @@ class APILinker:
 
         self.data['class_parsed_list'] = class_parsed_list
 
-        # # dump all analyzed results from html page
-        # with open(os.path.join(POST_DIR, self.post_id + '.json'), 'w') as outfile:
-        #     json.dump(self.data, outfile)
-        
-        # dump a txt file for api recognition
+        print os.path.join(POST_DIR, self.post_id + '.txt')
         with open(os.path.join(POST_DIR, self.post_id + '.txt'), 'w') as outfile:
             outfile.write(mytokenizer.tokenize_str(self.get_link_text()))
+        # print 'end of cralwing post'
 
     def get_full_text(self):
         return '\n'.join([html2txt(t)
@@ -244,6 +241,7 @@ class APILinker:
                           for t in self.data['link_text'] if html2txt(t) != ""])
 
     def api_recog(self):
+        print 'start to API recognition'
         txt_file = self.post_id + '.txt'
         conll_file = self.post_id + '.conll'
         data_file = self.post_id + '.data'
@@ -316,6 +314,8 @@ class APILinker:
         print 'identified APIs: ', ' '.join(self.data['entityList'])
 
     def link(self):
+        print 'start to API linking'
+
         data_entity = self.data["entityList"]
         data_entity_index = self.data["entityIndex"]
         class_parsed_list = self.data["class_parsed_list"]
@@ -364,7 +364,6 @@ class APILinker:
                 except Exception as e:
                     pass
                 
-
             records = self.db.query_records(entity)
 
             if len(records) == 0:
@@ -489,7 +488,7 @@ class APILinker:
                     result['distance'] = -1
                     temp = []
                     for valid_class in class_list:
-                        print valid_class[0], record[5], type(valid_class[0]), type(record[5])
+                        # print valid_class[0], record[5], type(valid_class[0]), type(record[5])
                         if Levenshtein.ratio(str(valid_class[0]), str(record[5])) > 0.8:
                             mark[4] = True
                             temp.append(
@@ -522,19 +521,13 @@ class APILinker:
 
                 self.result_list.append(result_sublist)
 
-def main():
-    with open('results.csv', 'w') as outfile:
+def batch(posts_file, results_file):
+    with open(results_file, 'w') as outfile:
         # post_id = '17116814'
-        postfile = open('posts.txt')
+        postfile = open(posts_file)
         flag = False
         for post in postfile.readlines():
-            print post
             post_id = post.strip()
-            # if not flag:
-            # if post_id != '17534106':
-            #     continue
-            #     else:
-            #         flag = True
             
             unique_result = []
 
@@ -550,7 +543,7 @@ def main():
                 
                 if len(linked_apis) > 1:
                     sorted_apis = sorted(linked_apis, key=lambda k: k['score'], reverse=True)
-                    print 'the number of candidate APIs:', len(sorted_apis)
+                    # print 'the number of candidate APIs:', len(sorted_apis)
                     print sorted_apis[0]['api_class'], sorted_apis[0]['name'], sorted_apis[0]['score']
 
                     if sorted_apis[0]['api_class'] is not None:
@@ -570,13 +563,10 @@ def main():
                         outfile.write(','.join(out) + '\n')
 
                         unique_result.append((str(entity.strip()),matched_api))
-                    # else:
-                    #    print entity, matched_api, 'exists!'
                     
                 elif len(linked_apis) == 1:
-                    # print linked_apis[0]['name'], linked_apis[0]['url']
                     matched_api = str(linked_apis[0]['name']).strip()
-                    print entity, matched_api, (entity, matched_api) in unique_result
+                    # print entity, matched_api, (entity, matched_api) in unique_result
                     if not ((entity, matched_api) in unique_result):
                         out.append(entity)
                         out.append(linked_apis[0]['name'])
@@ -588,12 +578,13 @@ def main():
                         outfile.write(','.join(out) + '\n')
 
                         unique_result.append((str(entity.strip()), matched_api))
-                    # else:
-                    #    print entity, matched_api, 'exists!'
                 else:
-                    print 'no records found in api doc database'
+                    out.append(entity)
+                    out.append('not matched')
 
-                # print unique_result
+                    outfile.write(','.join(out) + '\n')
+
+                    print 'no records found in api doc database'
 
 def linking(post_id, output):
     linker = APILinker(post_id)
@@ -640,14 +631,24 @@ def linking(post_id, output):
 
                 unique_result.append((str(entity.strip()), matched_api))
             else:
+                out.append(entity)
+                out.append('not matched')
+
+                outfile.write(','.join(out) + '\n')
+
                 print 'no records found in api doc database'
 
 
 
 if __name__ == '__main__':
     # main()
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 4:
         print 'usage: python apilink.py post_id output_file'
+        print 'single post: python apilink.py -s post_id output_file'
+        print 'multiple posts in a file: python -b apilink.py posts.txt output_file'
         sys.exit(0)
 
-    linking(sys.argv[1], sys.argv[2])
+    if sys.argv[1] == '-s':
+        linking(sys.argv[2], sys.argv[3])
+    elif sys.argv[1] == '-b':
+        batch(sys.argv[2], sys.argv[3])

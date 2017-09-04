@@ -1,169 +1,0 @@
-Problem	O	O
-	
-I	O	O
-noticed	O	O
-that	O	O
-memory	O	O
-allocated	O	O
-while	O	O
-iterating	O	O
-through	O	O
-a	O	O
-Pandas	O	O
-GroupBy	B-API	O
-object	O	O
-is	O	O
-not	O	O
-deallocated	O	O
-after	O	O
-iteration.	O	O
-	
-I	O	O
-use	O	O
-`resource.getrusage(resource.RUSAGE_SELF).ru_maxrss`	O	O
-(	O	O
-second	O	O
-answer	O	O
-in	O	O
-this	O	O
-post	O	O
-for	O	O
-details	O	O
-)	O	O
-to	O	O
-measure	O	O
-the	O	O
-total	O	O
-amount	O	O
-of	O	O
-active	O	O
-memory	O	O
-used	O	O
-by	O	O
-the	O	O
-Python	O	O
-process.	O	O
-	
-prints	O	O
-the	O	O
-following	O	O
-total	O	O
-active	O	O
-memory	O	O
-(in	O	O
-gb)	O	O
-	
-Solutions	O	O
-	
-Uncommenting	O	O
-`del	O	O
-idx,	O	O
-x`	O	O
-and	O	O
-`gc.collect()`	O	O
-fixes	O	O
-the	O	O
-problem.	O	O
-	
-I	O	O
-do	O	O
-however	O	O
-have	O	O
-to	O	O
-`del`	O	O
-all	O	O
-variables	O	O
-that	O	O
-reference	O	O
-the	O	O
-DataFrames	O	O
-returned	O	O
-by	O	O
-iterating	O	O
-over	O	O
-the	O	O
-groupby	B-API	B-API
-(which	O	O
-can	O	O
-be	O	O
-a	O	O
-pain	O	O
-depending	O	O
-on	O	O
-the	O	O
-code	O	O
-in	O	O
-the	O	O
-inner	O	O
-for	O	O
-loop).	O	O
-	
-The	O	O
-new	O	O
-printed	O	O
-memory	O	O
-usages	O	O
-become:	O	O
-	
-Alternatively	O	O
-I	O	O
-can	O	O
-uncomment	O	O
-`gb	O	O
-=	O	O
-list(gb)`.	O	O
-	
-The	O	O
-resulting	O	O
-memory	O	O
-usages	O	O
-are	O	O
-roughly	O	O
-the	O	O
-same	O	O
-as	O	O
-those	O	O
-from	O	O
-the	O	O
-previous	O	O
-solution:	O	O
-	
-Questions	O	O
-	
-Why	O	O
-is	O	O
-memory	O	O
-for	O	O
-DataFrames	O	O
-resulting	O	O
-from	O	O
-iteration	O	O
-through	O	O
-the	O	O
-groupby	B-API	B-API
-not	O	O
-deallocated	O	O
-after	O	O
-iteration	O	O
-is	O	O
-completed?	O	O
-	
-Is	O	O
-there	O	O
-a	O	O
-better	O	O
-solution	O	O
-than	O	O
-the	O	O
-two	O	O
-above?	O	O
-	
-If	O	
-not,	O	
-which	O	
-of	O	
-these	O	
-two	O	
-solutions	O	
-is	O	
-"better"?	O	

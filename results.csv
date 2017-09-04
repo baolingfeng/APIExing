@@ -1,0 +1,548 @@
+21390035,groupby,pandas.DataFrame.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby,method,pandas,4
+21390035,apply,pandas.DataFrame.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply,method,pandas,10
+21390035,df.groupby,pandas.DataFrame.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby,pandas.DataFrame,method,1
+21390035,.apply,pandas.DataFrame.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply,method,pandas,10
+21390035,aggregate,pandas.tseries.resample.Resampler.aggregate,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.tseries.resample.Resampler.aggregate.html#pandas.tseries.resample.Resampler.aggregate,method,pandas,2
+21390035,transform,pandas.tseries.resample.Resampler.transform,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.tseries.resample.Resampler.transform.html#pandas.tseries.resample.Resampler.transform,method,pandas,3
+39284989,apply,pandas.core.style.Styler.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.core.style.Styler.apply.html#pandas.core.style.Styler.apply,method,pandas,10
+39284989,groupby,pandas.Panel.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Panel.groupby.html#pandas.Panel.groupby,method,pandas,4
+35782929,gc.collect(),gc.collect(),https://docs.python.org/2/library/gc.html#gc.collect,gc,method,1
+35782929,groupby,pandas.DataFrame.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby,method,pandas,4
+35782929,gc.collect,gc.collect,https://docs.python.org/2/library/gc.html#gc.collect,gc,method,1
+35782929,aggregate,pandas.tseries.resample.Resampler.aggregate,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.tseries.resample.Resampler.aggregate.html#pandas.tseries.resample.Resampler.aggregate,method,pandas,2
+17534106,numpy.isnan(),numpy.isnan(),http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.isnan.html#numpy.isnan,none,data,1
+17534106,isnull,pandas.isnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.isnull.html#pandas.isnull,method,pandas,5
+17534106,notnull,pandas.notnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.notnull.html#pandas.notnull,method,pandas,5
+17534106,dtypes,not matched
+17534106,dtype,dtype,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.dtype.html#numpy.dtype,none,class,1
+17534106,pd.isnull,pandas.isnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.isnull.html#pandas.isnull,pandas,method,1
+17534106,pd.notnull,pandas.notnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.notnull.html#pandas.notnull,pandas,method,1
+17534106,nansum,nansum,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.nansum.html#numpy.nansum,numpy,method,1
+17534106,nan_to_num,numpy.nan_to_num,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.nan_to_num.html#numpy.nan_to_num,method,numpy,2
+17534106,isnan(),math.isnan(),https://docs.python.org/2/library/math.html#math.isnan,method,python,3
+17534106,isnan,math.isnan,https://docs.python.org/2/library/math.html#math.isnan,method,python,3
+17534106,numpy.empty,numpy.empty,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.empty.html#numpy.empty,numpy.recarray,method,1
+17534106,np.isnan(),numpy.isnan(),http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.isnan.html#numpy.isnan,none,data,1
+11869910,groupby,pandas.Panel.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Panel.groupby.html#pandas.Panel.groupby,method,pandas,4
+11869910,aggregate,pandas.tseries.resample.Resampler.aggregate,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.tseries.resample.Resampler.aggregate.html#pandas.tseries.resample.Resampler.aggregate,method,pandas,2
+11869910,apply,pandas.core.style.Styler.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.core.style.Styler.apply.html#pandas.core.style.Styler.apply,method,pandas,10
+11869910,df.query,pandas.DataFrame.query,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html#pandas.DataFrame.query,pandas.DataFrame,method,1
+11869910,.pipe,os.pipe,https://docs.python.org/2/library/os.html#os.pipe,method,python,3
+11869910,groupby,pandas.Panel.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Panel.groupby.html#pandas.Panel.groupby,method,pandas,4
+11869910,aggregate,pandas.tseries.resample.Resampler.aggregate,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.tseries.resample.Resampler.aggregate.html#pandas.tseries.resample.Resampler.aggregate,method,pandas,2
+11869910,apply,pandas.core.style.Styler.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.core.style.Styler.apply.html#pandas.core.style.Styler.apply,method,pandas,10
+11869910,df.query,pandas.DataFrame.query,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html#pandas.DataFrame.query,pandas.DataFrame,method,1
+11869910,.pipe,os.pipe,https://docs.python.org/2/library/os.html#os.pipe,method,python,3
+13035764,group_by,not matched
+13035764,pivot,pandas.DataFrame.pivot,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.pivot.html#pandas.DataFrame.pivot,method,pandas,2
+13035764,drop_duplicates,pandas.Index.drop_duplicates,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.drop_duplicates.html#pandas.Index.drop_duplicates,method,pandas,3
+13035764,df.reset_index(),not matched
+13035764,.drop_duplicates,pandas.Index.drop_duplicates,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.drop_duplicates.html#pandas.Index.drop_duplicates,method,pandas,3
+13035764,.set_index,set_index,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.set_index.html#pandas.DataFrame.set_index,pandas.DataFrame,method,1
+13035764,groupby,pandas.Panel.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Panel.groupby.html#pandas.Panel.groupby,method,pandas,4
+13035764,reset_index(),pandas.DataFrame.reset_index(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.reset_index.html#pandas.DataFrame.reset_index,method,pandas,2
+13035764,set_index,set_index,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.set_index.html#pandas.DataFrame.set_index,pandas.DataFrame,method,1
+13035764,.last(),pandas.tseries.resample.Resampler.last(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.tseries.resample.Resampler.last.html#pandas.tseries.resample.Resampler.last,method,pandas,8
+13035764,group_by,not matched
+13035764,pivot,pandas.DataFrame.pivot,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.pivot.html#pandas.DataFrame.pivot,method,pandas,2
+13035764,drop_duplicates,pandas.Index.drop_duplicates,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.drop_duplicates.html#pandas.Index.drop_duplicates,method,pandas,3
+13035764,df.reset_index(),not matched
+13035764,.drop_duplicates,pandas.Index.drop_duplicates,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.drop_duplicates.html#pandas.Index.drop_duplicates,method,pandas,3
+13035764,.set_index,set_index,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.set_index.html#pandas.DataFrame.set_index,pandas.DataFrame,method,1
+13035764,groupby,pandas.Panel.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Panel.groupby.html#pandas.Panel.groupby,method,pandas,4
+13035764,reset_index(),pandas.DataFrame.reset_index(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.reset_index.html#pandas.DataFrame.reset_index,method,pandas,2
+13035764,set_index,set_index,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.set_index.html#pandas.DataFrame.set_index,pandas.DataFrame,method,1
+13035764,.last(),pandas.tseries.resample.Resampler.last(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.tseries.resample.Resampler.last.html#pandas.tseries.resample.Resampler.last,method,pandas,8
+16353729,apply,pandas.core.style.Styler.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.core.style.Styler.apply.html#pandas.core.style.Styler.apply,method,pandas,10
+19798153,map,pandas.Series.map,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.map.html#pandas.Series.map,method,pandas,5
+19798153,applymap,pandas.core.style.Styler.applymap,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.core.style.Styler.applymap.html#pandas.core.style.Styler.applymap,method,pandas,2
+19798153,apply,pandas.Series.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.apply.html#pandas.Series.apply,method,pandas,10
+19798153,groupby,pandas.Panel.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Panel.groupby.html#pandas.Panel.groupby,method,pandas,4
+19798153,.apply(),pandas.Series.apply(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.apply.html#pandas.Series.apply,method,pandas,10
+19798153,.map(),pandas.Series.map(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.map.html#pandas.Series.map,method,pandas,5
+19798153,np.sqrt,numpy.sqrt,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.sqrt.html#numpy.sqrt,none,data,1
+19798153,sqrt,none.sqrt,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.sqrt.html#numpy.sqrt,data,numpy,6
+19798153,.ix,not matched
+19798153,.where,pandas.DataFrame.where,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.where.html#pandas.DataFrame.where,method,pandas,5
+13331698,apply,pandas.DataFrame.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply,method,pandas,10
+13331698,groupby,pandas.Panel.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Panel.groupby.html#pandas.Panel.groupby,method,pandas,4
+13331698,df.apply,pandas.DataFrame.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply,pandas.DataFrame,method,1
+13331698,.apply,pandas.DataFrame.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply,method,pandas,10
+13331698,np.vectorize,numpy.vectorize,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.vectorize.html#numpy.vectorize,none,class,1
+13331698,map,pandas.Series.map,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.map.html#pandas.Series.map,method,pandas,5
+13636848,merge,heapq.merge,https://docs.python.org/2/library/heapq.html#heapq.merge,method,python,3
+13636848,.rename,os.rename,https://docs.python.org/2/library/os.html#os.rename,method,python,6
+13636848,join,string.join,https://docs.python.org/2/library/string.html#string.join,method,python,16
+13636848,get_close_matches,get_close_matches,https://docs.python.org/2/library/difflib.html#difflib.get_close_matches,difflib,method,1
+13269890,merge,pandas.merge,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.merge.html#pandas.merge,method,pandas,3
+13269890,join,pandas.Index.join,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.join.html#pandas.Index.join,method,pandas,16
+13269890,pd.merge,pandas.merge,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.merge.html#pandas.merge,pandas,method,1
+13269890,.drop,pandas.Index.drop,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.drop.html#pandas.Index.drop,method,pandas,4
+13269890,*len,not matched
+19463985,drop_duplicates,pandas.Index.drop_duplicates,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.drop_duplicates.html#pandas.Index.drop_duplicates,method,pandas,3
+19463985,shift,pandas.DataFrame.shift,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.shift.html#pandas.DataFrame.shift,method,pandas,7
+19463985,diff,pandas.core.groupby.DataFrameGroupBy.diff,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.core.groupby.DataFrameGroupBy.diff.html#pandas.core.groupby.DataFrameGroupBy.diff,method,pandas,5
+19463985,shift(),pandas.DataFrame.shift(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.shift.html#pandas.DataFrame.shift,method,pandas,7
+19463985,.any,pandas.core.groupby.DataFrameGroupBy.any,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.core.groupby.DataFrameGroupBy.any.html#pandas.core.groupby.DataFrameGroupBy.any,method,pandas,18
+17071871,isin,pandas.Index.isin,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.isin.html#pandas.Index.isin,method,pandas,3
+17071871,df.loc,not matched
+17071871,df.index.isin,not matched
+17071871,df.where,pandas.DataFrame.where,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.where.html#pandas.DataFrame.where,pandas.DataFrame,method,1
+17071871,query(),query(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html#pandas.DataFrame.query,pandas.DataFrame,method,1
+17071871,df.query,pandas.DataFrame.query,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html#pandas.DataFrame.query,pandas.DataFrame,method,1
+17071871,df.loc,not matched
+17071871,append,pandas.Index.append,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.append.html#pandas.Index.append,method,pandas,14
+17071871,df.groupby,pandas.DataFrame.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby,pandas.DataFrame,method,1
+17071871,.get_group,pandas.tseries.resample.Resampler.get_group,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.tseries.resample.Resampler.get_group.html#pandas.tseries.resample.Resampler.get_group,method,pandas,2
+17071871,.reset_index(),pandas.DataFrame.reset_index(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.reset_index.html#pandas.DataFrame.reset_index,method,pandas,2
+17071871,numpy.where,numpy.where,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.where.html#numpy.where,numpy.random.RandomState,method,1
+13148429,concatenate,numpy.concatenate,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.concatenate.html#numpy.concatenate,method,numpy,3
+13148429,df.ix,not matched
+13148429,df.mean,not matched
+13148429,df.mean,not matched
+13148429,df.reindex,not matched
+13148429,df.set_index,not matched
+13148429,reindex,pandas.Index.reindex,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.reindex.html#pandas.Index.reindex,method,pandas,4
+13148429,df.reindex(),not matched
+13148429,reindex_axis,pandas.Panel.reindex_axis,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Panel.reindex_axis.html#pandas.Panel.reindex_axis,method,pandas,2
+13148429,df.reindex_axis,not matched
+13148429,insert(),ttk.Notebook.insert(),https://docs.python.org/2/library/ttk.html#ttk.Notebook.insert,method,python,8
+13148429,df.insert,not matched
+13148429,df.mean,not matched
+13148429,pivot,pandas.DataFrame.pivot,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.pivot.html#pandas.DataFrame.pivot,method,pandas,2
+12182744,apply,pandas.Series.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.apply.html#pandas.Series.apply,method,pandas,10
+12182744,functools.partial,functools.partial,https://docs.python.org/2/library/functools.html#functools.partial,functools,method,1
+20915118,join,string.join,https://docs.python.org/2/library/string.html#string.join,method,python,16
+20915118,pd.merge(),pandas.merge(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.merge.html#pandas.merge,pandas,method,1
+41260764,merge,heapq.merge,https://docs.python.org/2/library/heapq.html#heapq.merge,method,python,3
+41260764,reindex,pandas.Index.reindex,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.reindex.html#pandas.Index.reindex,method,pandas,4
+41260764,reindex_like,pandas.Panel.reindex_like,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Panel.reindex_like.html#pandas.Panel.reindex_like,method,pandas,3
+41260764,loc,not matched
+41260764,set_index,set_index,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.set_index.html#pandas.DataFrame.set_index,pandas.DataFrame,method,1
+38579921,df.copy(),not matched
+38579921,df.copy(),not matched
+38579921,.copy(),pandas.DataFrame.copy(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.copy.html#pandas.DataFrame.copy,method,pandas,46
+38579921,df.copy(),not matched
+38579921,df.copy(),not matched
+12850345,append,pipes.Template.append,https://docs.python.org/2/library/pipes.html#pipes.Template.append,method,python,14
+12850345,ignore_index,not matched
+12850345,pd.concat,pandas.concat,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html#pandas.concat,pandas,method,1
+16175874,searchsorted,pandas.Series.searchsorted,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.searchsorted.html#pandas.Series.searchsorted,method,pandas,14
+20297332,df.shape,not matched
+20297332,df.shape,not matched
+20297332,df.shape,not matched
+20297332,df.shape,not matched
+20297332,len,none.len,https://docs.python.org/2/library/functions.html#len,method,python,2
+13411544,df.drop,not matched
+13411544,df.drop,not matched
+13411544,df.pop,not matched
+13411544,dtypes,not matched
+13411544,df.dtypes,not matched
+13411544,dtypes,not matched
+13411544,dtypes,not matched
+13411544,.ix,not matched
+13411544,.loc,not matched
+13411544,.iloc,not matched
+13411544,df.dtypes,not matched
+13411544,dtypes,not matched
+13411544,dtypes,not matched
+13411544,df.drop,not matched
+13411544,drop(),pandas.DataFrame.drop(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop.html#pandas.DataFrame.drop,method,pandas,4
+16476924,iterrows,iterrows,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.iterrows.html#pandas.DataFrame.iterrows,pandas.DataFrame,method,1
+16476924,dtypes,not matched
+16476924,iterrows(),iterrows(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.iterrows.html#pandas.DataFrame.iterrows,pandas.DataFrame,method,1
+16476924,itertuples(),itertuples(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.itertuples.html#pandas.DataFrame.itertuples,pandas.DataFrame,method,1
+16476924,.iterrows(),iterrows(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.iterrows.html#pandas.DataFrame.iterrows,pandas.DataFrame,method,1
+16476924,.itertuples(),itertuples(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.itertuples.html#pandas.DataFrame.itertuples,pandas.DataFrame,method,1
+16476924,itertuples,itertuples,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.itertuples.html#pandas.DataFrame.itertuples,pandas.DataFrame,method,1
+16476924,df.apply(),pandas.DataFrame.apply(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply,pandas.DataFrame,method,1
+16476924,df.apply,pandas.DataFrame.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply,pandas.DataFrame,method,1
+16476924,.apply,pandas.DataFrame.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply,method,pandas,10
+16476924,df.itertuples,pandas.DataFrame.itertuples,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.itertuples.html#pandas.DataFrame.itertuples,pandas.DataFrame,method,1
+16476924,dtype,dtype,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.dtype.html#numpy.dtype,none,class,1
+16476924,dtypes,not matched
+16476924,dtypes,not matched
+16476924,df.iloc,not matched
+13413590,df.drop,pandas.DataFrame.drop,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop.html#pandas.DataFrame.drop,pandas.DataFrame,method,1
+13413590,dropna,pandas.DataFrame.dropna,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.dropna.html#pandas.DataFrame.dropna,method,pandas,3
+13413590,df.dropna,pandas.DataFrame.dropna,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.dropna.html#pandas.DataFrame.dropna,pandas.DataFrame,method,1
+13413590,pandas.notnull,pandas.notnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.notnull.html#pandas.notnull,pandas,method,1
+13413590,np.isfinite,numpy.isfinite,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.isfinite.html#numpy.isfinite,none,data,1
+13413590,isfinite,isfinite,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.isfinite.html#numpy.isfinite,none,data,1
+13413590,dropna(),pandas.DataFrame.dropna(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.dropna.html#pandas.DataFrame.dropna,method,pandas,3
+13413590,notnull,pandas.DataFrame.notnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.notnull.html#pandas.DataFrame.notnull,method,pandas,5
+13413590,pd.notnull,pandas.notnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.notnull.html#pandas.notnull,pandas,method,1
+13413590,isnull,pandas.DataFrame.isnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.isnull.html#pandas.DataFrame.isnull,method,pandas,5
+13413590,numpy.isnan,numpy.isnan,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.isnan.html#numpy.isnan,none,data,1
+13413590,df.drop,pandas.DataFrame.drop,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop.html#pandas.DataFrame.drop,pandas.DataFrame,method,1
+13413590,dropna,pandas.DataFrame.dropna,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.dropna.html#pandas.DataFrame.dropna,method,pandas,3
+13413590,df.dropna,pandas.DataFrame.dropna,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.dropna.html#pandas.DataFrame.dropna,pandas.DataFrame,method,1
+13413590,pandas.notnull,pandas.notnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.notnull.html#pandas.notnull,pandas,method,1
+13413590,np.isfinite,numpy.isfinite,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.isfinite.html#numpy.isfinite,none,data,1
+13413590,isfinite,isfinite,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.isfinite.html#numpy.isfinite,none,data,1
+13413590,dropna(),pandas.DataFrame.dropna(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.dropna.html#pandas.DataFrame.dropna,method,pandas,3
+13413590,notnull,pandas.DataFrame.notnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.notnull.html#pandas.DataFrame.notnull,method,pandas,5
+13413590,pd.notnull,pandas.notnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.notnull.html#pandas.notnull,pandas,method,1
+13413590,isnull,pandas.DataFrame.isnull,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.isnull.html#pandas.DataFrame.isnull,method,pandas,5
+13413590,numpy.isnan,numpy.isnan,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.isnan.html#numpy.isnan,none,data,1
+31593201,iloc,not matched
+31593201,ix,not matched
+31593201,loc,not matched
+31593201,ix,not matched
+31593201,ix,not matched
+31593201,loc,not matched
+31593201,iloc,not matched
+31593201,ix,not matched
+31593201,ix,not matched
+31593201,loc,not matched
+31593201,iloc,not matched
+31593201,ix,not matched
+31593201,loc,not matched
+31593201,iloc,not matched
+31593201,ix,not matched
+31593201,ix,not matched
+31593201,ix,not matched
+31593201,ix,not matched
+31593201,loc,not matched
+31593201,iloc,not matched
+31593201,ix,not matched
+31593201,iloc,not matched
+31593201,ix,not matched
+31593201,loc,not matched
+31593201,loc,not matched
+31593201,iloc,not matched
+31593201,ix,not matched
+31593201,ix,not matched
+31593201,ix,not matched
+31593201,iloc,not matched
+31593201,get_loc(),pandas.Index.get_loc(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.get_loc.html#pandas.Index.get_loc,method,pandas,2
+31593201,iloc,not matched
+31593201,loc,not matched
+31593201,iloc,not matched
+31593201,ix,not matched
+31593201,loc,not matched
+31593201,iloc,not matched
+31593201,ix,not matched
+31593201,.loc,not matched
+31593201,df.ix,not matched
+31593201,iloc,not matched
+31593201,.loc,not matched
+31593201,iloc,not matched
+31593201,loc,not matched
+31593201,df.loc,not matched
+31593201,__getitem__,operator.__getitem__,https://docs.python.org/2/library/operator.html#operator.__getitem__,method,python,3
+31593201,.ix,not matched
+31593201,loc,not matched
+31593201,df.iloc,not matched
+31593201,df.loc,not matched
+22138800,read_csv,read_csv,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html#pandas.read_csv,pandas,method,1
+22138800,genfromtxt,genfromtxt,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.genfromtxt.html#numpy.genfromtxt,numpy,method,1
+22138800,np.genfromtxt,numpy.genfromtxt,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.genfromtxt.html#numpy.genfromtxt,numpy,method,1
+22138800,dtype,dtype,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.dtype.html#numpy.dtype,none,class,1
+41670630,stack,pandas.DataFrame.stack,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.stack.html#pandas.DataFrame.stack,method,pandas,5
+41670630,to_frame,pandas.Series.to_frame,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.to_frame.html#pandas.Series.to_frame,method,pandas,2
+41670630,value_counts,pandas.Series.value_counts,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.value_counts.html#pandas.Series.value_counts,method,pandas,3
+41662881,iloc,not matched
+41662881,join,pandas.Index.join,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.join.html#pandas.Index.join,method,pandas,16
+41662881,merge,pandas.merge,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.merge.html#pandas.merge,method,pandas,3
+41662881,pd.merge,pandas.merge,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.merge.html#pandas.merge,pandas,method,1
+41662881,iloc,not matched
+41662881,dtype,dtype,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.dtype.html#numpy.dtype,none,class,1
+41662881,dtypes,not matched
+41662881,loc,not matched
+41662881,iloc,not matched
+41662881,__getitem__,operator.__getitem__,https://docs.python.org/2/library/operator.html#operator.__getitem__,method,python,3
+41662881,loc,not matched
+41662881,iloc,not matched
+41662881,loc,not matched
+41662881,iloc,not matched
+41662881,iat,not matched
+41662881,get_value,pandas.Index.get_value,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.get_value.html#pandas.Index.get_value,method,pandas,3
+41662881,iloc,not matched
+41662881,loc,not matched
+41662881,iat,not matched
+41662881,loc,not matched
+41682345,map,pandas.Series.map,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.map.html#pandas.Series.map,method,pandas,5
+41682345,merge,pandas.DataFrame.merge,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.merge.html#pandas.DataFrame.merge,method,pandas,3
+41682345,.merge(),pandas.DataFrame.merge(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.merge.html#pandas.DataFrame.merge,method,pandas,3
+41682345,set_index,set_index,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.set_index.html#pandas.DataFrame.set_index,pandas.DataFrame,method,1
+33058590,df.fillna,pandas.DataFrame.fillna,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.fillna.html#pandas.DataFrame.fillna,pandas.DataFrame,method,1
+33058590,df.mean,pandas.DataFrame.mean,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.mean.html#pandas.DataFrame.mean,pandas.DataFrame,method,1
+33058590,fillna,pandas.DataFrame.fillna,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.fillna.html#pandas.DataFrame.fillna,method,pandas,5
+41678594,merge,pandas.merge,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.merge.html#pandas.merge,method,pandas,3
+41678594,left_index,not matched
+41678594,set_index,set_index,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.set_index.html#pandas.DataFrame.set_index,pandas.DataFrame,method,1
+41678594,concat,pandas.concat,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html#pandas.concat,method,pandas,2
+41678594,join,string.join,https://docs.python.org/2/library/string.html#string.join,method,python,16
+41679687,df.to_string(),pandas.DataFrame.to_string(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_string.html#pandas.DataFrame.to_string,pandas.DataFrame,method,1
+41679687,.str,none.str,https://docs.python.org/2/library/functions.html#str,class,python,2
+41679687,dtype,dtype,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.dtype.html#numpy.dtype,none,class,1
+41679687,.dtype,dtype,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.dtype.html#numpy.dtype,none,class,1
+41679687,.contains,pandas.Series.str.contains,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.str.contains.html#pandas.Series.str.contains,method,pandas,31
+41679687,df.applymap,pandas.DataFrame.applymap,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.applymap.html#pandas.DataFrame.applymap,pandas.DataFrame,method,1
+41679687,select_dtypes,select_dtypes,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.select_dtypes.html#pandas.DataFrame.select_dtypes,pandas.DataFrame,method,1
+41679687,apply,pandas.DataFrame.apply,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply,method,pandas,10
+41679687,str.contains,not matched
+41669000,df.groupby,pandas.DataFrame.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby,pandas.DataFrame,method,1
+41669000,.groups,groups,https://docs.python.org/2/library/re.html#re.MatchObject.groups,re.MatchObject,method,1
+41669000,reindex,pandas.Index.reindex,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Index.reindex.html#pandas.Index.reindex,method,pandas,4
+41669000,resample,pandas.core.groupby.DataFrameGroupBy.resample,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.core.groupby.DataFrameGroupBy.resample.html#pandas.core.groupby.DataFrameGroupBy.resample,method,pandas,4
+41669000,groupby,pandas.DataFrame.groupby,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby,method,pandas,4
+26526230,to_pydatetimes,not matched
+26526230,plt.plot,matplotlib.pyplot.plot,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot,matplotlib.pyplot,method,1
+26526230,to_pydatetime(),pandas.DatetimeIndex.to_pydatetime(),http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DatetimeIndex.to_pydatetime.html#pandas.DatetimeIndex.to_pydatetime,method,pandas,2
+26526230,dtype,dtype,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.dtype.html#numpy.dtype,none,class,1
+26526230,to_pydatetime,pandas.DatetimeIndex.to_pydatetime,http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DatetimeIndex.to_pydatetime.html#pandas.DatetimeIndex.to_pydatetime,method,pandas,2
+26526230,ndarray,ndarray,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.ndarray.html#numpy.ndarray,none,class,1
+26526230,np.atleast_1d(),numpy.atleast_1d(),http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.atleast_1d.html#numpy.atleast_1d,numpy.matrix,method,1
+10873824,map,future_builtins.map,https://docs.python.org/2/library/future_builtins.html#future_builtins.map,method,python,5
+10873824,astype,numpy.ndarray.astype,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.ndarray.astype.html#numpy.ndarray.astype,method,numpy,17
+10873824,np.array,numpy.array,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.array.html#numpy.array,numpy.recarray,method,1
+10873824,.astype,numpy.ndarray.astype,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.ndarray.astype.html#numpy.ndarray.astype,method,numpy,17
+10873824,floor,none.floor,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.floor.html#numpy.floor,data,numpy,5
+10873824,ceil,none.ceil,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.ceil.html#numpy.ceil,data,numpy,5
+10873824,np.rint,numpy.rint,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.rint.html#numpy.rint,none,data,1
+10873824,np.int_,not matched
+10873824,asarray,numpy.core.defchararray.asarray,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.core.defchararray.asarray.html#numpy.core.defchararray.asarray,method,numpy,4
+10873824,dtype,dtype,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.dtype.html#numpy.dtype,none,class,1
+7894791,numpy.frombuffer(),numpy.frombuffer(),http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.frombuffer.html#numpy.frombuffer,numpy.ndarray,method,1
+7894791,mmap,mmap,https://docs.python.org/2/library/mmap.html#mmap.mmap,none,class,1
+7894791,get_obj(),not matched
+7894791,sum(),numpy.memmap.sum(),http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.memmap.sum.html#numpy.memmap.sum,method,numpy,23
+993984,len,none.len,https://docs.python.org/2/library/functions.html#len,method,python,2
+993984,numpy.array,numpy.array,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.array.html#numpy.array,numpy.recarray,method,1
+993984,numpy.zeros,numpy.zeros,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.zeros.html#numpy.zeros,numpy.random.RandomState,method,1
+993984,.format,locale.format,https://docs.python.org/2/library/locale.html#locale.format,method,python,8
+993984,zeros,numpy.zeros,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.zeros.html#numpy.zeros,method,numpy,4
+993984,.any(),numpy.recarray.any(),http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.recarray.any.html#numpy.recarray.any,method,numpy,18
+4936620,strides,not matched
+4936620,strides,not matched
+4936620,scipy.ndimage.convolve,not matched
+4936620,rolling_window,not matched
+4936620,rolling_window,not matched
+4936620,rolling_window,not matched
+4936620,transform,matplotlib.type1font.Type1Font.transform,http://matplotlib.org/api/type1font.html#matplotlib.type1font.Type1Font.transform,method,matplotlib,3
+4936620,ifft,ifft,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.fft.ifft.html#numpy.fft.ifft,numpy.fft,method,1
+4936620,fft,fft,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.fft.fft.html#numpy.fft.fft,numpy.fft,method,1
+4936620,scipy.signal.fftconvolve,not matched
+4936620,strides,not matched
+4936620,strides,not matched
+14254379,pyplot,not matched
+14254379,contour,matplotlib.pyplot.contour,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.contour,method,matplotlib,2
+14254379,plt.subplots,matplotlib.pyplot.subplots,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplots,matplotlib.pyplot,method,1
+14254379,axes,matplotlib.pyplot.axes,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axes,method,matplotlib,2
+14254379,matplotlib.pyplot,matplotlib.pyplot,http://matplotlib.org/api/pyplot_api.html#module-matplotlib.pyplot,none,class,1
+14254379,gcf(),gcf(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gcf,matplotlib.pyplot,method,1
+14254379,.gca(),matplotlib.pyplot.gca(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gca,method,matplotlib,2
+14254379,.contour,matplotlib.pyplot.contour,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.contour,method,matplotlib,2
+14254379,gridspec,gridspec,http://matplotlib.org/api/gridspec_api.html#matplotlib.gridspec.GridSpec,none,class,1
+2891790,numpy.array,numpy.array,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.array.html#numpy.array,numpy.recarray,method,1
+2891790,set_printoptions,numpy.set_printoptions,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.set_printoptions.html#numpy.set_printoptions,method,numpy,2
+2891790,np.set_printoptions,numpy.set_printoptions,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.set_printoptions.html#numpy.set_printoptions,numpy.ma.MaskedArray,method,1
+2891790,format(),locale.format(),https://docs.python.org/2/library/locale.html#locale.format,method,python,8
+2891790,np.array_str,numpy.array_str,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.array_str.html#numpy.array_str,numpy,method,1
+2891790,np.array2string,numpy.array2string,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.array2string.html#numpy.array2string,numpy,method,1
+2891790,numpy.arange,numpy.arange,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.arange.html#numpy.arange,c,method,1
+6910641,np.argmax,numpy.argmax,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.argmax.html#numpy.argmax,c,method,1
+6910641,argsort,numpy.argsort,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.argsort.html#numpy.argsort,method,numpy,16
+6910641,np.argsort,numpy.argsort,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.argsort.html#numpy.argsort,c,method,1
+6910641,argpartition,numpy.argpartition,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.argpartition.html#numpy.argpartition,method,numpy,9
+6910641,np.argpartition,numpy.argpartition,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.argpartition.html#numpy.argpartition,numpy.ma.masked_array,method,1
+6910641,np.partition,numpy.partition,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.partition.html#numpy.partition,numpy,method,1
+6910641,np.array,numpy.array,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.array.html#numpy.array,numpy.recarray,method,1
+6910641,heapq.nlargest,heapq.nlargest,https://docs.python.org/2/library/heapq.html#heapq.nlargest,heapq,method,1
+6910641,len,none.len,https://docs.python.org/2/library/functions.html#len,method,python,2
+6910641,.__getitem__,numpy.ma.MaskedArray.__getitem__,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.ma.MaskedArray.__getitem__.html#numpy.ma.MaskedArray.__getitem__,method,numpy,3
+6910641,.take,numpy.record.take,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.record.take.html#numpy.record.take,method,numpy,18
+6910641,argmax,numpy.argmax,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.argmax.html#numpy.argmax,method,numpy,15
+6910641,np.argsort(),numpy.argsort(),http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.argsort.html#numpy.argsort,c,method,1
+1401712,numpy.linalg.norm,numpy.linalg.norm,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.linalg.norm.html#numpy.linalg.norm,numpy.random.RandomState,method,1
+1401712,linalg.norm,linalg.norm,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.linalg.norm.html#numpy.linalg.norm,numpy.random.RandomState,method,1
+1401712,norm,norm,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.linalg.norm.html#numpy.linalg.norm,numpy.linalg,method,1
+1401712,numpy.sqrt,numpy.sqrt,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.sqrt.html#numpy.sqrt,none,data,1
+1401712,numpy.sum,numpy.sum,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.sum.html#numpy.sum,numpy.record,method,1
+1401712,sqrt,none.sqrt,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.sqrt.html#numpy.sqrt,data,numpy,6
+1401712,.sum(),numpy.sum(),http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.sum.html#numpy.sum,method,numpy,23
+1401712,matplotlib.mlab,matplotlib.mlab,http://matplotlib.org/api/mlab_api.html#module-matplotlib.mlab,none,class,1
+1401712,numpy.square,numpy.square,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.square.html#numpy.square,none,data,1
+1401712,numpy.array,numpy.array,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.array.html#numpy.array,numpy.recarray,method,1
+1401712,scipy.spatial.distance.cdist,not matched
+1401712,np.apply_along_axis,numpy.apply_along_axis,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.apply_along_axis.html#numpy.apply_along_axis,c,method,1
+1401712,np.dot,numpy.dot,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.dot.html#numpy.dot,numpy.ndarray,method,1
+16856788,reshape,numpy.record.reshape,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.record.reshape.html#numpy.record.reshape,method,numpy,14
+16856788,swapaxes,numpy.record.swapaxes,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.record.swapaxes.html#numpy.record.swapaxes,method,numpy,13
+16856788,axes,matplotlib.pyplot.axes,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axes,method,matplotlib,2
+16856788,numpy.split,numpy.split,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.split.html#numpy.split,numpy.core.defchararray,method,1
+16856788,numpy.hsplit,numpy.hsplit,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.hsplit.html#numpy.hsplit,numpy,method,1
+16856788,numpy.vsplit,numpy.vsplit,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.vsplit.html#numpy.vsplit,numpy.record,method,1
+16856788,np.ndindex(),numpy.ndindex(),http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.ndindex.html#numpy.ndindex,none,class,1
+16856788,reshape(),numpy.record.reshape(),http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.record.reshape.html#numpy.record.reshape,method,numpy,14
+4098131,graph1.clear(),not matched
+4098131,graph2.clear(),not matched
+4098131,draw,matplotlib.offsetbox.AnchoredOffsetbox.draw,http://matplotlib.org/api/offsetbox_api.html#matplotlib.offsetbox.AnchoredOffsetbox.draw,method,matplotlib,42
+4098131,imshow,matplotlib.pyplot.imshow,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow,method,matplotlib,2
+2369492,histogram2d,numpy.histogram2d,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.histogram2d.html#numpy.histogram2d,method,numpy,2
+2369492,axes,matplotlib.pyplot.axes,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axes,method,matplotlib,2
+2369492,savefig(),matplotlib.pyplot.savefig(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.savefig,method,matplotlib,2
+2369492,plt.savefig,matplotlib.pyplot.savefig,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.savefig,matplotlib.mathtext.TruetypeFonts,method,1
+2369492,plt.figure(),matplotlib.pyplot.figure(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.figure,matplotlib.text.Text,method,1
+2369492,fig.gca(),not matched
+2369492,ax.imshow,not matched
+2369492,fig.savefig,not matched
+2369492,imshow(),matplotlib.pyplot.imshow(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow,method,matplotlib,2
+2369492,scatter(),matplotlib.pyplot.scatter(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter,method,matplotlib,3
+2369492,imshow,matplotlib.pyplot.imshow,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow,method,matplotlib,2
+2369492,plt.imshow,matplotlib.pyplot.imshow,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow,matplotlib.text.TextWithDash,method,1
+2369492,matplotlib.colors,matplotlib.colors,http://matplotlib.org/api/colors_api.html#module-matplotlib.colors,none,class,1
+2369492,plt.colorbar(),matplotlib.pyplot.colorbar(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.colorbar,matplotlib.collections.AsteriskPolygonCollection,method,1
+2369492,map,future_builtins.map,https://docs.python.org/2/library/future_builtins.html#future_builtins.map,method,python,5
+2369492,hexbin,matplotlib.pyplot.hexbin,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.hexbin,method,matplotlib,4
+2369492,sqrt,matplotlib.mathtext.Parser.sqrt,http://matplotlib.org/api/mathtext_api.html#matplotlib.mathtext.Parser.sqrt,method,matplotlib,6
+2369492,plt.figure,matplotlib.pyplot.figure,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.figure,matplotlib.text.Text,method,1
+2369492,y_scale,not matched
+2369492,floor,math.floor,https://docs.python.org/2/library/math.html#math.floor,method,python,5
+2369492,histogram2d,numpy.histogram2d,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.histogram2d.html#numpy.histogram2d,method,numpy,2
+2369492,axes,matplotlib.pyplot.axes,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axes,method,matplotlib,2
+2369492,savefig(),matplotlib.pyplot.savefig(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.savefig,method,matplotlib,2
+2369492,plt.savefig,matplotlib.pyplot.savefig,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.savefig,matplotlib.mathtext.TruetypeFonts,method,1
+2369492,plt.figure(),matplotlib.pyplot.figure(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.figure,matplotlib.text.Text,method,1
+2369492,fig.gca(),not matched
+2369492,ax.imshow,not matched
+2369492,fig.savefig,not matched
+2369492,imshow(),matplotlib.pyplot.imshow(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow,method,matplotlib,2
+2369492,scatter(),matplotlib.pyplot.scatter(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter,method,matplotlib,3
+2369492,imshow,matplotlib.pyplot.imshow,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow,method,matplotlib,2
+2369492,plt.imshow,matplotlib.pyplot.imshow,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow,matplotlib.text.TextWithDash,method,1
+2369492,matplotlib.colors,matplotlib.colors,http://matplotlib.org/api/colors_api.html#module-matplotlib.colors,none,class,1
+2369492,plt.colorbar(),matplotlib.pyplot.colorbar(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.colorbar,matplotlib.collections.AsteriskPolygonCollection,method,1
+2369492,map,future_builtins.map,https://docs.python.org/2/library/future_builtins.html#future_builtins.map,method,python,5
+2369492,hexbin,matplotlib.pyplot.hexbin,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.hexbin,method,matplotlib,4
+2369492,sqrt,matplotlib.mathtext.Parser.sqrt,http://matplotlib.org/api/mathtext_api.html#matplotlib.mathtext.Parser.sqrt,method,matplotlib,6
+2369492,plt.figure,matplotlib.pyplot.figure,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.figure,matplotlib.text.Text,method,1
+2369492,y_scale,not matched
+2369492,floor,math.floor,https://docs.python.org/2/library/math.html#math.floor,method,python,5
+1574088,date2num,date2num,http://matplotlib.org/api/dates_api.html#matplotlib.dates.date2num,matplotlib.dates,method,1
+1574088,plot_date,matplotlib.pyplot.plot_date,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot_date,method,matplotlib,2
+1574088,scatter,matplotlib.pyplot.scatter,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter,method,matplotlib,3
+1574088,pyplot.plot,pyplot.plot,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot,matplotlib.pyplot,method,1
+1574088,plt.grid,matplotlib.pyplot.grid,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.grid,matplotlib.pyplot,method,1
+13784201,colorbar(),matplotlib.figure.Figure.colorbar(),http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.colorbar,method,matplotlib,3
+13784201,subplots_adjust,matplotlib.figure.Figure.subplots_adjust,http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.subplots_adjust,method,matplotlib,2
+13784201,tight_layout(),matplotlib.figure.Figure.tight_layout(),http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.tight_layout,method,matplotlib,3
+13784201,tight_layout,matplotlib.figure.Figure.tight_layout,http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.tight_layout,method,matplotlib,3
+13784201,add_axes,add_axes,http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.add_axes,matplotlib.figure.Figure,method,1
+13784201,figure.colorbar(),not matched
+13784201,make_axes,make_axes,http://matplotlib.org/api/colorbar_api.html#matplotlib.colorbar.make_axes,matplotlib.colorbar,method,1
+13784201,ravel,numpy.memmap.ravel,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.memmap.ravel.html#numpy.memmap.ravel,method,numpy,14
+13784201,plt.subplots(),matplotlib.pyplot.subplots(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplots,matplotlib.pyplot,method,1
+8955869,fig.canvas.draw(),not matched
+8955869,draw(),matplotlib.offsetbox.AnchoredOffsetbox.draw(),http://matplotlib.org/api/offsetbox_api.html#matplotlib.offsetbox.AnchoredOffsetbox.draw,method,matplotlib,42
+8955869,ax.draw_artist,not matched
+8955869,fig.show(),not matched
+8955869,.draw_artist,matplotlib.figure.Figure.draw_artist,http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.draw_artist,method,matplotlib,2
+8955869,fig.show(),not matched
+8955869,canvas.draw(),not matched
+12822762,pylab.ion(),not matched
+12822762,matplotlib.animate,not matched
+12822762,draw(),matplotlib.offsetbox.AnchoredOffsetbox.draw(),http://matplotlib.org/api/offsetbox_api.html#matplotlib.offsetbox.AnchoredOffsetbox.draw,method,matplotlib,42
+12822762,matplotlib.use,matplotlib.use,http://matplotlib.org/api/matplotlib_configuration_api.html#matplotlib.use,matplotlib.patches.FancyArrowPatch,method,1
+8213522,cla(),matplotlib.pyplot.cla(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.cla,method,matplotlib,4
+8213522,clf(),matplotlib.pyplot.clf(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.clf,method,matplotlib,2
+8213522,pyplot,not matched
+8213522,pyplot,not matched
+8213522,plt.cla(),matplotlib.pyplot.cla(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.cla,matplotlib.collections.AsteriskPolygonCollection,method,1
+8213522,plt.clf(),matplotlib.pyplot.clf(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.clf,matplotlib.animation.Animation,method,1
+8213522,plt.close(),matplotlib.pyplot.close(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.close,matplotlib.cm.ScalarMappable,method,1
+8213522,close(),matplotlib.pyplot.close(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.close,method,matplotlib,58
+8213522,fig.clf(),not matched
+8213522,fig.clear(),not matched
+8213522,fig.clf(),not matched
+8213522,plt.close,matplotlib.pyplot.close,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.close,matplotlib.cm.ScalarMappable,method,1
+8213522,fig.close(),not matched
+8213522,clear(),matplotlib.figure.Figure.clear(),http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.clear,method,matplotlib,16
+8213522,matplotlib.pyplot,matplotlib.pyplot,http://matplotlib.org/api/pyplot_api.html#module-matplotlib.pyplot,none,class,1
+8213522,fig.clf(),not matched
+8213522,pyplot,not matched
+14711655,plt.show(),pyplot.show(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show,matplotlib.patches.RegularPolygon,method,1
+8718885,pprint,pprint.pprint,https://docs.python.org/2/library/pprint.html#pprint.pprint,method,python,4
+8718885,matplotlib.text,matplotlib.text,http://matplotlib.org/api/text_api.html#module-matplotlib.text,none,class,1
+8718885,__import__,__import__,https://docs.python.org/2/library/functions.html#__import__,none,method,1
+3373256,min,none.min,https://docs.python.org/2/library/functions.html#min,method,python,23
+3373256,vmax,not matched
+3373256,clim(),clim(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.clim,matplotlib.pyplot,method,1
+4348733,plt.show(),matplotlib.pyplot.show(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show,matplotlib.patches.RegularPolygon,method,1
+4348733,pickle.dump(),pickle.dump(),https://docs.python.org/2/library/pickle.html#pickle.dump,pickle,method,1
+4348733,fig.show(),not matched
+4348733,show(),matplotlib.pyplot.show(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show,method,matplotlib,3
+4348733,pcolor,matplotlib.pyplot.pcolor,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.pcolor,method,matplotlib,2
+4348733,imshow,matplotlib.pyplot.imshow,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow,method,matplotlib,2
+4348733,pcolormesh,matplotlib.pyplot.pcolormesh,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.pcolormesh,method,matplotlib,2
+4348733,numpy.savetxt,numpy.savetxt,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.savetxt.html#numpy.savetxt,numpy.core.defchararray,method,1
+4348733,numpy.save,numpy.save,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.save.html#numpy.save,numpy.testing,method,1
+4348733,numpy.load,numpy.load,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.load.html#numpy.load,numpy.ma,method,1
+4348733,np.save,numpy.save,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.save.html#numpy.save,numpy.testing,method,1
+4348733,np.load,numpy.load,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.load.html#numpy.load,numpy.ma,method,1
+4706451,matplotlib.use,matplotlib.use,http://matplotlib.org/api/matplotlib_configuration_api.html#matplotlib.use,matplotlib.patches.FancyArrowPatch,method,1
+19410042,matplotlib.get_backend(),matplotlib.get_backend(),http://matplotlib.org/api/matplotlib_configuration_api.html#matplotlib.get_backend,matplotlib.offsetbox.DrawingArea,method,1
+19410042,plt.show(),matplotlib.pyplot.show(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show,matplotlib.patches.RegularPolygon,method,1
+3899980,pyplot,not matched
+3899980,plt.rc,matplotlib.pyplot.rc,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.rc,matplotlib.mathtext.StandardPsFonts,method,1
+14777066,scatter,matplotlib.pyplot.scatter,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter,method,matplotlib,3
+14777066,cmap.set_bad(),not matched
+14777066,cm.get_cmap,cm.get_cmap,http://matplotlib.org/api/cm_api.html#matplotlib.cm.get_cmap,matplotlib.afm.AFM,method,1
+14777066,set_over,set_over,http://matplotlib.org/api/colors_api.html#matplotlib.colors.Colormap.set_over,matplotlib.colors.Colormap,method,1
+14777066,set_under,set_under,http://matplotlib.org/api/colors_api.html#matplotlib.colors.Colormap.set_under,matplotlib.colors.Colormap,method,1
+14777066,set_bad,set_bad,http://matplotlib.org/api/colors_api.html#matplotlib.colors.Colormap.set_bad,matplotlib.colors.Colormap,method,1
+14777066,matshow,matplotlib.pyplot.matshow,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.matshow,method,matplotlib,2
+14777066,set_ticklabels,matplotlib.colorbar.ColorbarBase.set_ticklabels,http://matplotlib.org/api/colorbar_api.html#matplotlib.colorbar.ColorbarBase.set_ticklabels,method,matplotlib,2
+11244514,draw(),matplotlib.offsetbox.AnchoredOffsetbox.draw(),http://matplotlib.org/api/offsetbox_api.html#matplotlib.offsetbox.AnchoredOffsetbox.draw,method,matplotlib,42
+11244514,set_text,matplotlib.text.Text.set_text,http://matplotlib.org/api/text_api.html#matplotlib.text.Text.set_text,method,matplotlib,2
+11244514,axis.set_ticklabels,not matched
+11244514,plt.gca(),matplotlib.pyplot.gca(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gca,matplotlib.figure.Figure,method,1
+11244514,.set_xticklabels,set_xticklabels,http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.set_xticklabels,matplotlib.axes.Axes,method,1
+11244514,set_xticklabels,set_xticklabels,http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.set_xticklabels,matplotlib.axes.Axes,method,1
+11244514,set_yticklabels,set_yticklabels,http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.set_yticklabels,matplotlib.axes.Axes,method,1
+15858192,xlim,xlim,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xlim,matplotlib.pyplot,method,1
+15858192,ylim,ylim,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylim,matplotlib.pyplot,method,1
+15858192,subplot,subplot,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplot,matplotlib.pyplot,method,1
+15858192,gca(),matplotlib.pyplot.gca(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gca,method,matplotlib,2
+15858192,plt.subplot,matplotlib.pyplot.subplot,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplot,matplotlib.pyplot,method,1
+15858192,axes,matplotlib.pyplot.axes,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axes,method,matplotlib,2
+15858192,set_xlim,set_xlim,http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.set_xlim,matplotlib.axes.Axes,method,1
+15858192,set_ylim,set_ylim,http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.set_ylim,matplotlib.axes.Axes,method,1
+15858192,plt.gca(),matplotlib.pyplot.gca(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gca,matplotlib.figure.Figure,method,1
+15858192,plt.ylim,matplotlib.pyplot.ylim,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylim,matplotlib.pyplot,method,1
+15858192,get_ylim(),get_ylim(),http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.get_ylim,matplotlib.axes.Axes,method,1
+15858192,ax.get_yaxis(),not matched
+27704490,ndarray,ndarray,http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.ndarray.html#numpy.ndarray,none,class,1
+27704490,imshow,matplotlib.pyplot.imshow,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow,method,matplotlib,2
+27704490,spectral,spectral,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.spectral,matplotlib.pyplot,method,1
+27704490,ax.format_coord,not matched
+27704490,ax.format_coord,not matched
+27704490,ax.format_coord,not matched
+16834861,map,future_builtins.map,https://docs.python.org/2/library/future_builtins.html#future_builtins.map,method,python,5
+16834861,plt.plot,matplotlib.pyplot.plot,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot,matplotlib.pyplot,method,1
+16834861,plt.scatter,matplotlib.pyplot.scatter,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter,matplotlib.mathtext.Vlist,method,1
+16834861,plt.set_cmap(),matplotlib.pyplot.set_cmap(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.set_cmap,matplotlib.patches.Rectangle,method,1
+16834861,plt.set_cmap,matplotlib.pyplot.set_cmap,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.set_cmap,matplotlib.patches.Rectangle,method,1
+16750333,axes,matplotlib.pyplot.axes,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.axes,method,matplotlib,2
+9622163,savefig,matplotlib.figure.Figure.savefig,http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.savefig,method,matplotlib,2
+9622163,plt.figure(),matplotlib.pyplot.figure(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.figure,matplotlib.text.Text,method,1
+9622163,fig.savefig,not matched
+9622163,plt.close,matplotlib.pyplot.close,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.close,matplotlib.cm.ScalarMappable,method,1
+9622163,plt.show(),matplotlib.pyplot.show(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show,matplotlib.patches.RegularPolygon,method,1
+9622163,plt.savefig,matplotlib.pyplot.savefig,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.savefig,matplotlib.mathtext.TruetypeFonts,method,1
+9622163,plt.ioff(),matplotlib.pyplot.ioff(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ioff,matplotlib.patches.Patch,method,1
+9622163,matplotlib.pyplot,matplotlib.pyplot,http://matplotlib.org/api/pyplot_api.html#module-matplotlib.pyplot,none,class,1
+9622163,plt.savefig(),matplotlib.pyplot.savefig(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.savefig,matplotlib.mathtext.TruetypeFonts,method,1
+9622163,plt.ion(),matplotlib.pyplot.ion(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ion,matplotlib.patches.Patch,method,1
+9622163,.imsave(),matplotlib.image.imsave(),http://matplotlib.org/api/image_api.html#matplotlib.image.imsave,method,matplotlib,2
+9622163,stack,none.stack,http://matplotlib.org/api/cbook_api.html#matplotlib.cbook.Stack,class,matplotlib,5
+9622163,locals(),locals(),https://docs.python.org/2/library/functions.html#locals,none,method,1
+9622163,plt.show,matplotlib.pyplot.show,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show,matplotlib.patches.RegularPolygon,method,1
+9622163,plot(),matplotlib.cbook.MemoryMonitor.plot(),http://matplotlib.org/api/cbook_api.html#matplotlib.cbook.MemoryMonitor.plot,method,matplotlib,5
+5484922,twinx(),matplotlib.pyplot.twinx(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.twinx,method,matplotlib,2
+5484922,legend(),matplotlib.pyplot.legend(),http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.legend,method,matplotlib,4
+5484922,legend,matplotlib.pyplot.legend,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.legend,method,matplotlib,4
+5484922,errorbar,matplotlib.pyplot.errorbar,http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.errorbar,method,matplotlib,2
+5484922,.legend,matplotlib.pyplot.legend,http:/

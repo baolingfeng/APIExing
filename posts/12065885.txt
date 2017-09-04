@@ -1,5 +1,0 @@
-Filter dataframe rows if value in column is in a set list of values
-I have a Python pandas DataFrame `rpt`:
-I can filter the rows whose stock id is `'600809'` like this: `rpt[rpt['STK_ID'] == '600809']`
-and I want to get all the rows of some stocks together, such as `['600809','600141','600329']`. That means I want a syntax like this:
-Since pandas not accept above command, how to achieve the target?
