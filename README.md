@@ -13,10 +13,17 @@ First, we need convert a text file into a <a href="http://www.signll.org/conll/"
  > python texttoconll.py input.txt output.conll
  
 ## Data
-Our experimental data in EMSE paper is put in the folder **api_recog**. 
+1. The folder **apidoc**
 
-- **train_all.conll**: training data with manual label
-- **test_\*.all**: testing data
+*TODO*
+
+2. The folder **data**
+
+*TODO*
+
+3. the folder **api_recog**: our experimental data for EMSE paper
+  * **train_all.conll**: training data with manual label
+  * **test_\*.all**: testing data
 
 ## Commands
 1. convert a *CoNLL* file into an input file for *crfsuite*
@@ -46,12 +53,6 @@ See the corresponding python file **apilink.py**, you can run this file using fo
 * create a database schema *link_api*
 * import the two sql files into the database
 * change your database username and password in python file **apilink.py**
-
-2. the folder **apidoc**
-*TODO*
-
-3. the folder **data**
-*TODO*
 
 4. experimental data 
 *TODO*
