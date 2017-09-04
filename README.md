@@ -21,11 +21,9 @@ We provide a tool written by python (**texttoconll.py**) to convert text file in
 *TODO*
 
 3. Experimental data for EMSE paper
-  
-  the folder **api_recog** contains the following files:
-
-  * **train_all.conll**: training data with manual label
-  * **test_\*.all**: testing data
+     * the folder **api_recog** contains the following files:
+       - **train_all.conll**: training data with manual label
+       - **test_\*.all**: testing data
 
 ## Usage
 1. convert a *CoNLL* file into an input file for *crfsuite*
