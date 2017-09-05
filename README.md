@@ -26,7 +26,7 @@ We provide a tool written by python (**texttoconll.py**) to convert text file in
        - **test_\*.all**: testing data
 
 ## Usage
-1. convert a *CoNLL* file into an input file for *crfsuite*
+1. extract features and convert a *CoNLL* file into an input file for *crfsuite*
 
 > python enner.py bc-ce < api_recog/train_all.conll > api_recog/train_all.data
 
