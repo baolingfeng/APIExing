@@ -12,13 +12,9 @@ We provide a tool written by python (**texttoconll.py**) to convert text file in
  > python texttoconll.py input.txt output.conll
  
 ## Data
-1. The folder **apidoc**
+1. The folder **apidoc**： *API Inventory*
 
-API Inventory
-
-2. The folder **data**
-
-The results of word representation using Brown cluster and word embedding.
+2. The folder **data**： the results of word representation using *Brown cluster* and *word embedding*.
 
 3. Experimental data for EMSE paper
      * the folder **api_recog** contains the following files:
