@@ -14,11 +14,11 @@ We provide a tool written by python (**texttoconll.py**) to convert text file in
 ## Data
 1. The folder **apidoc**
 
-*TODO*
+API Inventory
 
 2. The folder **data**
 
-*TODO*
+The results of word representation using Brown cluster and word embedding.
 
 3. Experimental data for EMSE paper
      * the folder **api_recog** contains the following files:
